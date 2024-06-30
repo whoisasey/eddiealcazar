@@ -63,24 +63,24 @@ if (isMobile.iPhone() || isMobile.BlackBerry() || isMobile.AndroidPhone()) {
 //Set namesapce
 var H = H || {};
 
-H.createScroll = function (el) {
-	var ret;
-	if (Modernizr.touch) {
-		var rand = Math.floor(Math.random() * 1000);
-		$(el).wrapInner('<div id="' + rand + 'viewport" />');
-		$("#" + rand + "viewport").css({
-			height: $(el).height(),
-			overflow: "hidden",
-		});
-		ret = new iScroll($("#" + rand + "viewport")[0], {
-			vScrollbar: false,
-			bounce: true,
-		});
-	} else {
-		ret = $(el).scrollpanel().data("scrollpanel");
-	}
-	return ret;
-};
+// H.createScroll = function (el) {
+// 	var ret;
+// 	if (Modernizr.touch) {
+// 		var rand = Math.floor(Math.random() * 1000);
+// 		$(el).wrapInner('<div id="' + rand + 'viewport" />');
+// 		$("#" + rand + "viewport").css({
+// 			height: $(el).height(),
+// 			overflow: "hidden",
+// 		});
+// 		ret = new iScroll($("#" + rand + "viewport")[0], {
+// 			vScrollbar: false,
+// 			bounce: true,
+// 		});
+// 	} else {
+// 		ret = $(el).scrollpanel().data("scrollpanel");
+// 	}
+// 	return ret;
+// };
 
 H.updateScroll = function (scroll) {
 	if (scroll.refresh) {
@@ -624,8 +624,8 @@ function animateIn() {
 
 	TweenMax.to($("#footer"), 1, { opacity: 1 });
 
-	pressScroll = H.createScroll($("#press-scroller")[0]);
-	awardsScroll = H.createScroll($("#awards-scroller")[0]);
+	// pressScroll = H.createScroll($("#press-scroller")[0]);
+	// awardsScroll = H.createScroll($("#awards-scroller")[0]);
 
 	onResize();
 }
