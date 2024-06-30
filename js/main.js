@@ -137,8 +137,8 @@ function parseData(d) {
 			//add center gif
 			var center = document.createElement("div");
 			center.setAttribute("class", "center");
-			// center.style.left = count * (100 / data.projects.length) + "%";
-			// center.style.width = 100 / data.projects.length + "%";
+			center.style.left = count * (100 / data.projects.length) + "%";
+			center.style.width = 100 / data.projects.length + "%";
 			$("#nav")[0].appendChild(center);
 
 			var imgCenter = loader.addImage("assets/img/ui/center.gif");
@@ -160,9 +160,9 @@ function parseData(d) {
 			var div = document.createElement("div");
 			div.setAttribute("class", "thumb");
 			div.style.border = "1px solid red";
-			// div.style.left = (count*(100/data.projects.length))+'%';
-			// div.style.width = ((100/data.projects.length))+'%';
-			// $("#nav")[0].appendChild(div);
+			div.style.left = count * (100 / data.projects.length) + "%";
+			div.style.width = 100 / data.projects.length + "%";
+			$("#nav")[0].appendChild(div);
 
 			var img = loader.addImage(data.projects[i].thumb);
 			div.appendChild(img);
@@ -663,8 +663,8 @@ function onResize() {
 	$("#playerContainer").css("width", w + "px");
 	$("#playerContainer").css("height", w / (1600 / 600) + "px");
 
-	// $("#nav").css("width", w + "px");
-	// $("#nav").css("height", w / (1600 / 66) + "px");
+	$("#nav").css("width", w + "px");
+	$("#nav").css("height", w / (1600 / 66) + "px");
 	$("#navWrapper").css("height", w / (1600 / 66) + "px");
 	$("#navWrapper").css("margin-top", -$("#nav").height() / 2 + "px");
 
