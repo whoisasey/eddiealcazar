@@ -244,7 +244,6 @@ function parseData(d) {
 	//Init events
 	$(".thumb").click(function () {
 		var index = jQuery.data(this, "ident");
-		console.log("thumbnail clicked");
 		if (!isAnimating) {
 			getPage(index, 0);
 		}
@@ -297,8 +296,15 @@ function parseData(d) {
 		});
 	});
 
-	$(".center").click(function () {
-		closePageContainer();
+	// when the current project is open, close the stills if user clicks blackspace
+	$(".page").click(function (event) {
+		if (
+			!$(event.target).hasClass("imgContainer") &&
+			!$(event.target).hasClass("thumb") &&
+			!$(event.target).closest(".imgContainer").length
+		) {
+			closePageContainer();
+		}
 	});
 
 	onResize();
