@@ -160,8 +160,10 @@ function parseData(d) {
 		var div = document.createElement("div");
 		div.setAttribute("class", "thumb");
 		// div.style.border = "1px solid red";
-		div.style.left = count * (100 / data.projects.length) + "%";
-		div.style.width = 100 / data.projects.length + "%";
+		// console.log("count:", count);
+		div.style.left = count * 180 + "px";
+		// div.style.width = 100 / data.projects.length + "%";
+		div.style.width = "180px";
 		$("#nav")[0].appendChild(div);
 
 		var img = loader.addImage(data.projects[i].thumb);
@@ -304,6 +306,14 @@ function parseData(d) {
 			!$(event.target).closest(".imgContainer").length
 		) {
 			closePageContainer();
+		}
+	});
+
+	// Add an event listener for the scroll event to translate vertical scroll to horizontal scroll
+	$(window).on("wheel", function (event) {
+		if (event.originalEvent.deltaY !== 0) {
+			$("#scroll-container")[0].scrollLeft += event.originalEvent.deltaY;
+			event.preventDefault();
 		}
 	});
 
