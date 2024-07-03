@@ -658,19 +658,22 @@ function onResize() {
 	/*if(w<1080){
         w=1080;
     }*/
-	$("#container").css("width", w + "px");
-	$("#container").css("height", w / (1600 / 600) + "px");
-	$("#container").css(
-		"margin-top",
-		($(window).height() - $("#container").height()) / 2 + "px",
-	);
 
-	$("#guide").css("width", w + "px");
-	$("#guide").css("height", w / (1600 / 600) + "px");
-	$("#guide").css(
-		"top",
-		($(window).height() - $("#container").height()) / 2 + "px",
-	);
+	const container = document.querySelector("#container");
+	const width = w + "px";
+	const height = w / (1600 / 600) + "px";
+	const marginTop = `${(window.innerHeight - parseFloat(height)) / 2}px`;
+
+	container.style.width = width;
+	container.style.height = height;
+	container.style.marginTop = marginTop;
+
+	// $("#guide").css("width", w + "px");
+	// $("#guide").css("height", w / (1600 / 600) + "px");
+	// $("#guide").css(
+	// 	"top",
+	// 	($(window).height() - $("#container").height()) / 2 + "px",
+	// );
 
 	$("iframe").css("width", w + "px");
 	$("iframe").css("height", $(window).width() / (1600 / 600) + "px");
