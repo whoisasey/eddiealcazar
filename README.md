@@ -16,3 +16,8 @@ Optimize/update Mobile
 ✅ Add (close photos overlay) on click outside
 Menu - make more user friendly
 ✅ Add link to alcazararchives - separate domain
+
+questions for mobile:
+
+1. are there only selected works?
+2. why are the thumbnails https://i.vimeocdn.com/video/499804950_640.jpg
