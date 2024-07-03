@@ -601,7 +601,7 @@ var awardsScroll;
 
 function animateIn() {
 	$(".thumb").each(function (i) {
-		TweenMax.to(this, 0.5, { opacity: 1, delay: Math.abs(i - 3.5) * 0.2 });
+		TweenMax.to(this, 1, { opacity: 1, delay: Math.abs(i - 3.5) * 0.2 });
 	});
 
 	TweenMax.to($("#copytop").find("h1"), 0.5, {
@@ -653,8 +653,6 @@ function animateIn() {
 
 	// pressScroll = H.createScroll($("#press-scroller")[0]);
 	// awardsScroll = H.createScroll($("#awards-scroller")[0]);
-
-	onResize();
 }
 
 function onTimeout() {
@@ -663,6 +661,7 @@ function onTimeout() {
 	if (isLoaded) {
 		animateIn();
 	}
+	onResize();
 }
 
 function onResize() {
