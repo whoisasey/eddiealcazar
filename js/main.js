@@ -302,7 +302,6 @@ function parseData(d) {
 	$(window).on("wheel", function (event) {
 		if (event.originalEvent.deltaY !== 0) {
 			$("#scroll-container")[0].scrollLeft += event.originalEvent.deltaY;
-			event.preventDefault();
 		}
 	});
 
