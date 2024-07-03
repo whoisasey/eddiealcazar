@@ -133,44 +133,33 @@ function parseData(d) {
 	//Init thumbs
 	var count = 0;
 	for (var i = 0; i < data.projects.length; i++) {
-		// if (data.projects[i].isCenter == "true") {
-		// 	//add center gif
-		// 	var center = document.createElement("div");
-		// 	center.setAttribute("class", "center");
-		// 	center.style.left = count * (100 / data.projects.length) + "%";
-		// 	center.style.width = 100 / data.projects.length + "%";
-		// 	$("#nav")[0].appendChild(center);
-
-		// 	var imgCenter = loader.addImage("assets/img/ui/center.gif");
-		// 	//imgCenter.style.opacity = '0';
-		// 	center.appendChild(imgCenter);
-
-		// 	/*$(imgCenter).load(function(){
-		//             onResize();
-		//             TweenMax.to(imgCenter,0.5,{opacity:1});
-		//             loader.start();
-		//             to = setTimeout(onTimeout,4000);
-		//             isLoaded = true;
-		//         });*/
-
-		// 	var imgHighlight = document.createElement("div");
-		// 	imgHighlight.setAttribute("class", "highlight");
-		// 	center.appendChild(imgHighlight);
-		// } else {
+		// if (data.projects[i].isCenter == "true
 		var div = document.createElement("div");
 		div.setAttribute("class", "thumb");
-		// div.style.border = "1px solid red";
-		// console.log("count:", count);
-		div.style.left = count * 180 + "px";
+
+		// div.style.left = count * (100 / data.projects.length) + "%";
 		// div.style.width = 100 / data.projects.length + "%";
-		div.style.width = "180px";
+
+		// at regular desktop screens, width should be capped at 100/8
+		// at large screens, width should be capped at 100/9
+
+		if (window.innerWidth <= 1440) {
+			// assuming 1440px as the laptop screen width threshold
+			// console.log("width = 100 /8");
+			div.style.left = count * (100 / 8) + "%";
+			div.style.width = 100 / 8 + "%";
+		}
+		if (window.innerWidth > 1440) {
+			div.style.left = count * (100 / 9) + "%";
+			div.style.width = 100 / 9 + "%";
+		}
+
 		$("#nav")[0].appendChild(div);
 
 		var img = loader.addImage(data.projects[i].thumb);
 		div.appendChild(img);
 
 		jQuery.data(div, "ident", i);
-		// }
 
 		count++;
 	}
@@ -653,6 +642,8 @@ function animateIn() {
 
 	// pressScroll = H.createScroll($("#press-scroller")[0]);
 	// awardsScroll = H.createScroll($("#awards-scroller")[0]);
+
+	onResize();
 }
 
 function onTimeout() {
@@ -661,7 +652,6 @@ function onTimeout() {
 	if (isLoaded) {
 		animateIn();
 	}
-	onResize();
 }
 
 function onResize() {
