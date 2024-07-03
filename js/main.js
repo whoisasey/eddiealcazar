@@ -225,8 +225,11 @@ function parseData(d) {
 	loader.start();
 	// Remove the video after 4 seconds
 	setTimeout(function () {
-		$("#video").fadeOut(2000, function () {
-			$(this).remove();
+		$("#blackOverlay").fadeIn(2000, function () {
+			$("#video").fadeOut(2000, function () {
+				$(this).remove();
+				$("#blackOverlay").fadeOut(1500);
+			});
 		});
 	}, 4000);
 	to = setTimeout(onTimeout, 4000);
