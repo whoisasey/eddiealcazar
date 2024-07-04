@@ -429,7 +429,6 @@ body {
 			letter-spacing: 1px;
 
 			li {
-				//text-align:center;
 				margin-bottom: 1px;
 			}
 			ul {
@@ -437,29 +436,29 @@ body {
 			}
 		}
 
-		#copybottom {
+		.copybottom-mobile {
 			margin-top: 50px;
 			margin-bottom: 70px;
-		}
 
-		#copybottom a {
-			color: rgba(255, 255, 255, 0.65);
-		}
+			a {
+				color: rgba(255, 255, 255, 0.65);
 
-		#copybottom a:hover {
-			color: rgba(255, 255, 255, 1);
-		}
+				&:hover {
+					color: rgba(255, 255, 255, 1);
+				}
+			}
 
-		#copybottom li {
-			font-family: Verdana, Arial, sans-serif;
-			font-weight: 400;
-			font-size: 14px;
-			margin-bottom: 1px;
-			text-align: center;
-		}
+			li {
+				font-family: Verdana, Arial, sans-serif;
+				font-weight: 400;
+				font-size: 14px;
+				margin-bottom: 1px;
+				text-align: center;
+			}
 
-		#copybottom h1 {
-			font-size: 16px !important;
+			h1 {
+				font-size: 16px !important;
+			}
 		}
 
 		h1 {
@@ -482,142 +481,40 @@ body {
 			margin-bottom: 3px;
 		}
 
-		#navWrapper {
-			position: absolute;
-			top: 50%;
-			width: 100%;
-			overflow: hidden;
-			left: 0px;
-			z-index: 10;
-		}
-
-		#nav {
-			position: relative;
-		}
-
 		.thumb {
 			width: 100%;
+
+			img {
+				width: 100%;
+				height: auto;
+			}
 		}
 
-		.thumb img {
-			width: 100%;
-			height: auto;
-		}
-
-		#nav .thumb {
-			opacity: 0;
-		}
-
-		#nav .thumb img,
-		#nav .center img {
-			width: 100%;
-			height: 100%;
-		}
-
-		.highlight {
-			width: 100%;
-			height: 100%;
-			position: absolute;
-			top: 0px;
-			left: 0px;
-			background-color: $grey;
-			opacity: 0;
-		}
-
-		.page {
-			position: absolute;
-			top: 0px;
-			left: 0px;
-			width: 100%;
-			height: 100%;
-			visibility: hidden;
-		}
-
-		.page .imgContainer {
-			position: absolute;
-			width: 44.45%;
-			height: 44.5%;
-			overflow: hidden;
-			cursor: pointer;
-			opacity: 0;
-		}
-
-		.page img {
-			width: auto;
-			height: 100%;
-			display: block;
-		}
-
-		.topleft {
-			top: 0px;
-			left: 0px;
-		}
-
-		.topright {
-			top: 0px;
-			left: 55.6%;
-		}
-
-		.bottomleft {
-			bottom: 0px;
-			left: 0px;
-		}
-
-		.bottomright {
-			bottom: 0px;
-			left: 55.6%;
-		}
-
-		#player {
-			position: absolute;
-			top: 0px;
-			left: 0px;
-			width: 0%;
-			height: 100%;
-			z-index: 20;
-			overflow: hidden;
-		}
-
-		#playerContainer {
-			position: relative;
-		}
-
-		#pageContainer {
-			position: absolute;
-			top: 0px;
-			left: 0px;
-			width: 100%;
-			height: 100%;
-			visibility: hidden;
-		}
-
-		#awards,
-		#press {
+		.mobile-awards,
+		.mobile-press {
 			width: 100%;
 			height: auto;
 			padding: 20px;
+
+			li {
+				opacity: 1;
+				padding-right: 10px;
+				font-size: 12px;
+			}
+
+			a {
+				&:hover,
+				:focus-within {
+					color: $white;
+				}
+			}
 		}
 
-		#press li {
+		.mobile-press li {
 			margin-bottom: 8px;
 		}
 
-		#awards li,
-		#press li {
-			opacity: 1;
-			padding-right: 10px;
-			font-size: 12px;
-		}
-
-		#press a:hover {
-			color: $white;
-		}
-
-		#awards a:hover {
-			color: $white;
-		}
-
-		#footer {
+		.mobile-footer {
 			position: relative;
 			width: 100%;
 			text-align: center;
@@ -626,10 +523,10 @@ body {
 			font-size: 14px;
 			margin-bottom: 30px;
 			margin-top: 50px;
-		}
 
-		#footer a:hover {
-			color: $white;
+			a:hover {
+				color: $white;
+			}
 		}
 
 		.close {
@@ -638,55 +535,6 @@ body {
 			top: 10px;
 			right: 10px;
 			cursor: pointer;
-		}
-
-		#guide {
-			position: absolute;
-			left: 0px;
-			top: 0px;
-			z-index: 0;
-		}
-
-		#guide img {
-			width: 100%;
-			display: block;
-		}
-
-		/* ------ SCROLL PANEL ----- */
-
-		.sp-viewport {
-		}
-		.sp-scrollbar {
-			width: 2px;
-			cursor: pointer;
-			right: 0px !important;
-		}
-
-		.sp-scrollbar .sp-thumb {
-			background-color: rgba(255, 255, 255, 0.4);
-			-webkit-transition: height 0.2s ease-in-out;
-			-moz-transition: height 0.2s ease-in-out;
-			-ms-transition: height 0.2s ease-in-out;
-			-o-transition: height 0.2s ease-in-out;
-			transition: height 0.2s ease-in-out;
-		}
-
-		.sp-scrollbar.active .sp-thumb {
-			background-color: $white;
-		}
-
-		/* ------ VIDEO ----- */
-		video.transition {
-			position: absolute;
-			top: 50%;
-			left: 50%;
-			width: auto;
-			height: 1000px;
-			margin-top: 80px;
-			-webkit-transform: translate(-50%, -50%);
-			-o-transform: translate(-50%, -50%);
-			-ms-transform: translate(-50%, -50%);
-			transform: translate(-50%, -50%);
 		}
 
 		+ .project-modal {

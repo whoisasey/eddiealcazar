@@ -326,8 +326,6 @@ body {
   height: 100%;
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
-  /* ------ SCROLL PANEL ----- */
-  /* ------ VIDEO ----- */
 }
 #wrapper.mobile .mobile-header {
   margin-top: 50px;
@@ -350,24 +348,24 @@ body {
 #wrapper.mobile .copytop-mobile ul {
   margin-top: 7px;
 }
-#wrapper.mobile #copybottom {
+#wrapper.mobile .copybottom-mobile {
   margin-top: 50px;
   margin-bottom: 70px;
 }
-#wrapper.mobile #copybottom a {
+#wrapper.mobile .copybottom-mobile a {
   color: rgba(255, 255, 255, 0.65);
 }
-#wrapper.mobile #copybottom a:hover {
+#wrapper.mobile .copybottom-mobile a:hover {
   color: rgb(255, 255, 255);
 }
-#wrapper.mobile #copybottom li {
+#wrapper.mobile .copybottom-mobile li {
   font-family: Verdana, Arial, sans-serif;
   font-weight: 400;
   font-size: 14px;
   margin-bottom: 1px;
   text-align: center;
 }
-#wrapper.mobile #copybottom h1 {
+#wrapper.mobile .copybottom-mobile h1 {
   font-size: 16px !important;
 }
 #wrapper.mobile h1 {
@@ -387,17 +385,6 @@ body {
   color: rgba(255, 255, 255, 0.4);
   margin-bottom: 3px;
 }
-#wrapper.mobile #navWrapper {
-  position: absolute;
-  top: 50%;
-  width: 100%;
-  overflow: hidden;
-  left: 0px;
-  z-index: 10;
-}
-#wrapper.mobile #nav {
-  position: relative;
-}
 #wrapper.mobile .thumb {
   width: 100%;
 }
@@ -405,102 +392,28 @@ body {
   width: 100%;
   height: auto;
 }
-#wrapper.mobile #nav .thumb {
-  opacity: 0;
-}
-#wrapper.mobile #nav .thumb img,
-#wrapper.mobile #nav .center img {
-  width: 100%;
-  height: 100%;
-}
-#wrapper.mobile .highlight {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  background-color: #b5b5b5;
-  opacity: 0;
-}
-#wrapper.mobile .page {
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  width: 100%;
-  height: 100%;
-  visibility: hidden;
-}
-#wrapper.mobile .page .imgContainer {
-  position: absolute;
-  width: 44.45%;
-  height: 44.5%;
-  overflow: hidden;
-  cursor: pointer;
-  opacity: 0;
-}
-#wrapper.mobile .page img {
-  width: auto;
-  height: 100%;
-  display: block;
-}
-#wrapper.mobile .topleft {
-  top: 0px;
-  left: 0px;
-}
-#wrapper.mobile .topright {
-  top: 0px;
-  left: 55.6%;
-}
-#wrapper.mobile .bottomleft {
-  bottom: 0px;
-  left: 0px;
-}
-#wrapper.mobile .bottomright {
-  bottom: 0px;
-  left: 55.6%;
-}
-#wrapper.mobile #player {
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  width: 0%;
-  height: 100%;
-  z-index: 20;
-  overflow: hidden;
-}
-#wrapper.mobile #playerContainer {
-  position: relative;
-}
-#wrapper.mobile #pageContainer {
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  width: 100%;
-  height: 100%;
-  visibility: hidden;
-}
-#wrapper.mobile #awards,
-#wrapper.mobile #press {
+#wrapper.mobile .mobile-awards,
+#wrapper.mobile .mobile-press {
   width: 100%;
   height: auto;
   padding: 20px;
 }
-#wrapper.mobile #press li {
-  margin-bottom: 8px;
-}
-#wrapper.mobile #awards li,
-#wrapper.mobile #press li {
+#wrapper.mobile .mobile-awards li,
+#wrapper.mobile .mobile-press li {
   opacity: 1;
   padding-right: 10px;
   font-size: 12px;
 }
-#wrapper.mobile #press a:hover {
+#wrapper.mobile .mobile-awards a:hover,
+#wrapper.mobile .mobile-awards a :focus-within,
+#wrapper.mobile .mobile-press a:hover,
+#wrapper.mobile .mobile-press a :focus-within {
   color: #ffffff;
 }
-#wrapper.mobile #awards a:hover {
-  color: #ffffff;
+#wrapper.mobile .mobile-press li {
+  margin-bottom: 8px;
 }
-#wrapper.mobile #footer {
+#wrapper.mobile .mobile-footer {
   position: relative;
   width: 100%;
   text-align: center;
@@ -510,7 +423,7 @@ body {
   margin-bottom: 30px;
   margin-top: 50px;
 }
-#wrapper.mobile #footer a:hover {
+#wrapper.mobile .mobile-footer a:hover {
   color: #ffffff;
 }
 #wrapper.mobile .close {
@@ -519,37 +432,6 @@ body {
   top: 10px;
   right: 10px;
   cursor: pointer;
-}
-#wrapper.mobile #guide {
-  position: absolute;
-  left: 0px;
-  top: 0px;
-  z-index: 0;
-}
-#wrapper.mobile #guide img {
-  width: 100%;
-  display: block;
-}
-#wrapper.mobile .sp-scrollbar {
-  width: 2px;
-  cursor: pointer;
-  right: 0px !important;
-}
-#wrapper.mobile .sp-scrollbar .sp-thumb {
-  background-color: rgba(255, 255, 255, 0.4);
-  transition: height 0.2s ease-in-out;
-}
-#wrapper.mobile .sp-scrollbar.active .sp-thumb {
-  background-color: #ffffff;
-}
-#wrapper.mobile video.transition {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: auto;
-  height: 1000px;
-  margin-top: 80px;
-  transform: translate(-50%, -50%);
 }
 #wrapper.mobile + .project-modal {
   position: fixed;
