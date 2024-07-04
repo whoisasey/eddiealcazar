@@ -9,56 +9,56 @@
 //@codekit-prepend "libs/PxLoaderImage.js";
 
 //detect phone and tablet devices and redirect accordingly
-var isMobile = {
-	AndroidPhone: function () {
-		if (
-			navigator.userAgent.match(/Android/i) &&
-			navigator.userAgent.match(/Mobile/i)
-		) {
-			return true;
-		} else {
-			return false;
-		}
-	},
-	AndroidTablet: function () {
-		if (
-			navigator.userAgent.match(/Android/i) &&
-			!navigator.userAgent.match(/Mobile/i)
-		) {
-			return true;
-		} else {
-			return false;
-		}
-	},
-	BlackBerry: function () {
-		return navigator.userAgent.match(/BlackBerry/i) ? true : false;
-	},
-	iPad: function () {
-		return navigator.userAgent.match(/iPad/i) ? true : false;
-	},
-	iPhone: function () {
-		return navigator.userAgent.match(/iPhone|iPod/i) ? true : false;
-	},
-	Windows: function () {
-		return navigator.userAgent.match(/IEMobile/i) ? true : false;
-	},
-	any: function () {
-		return (
-			isMobile.AndroidPhone() ||
-			isMobile.AndroidTablet() ||
-			isMobile.BlackBerry() ||
-			isMobile.iPad() ||
-			isMobile.Windows()
-		);
-	},
-};
+// var isMobile = {
+// 	AndroidPhone: function () {
+// 		if (
+// 			navigator.userAgent.match(/Android/i) &&
+// 			navigator.userAgent.match(/Mobile/i)
+// 		) {
+// 			return true;
+// 		} else {
+// 			return false;
+// 		}
+// 	},
+// 	AndroidTablet: function () {
+// 		if (
+// 			navigator.userAgent.match(/Android/i) &&
+// 			!navigator.userAgent.match(/Mobile/i)
+// 		) {
+// 			return true;
+// 		} else {
+// 			return false;
+// 		}
+// 	},
+// 	BlackBerry: function () {
+// 		return navigator.userAgent.match(/BlackBerry/i) ? true : false;
+// 	},
+// 	iPad: function () {
+// 		return navigator.userAgent.match(/iPad/i) ? true : false;
+// 	},
+// 	iPhone: function () {
+// 		return navigator.userAgent.match(/iPhone|iPod/i) ? true : false;
+// 	},
+// 	Windows: function () {
+// 		return navigator.userAgent.match(/IEMobile/i) ? true : false;
+// 	},
+// 	any: function () {
+// 		return (
+// 			isMobile.AndroidPhone() ||
+// 			isMobile.AndroidTablet() ||
+// 			isMobile.BlackBerry() ||
+// 			isMobile.iPad() ||
+// 			isMobile.Windows()
+// 		);
+// 	},
+// };
 
-if (isMobile.iPhone() || isMobile.BlackBerry() || isMobile.AndroidPhone()) {
-	document.location =
-		document.location.href.replace(document.location.hash, "") +
-		"mobile/" +
-		document.location.hash;
-}
+// if (isMobile.iPhone() || isMobile.BlackBerry() || isMobile.AndroidPhone()) {
+// 	document.location =
+// 		document.location.href.replace(document.location.hash, "") +
+// 		"mobile/" +
+// 		document.location.hash;
+// }
 
 //Set namesapce
 var H = H || {};
@@ -102,17 +102,31 @@ var to;
 function init() {
 	//Init resize event
 	$(window).resize(onResize);
-	onResize();
 
-	//Load xml
-	$.ajax({
-		type: "GET",
-		url: "json/site.json",
-		dataType: "jsonp",
-		crossDomain: "true",
-		success: parseData,
-		jsonpCallback: "callback",
-	});
+	if (window.innerWidth > 768) {
+		onResize();
+
+		//Load xml
+		$.ajax({
+			type: "GET",
+			url: "json/desktop.json",
+			dataType: "jsonp",
+			crossDomain: "true",
+			success: parseData,
+			jsonpCallback: "callback",
+		});
+	}
+
+	if (window.innerWidth <= 768) {
+		$.ajax({
+			type: "GET",
+			url: "json/mobile.json",
+			dataType: "jsonp",
+			crossDomain: "true",
+			success: parseMobileData,
+			jsonpCallback: "callback",
+		});
+	}
 }
 
 function parseData(d) {
@@ -309,6 +323,52 @@ function parseData(d) {
 	});
 
 	onResize();
+}
+
+function parseMobileData(d) {
+	data = d;
+
+	//Init copy
+	$(".copytop-mobile").html(data.copy.top);
+	$(".copybottom-mobile").html(data.copy.bottom);
+
+	//Init thumbs
+	var count = 0;
+	for (var i = 0; i < data.projects.length; i++) {
+		if (data.projects[i].thumb) {
+			var div = document.createElement("div");
+			div.setAttribute("class", "thumb");
+			$("#projects")[0].appendChild(div);
+
+			for (var j = 0; j < data.projects[i].spots.length; j++) {
+				var img = new Image();
+				if (data.projects[i].spots[j].thumb) {
+					img.src = data.projects[i].spots[j].thumb;
+				} else {
+					img.src = "../" + data.projects[i].spots[j].folder + "01.jpg";
+				}
+				div.appendChild(img);
+				jQuery.data(img, "ident", i);
+				jQuery.data(img, "spot", j);
+			}
+
+			/*var description = document.createElement('div');
+            description.setAttribute('class','copy');
+            description.innerHTML = data.projects[i].copybottom;
+            div.appendChild(description);*/
+
+			count++;
+		}
+	}
+
+	//Init events
+	$("#projects")
+		.find("img")
+		.click(function () {
+			var index = jQuery.data(this, "ident");
+			var spot = jQuery.data(this, "spot");
+			getProject(index, spot);
+		});
 }
 
 function closePageContainer() {
@@ -707,6 +767,64 @@ function onResize() {
 	if (awardsScroll) {
 		H.updateScroll(awardsScroll);
 	}
+}
+
+function getProject(ident, spot) {
+	$("#project-modal").html("");
+	if (data.projects[ident].spots[spot].video) {
+		$("#project-modal").append(
+			"<iframe width=" +
+				$(window).width() +
+				" height=" +
+				$(window).width() / 2.7 +
+				' src="' +
+				data.projects[ident].spots[spot].video +
+				'" frameborder=0></iframe>',
+		);
+	}
+	if (data.projects[ident].spots[spot].video) {
+		$("#project-modal").append(
+			'<img src="' + data.projects[ident].spots[spot].folder + '01.jpg" />',
+		);
+	} else {
+		$("#project-modal").append(
+			'<img style="margin-top:50px" src="' +
+				data.projects[ident].spots[spot].folder +
+				'01.jpg" />',
+		);
+	}
+	$("#project-modal").append(
+		'<img src="' + data.projects[ident].spots[spot].folder + '02.jpg" />',
+	);
+	$("#project-modal").append(
+		'<img src="' + data.projects[ident].spots[spot].folder + '03.jpg" />',
+	);
+	$("#project-modal").append(
+		'<img src="' + data.projects[ident].spots[spot].folder + '04.jpg" />',
+	);
+	var description = document.createElement("div");
+	description.setAttribute("class", "copy");
+	description.innerHTML = data.projects[ident].copybottom;
+	$("#project-modal")[0].appendChild(description);
+	$("#project-modal").append(
+		'<img src="assets/img/ui/back.png" style="position:absolute;top:5px;left:5px;width:auto;" class="backBtn" />',
+	);
+
+	TweenMax.set($("#project-modal")[0], { x: $(window).width(), autoAlpha: 1 });
+	TweenMax.to($("#project-modal")[0], 1, { x: 0, ease: Expo.easeOut });
+
+	$("#project-modal").find(".backBtn").click(closeProject);
+}
+
+function closeProject() {
+	TweenMax.to($("#project-modal")[0], 0.6, {
+		x: $(window).width(),
+		ease: Expo.easeOut,
+		onComplete: function () {
+			TweenMax.set($("#project-modal")[0], { autoAlpha: 0 });
+			$("#project-modal")[0].innerHTML = "";
+		},
+	});
 }
 
 $(document).ready(init);
