@@ -318,7 +318,10 @@ function parseData(d) {
 	// Add an event listener for the scroll event to translate vertical scroll to horizontal scroll
 	$(window).on("wheel", function (event) {
 		if (event.originalEvent.deltaY !== 0) {
-			$("#scroll-container")[0].scrollLeft += event.originalEvent.deltaY;
+			($("#scroll-container")[0].scrollLeft += event.originalEvent.deltaY),
+				{
+					passive: true,
+				};
 		}
 	});
 
@@ -351,11 +354,6 @@ function parseMobileData(d) {
 				jQuery.data(img, "ident", i);
 				jQuery.data(img, "spot", j);
 			}
-
-			/*var description = document.createElement('div');
-            description.setAttribute('class','copy');
-            description.innerHTML = data.projects[i].copybottom;
-            div.appendChild(description);*/
 
 			count++;
 		}

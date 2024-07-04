@@ -4,6 +4,11 @@ $lg: 992px;
 $xl: 1200px;
 $xxl: 1440px;
 
+// website colours
+$grey: #b5b5b5;
+$black: #000000;
+$white: #ffffff;
+
 @font-face {
 	font-family: "Trade";
 	font-style: normal;
@@ -36,6 +41,7 @@ $xxl: 1440px;
 ul {
 	margin: 0;
 	padding: 0;
+	list-style-type: none;
 }
 
 img,
@@ -46,7 +52,7 @@ a {
 }
 
 body {
-	background-color: #000000;
+	background-color: $black;
 	margin: 0;
 	padding: 0;
 	font-family: "Open Sans Condensed", "Arial Narrow", Arial, sans-serif;
@@ -57,6 +63,7 @@ body {
 	height: 100%;
 }
 
+// ** DESKTOP ** //
 #wrapper {
 	&.desktop {
 		width: 100%;
@@ -66,332 +73,333 @@ body {
 			display: block;
 		}
 		display: none;
-	}
 
-	#container {
-		position: relative;
-		z-index: 10;
-	}
+		#container {
+			position: relative;
+			z-index: 10;
+		}
 
-	.copy {
-		height: 80px;
-		width: 190px;
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		margin-left: -70px;
-		padding-left: 0.5%;
-		padding-right: 0.5%;
-	}
+		.copy {
+			height: 80px;
+			width: 190px;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			margin-left: -70px;
+			padding-left: 0.5%;
+			padding-right: 0.5%;
+		}
 
-	#copytop {
-		margin-top: -11%;
-		font-weight: 700;
-		font-size: 20px;
-		letter-spacing: 1px;
-	}
+		#copytop {
+			margin-top: -11%;
+			font-weight: 700;
+			font-size: 20px;
+			letter-spacing: 1px;
+		}
 
-	#copytop li {
-		margin-bottom: 1px;
-	}
+		#copytop li {
+			margin-bottom: 1px;
+		}
 
-	#copytop ul {
-		margin-top: 7px;
-	}
+		#copytop ul {
+			margin-top: 7px;
+		}
 
-	#copybottom {
-		margin-top: 7%;
-	}
+		#copybottom {
+			margin-top: 7%;
+		}
 
-	#copybottom a {
-		color: rgba(255, 255, 255, 0.65);
-	}
+		#copybottom a {
+			color: rgba(255, 255, 255, 0.65);
+		}
 
-	#copybottom a:hover {
-		color: rgba(255, 255, 255, 1);
-	}
+		#copybottom a:hover {
+			color: rgba(255, 255, 255, 1);
+		}
 
-	#copybottom li {
-		font-family: Verdana, Arial, sans-serif;
-		font-weight: 400;
-		font-size: 8px;
-		font-size: 0.7vw;
-		margin-bottom: 1px;
-	}
+		#copybottom li {
+			font-family: Verdana, Arial, sans-serif;
+			font-weight: 400;
+			font-size: 8px;
+			font-size: 0.7vw;
+			margin-bottom: 1px;
+		}
 
-	#copybottom h1 {
-		font-size: 9px !important;
-		font-size: 0.7vw !important;
-	}
+		#copybottom h1 {
+			font-size: 9px !important;
+			font-size: 0.7vw !important;
+		}
 
-	h1 {
-		color: #b5b5b5;
-		font-weight: bold;
-		font-size: 11px;
-		font-size: 0.8vw;
-	}
+		h1 {
+			color: $grey;
+			font-weight: bold;
+			font-size: 11px;
+			font-size: 0.8vw;
+		}
 
-	.bold {
-		color: #b5b5b5;
-		font-weight: 700 !important;
-		font-size: 9px !important;
-		font-size: 0.7vw !important;
-	}
+		.bold {
+			color: $grey;
+			font-weight: 700 !important;
+			font-size: 9px !important;
+			font-size: 0.7vw !important;
+		}
 
-	li {
-		list-style: none;
-		font-size: 9px;
-		font-size: 0.7vw;
-		color: rgba(255, 255, 255, 0.4);
-		opacity: 0;
-		margin-bottom: 3px;
-	}
+		li {
+			list-style: none;
+			font-size: 9px;
+			font-size: 0.7vw;
+			color: rgba(255, 255, 255, 0.4);
+			opacity: 0;
+			margin-bottom: 3px;
+		}
 
-	#navWrapper {
-		position: absolute;
-		top: 50%;
-		width: 100%;
-		overflow: hidden;
-		left: 0px;
-		z-index: 10;
-	}
-	#scroll-container {
-		overflow-x: auto;
-		white-space: nowrap;
-		height: 200px;
-	}
+		#navWrapper {
+			position: absolute;
+			top: 50%;
+			width: 100%;
+			overflow: hidden;
+			left: 0px;
+			z-index: 10;
+		}
+		#scroll-container {
+			overflow-x: auto;
+			white-space: nowrap;
+			height: 200px;
+		}
 
-	#nav {
-		position: relative;
-		display: inline-block;
-	}
+		#nav {
+			position: relative;
+			display: inline-block;
+		}
 
-	#nav .thumb,
-	#nav .center {
-		position: absolute;
-		/* width:11.1111%; */
-		height: 100%;
-		display: block;
-		cursor: pointer;
-	}
+		#nav .thumb,
+		#nav .center {
+			position: absolute;
+			/* width:11.1111%; */
+			height: 100%;
+			display: block;
+			cursor: pointer;
+		}
 
-	#nav .thumb {
-		opacity: 0;
-	}
+		#nav .thumb {
+			opacity: 0;
+		}
 
-	#nav .thumb img,
-	#nav .center img {
-		width: 100%;
-		height: 100%;
-	}
+		#nav .thumb img,
+		#nav .center img {
+			width: 100%;
+			height: 100%;
+		}
 
-	.highlight {
-		width: 100%;
-		height: 100%;
-		position: absolute;
-		top: 0px;
-		left: 0px;
-		background-color: #b5b5b5;
-		opacity: 0;
-	}
+		.highlight {
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			background-color: $grey;
+			opacity: 0;
+		}
 
-	.page {
-		position: absolute;
-		top: 0px;
-		left: 0px;
-		width: 100%;
-		height: 100%;
-		visibility: hidden;
-	}
+		.page {
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			width: 100%;
+			height: 100%;
+			visibility: hidden;
+		}
 
-	.page .imgContainer {
-		position: absolute;
-		width: 44.45%;
-		height: 44.5%;
-		overflow: hidden;
-		cursor: pointer;
-		opacity: 0;
-	}
+		.page .imgContainer {
+			position: absolute;
+			width: 44.45%;
+			height: 44.5%;
+			overflow: hidden;
+			cursor: pointer;
+			opacity: 0;
+		}
 
-	.page img {
-		width: auto;
-		height: 100%;
-		display: block;
-	}
+		.page img {
+			width: auto;
+			height: 100%;
+			display: block;
+		}
 
-	.topleft {
-		top: 0px;
-		left: 0px;
-	}
+		.topleft {
+			top: 0px;
+			left: 0px;
+		}
 
-	.topright {
-		top: 0px;
-		left: 55.6%;
-	}
+		.topright {
+			top: 0px;
+			left: 55.6%;
+		}
 
-	.bottomleft {
-		bottom: 0px;
-		left: 0px;
-	}
+		.bottomleft {
+			bottom: 0px;
+			left: 0px;
+		}
 
-	.bottomright {
-		bottom: 0px;
-		left: 55.6%;
-	}
+		.bottomright {
+			bottom: 0px;
+			left: 55.6%;
+		}
 
-	#player {
-		position: absolute;
-		top: 0px;
-		left: 0px;
-		width: 0%;
-		height: 100%;
-		z-index: 20;
-		overflow: hidden;
-	}
+		#player {
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			width: 0%;
+			height: 100%;
+			z-index: 20;
+			overflow: hidden;
+		}
 
-	#playerContainer {
-		position: relative;
-	}
+		#playerContainer {
+			position: relative;
+		}
 
-	#pageContainer {
-		position: absolute;
-		top: 0px;
-		left: 0px;
-		width: 100%;
-		height: 100%;
-		visibility: hidden;
-	}
+		#pageContainer {
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			width: 100%;
+			height: 100%;
+			visibility: hidden;
+		}
 
-	#awards,
-	#press {
-		width: auto;
-		height: auto;
-		position: absolute;
-		top: 0px;
-		left: 10%;
-		background-color: #111111;
-		padding: 10px;
-		visibility: hidden;
-	}
+		.mobile-awards,
+		.mobile-press {
+			width: auto;
+			height: auto;
+			position: absolute;
+			top: 0px;
+			left: 10%;
+			background-color: #111111;
+			padding: 10px;
+			visibility: hidden;
+		}
 
-	#press {
-		top: -8%;
-		right: 10%;
-		left: auto;
-		width: 22%;
-		height: 40%;
-	}
+		.mobile-press {
+			top: -8%;
+			right: 10%;
+			left: auto;
+			width: 22%;
+			height: 40%;
+		}
 
-	#awards {
-		height: 27%;
-	}
+		.mobile-awards {
+			height: 27%;
+		}
 
-	#press-scroller {
-		width: 100%;
-		height: 100%;
-		overflow-y: hidden;
-	}
+		.mobile-press-scroller {
+			width: 100%;
+			height: 100%;
+			overflow-y: hidden;
+		}
 
-	#awards-scroller {
-		width: 100%;
-		height: 100%;
-		overflow-y: hidden;
-	}
+		.mobile-awards-scroller {
+			width: 100%;
+			height: 100%;
+			overflow-y: hidden;
+		}
 
-	#press li {
-		margin-bottom: 8px;
-	}
+		.mobile-press li {
+			margin-bottom: 8px;
+		}
 
-	#awards li,
-	#press li {
-		opacity: 1;
-		padding-right: 10px;
-	}
+		.mobile-awards li,
+		.mobile-press li {
+			opacity: 1;
+			padding-right: 10px;
+		}
 
-	#press a:hover {
-		color: #ffffff;
-	}
+		.mobile-press a:hover {
+			color: $white;
+		}
 
-	#awards a:hover {
-		color: #ffffff;
-	}
+		.mobile-awards a:hover {
+			color: $white;
+		}
 
-	#footer {
-		position: absolute;
-		left: 0px;
-		bottom: 10px;
-		width: 100%;
-		text-align: center;
-		color: rgba(255, 255, 255, 0.4);
-		letter-spacing: 1px;
-		font-size: 10px;
-		font-size: 0.7vw;
-		opacity: 0;
-	}
+		#footer {
+			position: absolute;
+			left: 0px;
+			bottom: 10px;
+			width: 100%;
+			text-align: center;
+			color: rgba(255, 255, 255, 0.4);
+			letter-spacing: 1px;
+			font-size: 10px;
+			font-size: 0.7vw;
+			opacity: 0;
+		}
 
-	#footer a:hover {
-		color: #ffffff;
-		transition: all 0.5s ease-out allow-discrete;
-	}
+		#footer a:hover {
+			color: $white;
+			transition: all 0.5s ease-out allow-discrete;
+		}
 
-	.close {
-		position: absolute;
-		z-index: 10;
-		top: 10px;
-		right: 10px;
-		cursor: pointer;
-	}
+		.close {
+			position: absolute;
+			z-index: 10;
+			top: 10px;
+			right: 10px;
+			cursor: pointer;
+		}
 
-	#guide {
-		position: absolute;
-		left: 0px;
-		top: 0px;
-		z-index: 0;
-	}
+		#guide {
+			position: absolute;
+			left: 0px;
+			top: 0px;
+			z-index: 0;
+		}
 
-	#guide img {
-		width: 100%;
-		display: block;
-	}
+		#guide img {
+			width: 100%;
+			display: block;
+		}
 
-	/* ------ SCROLL PANEL ----- */
+		/* ------ SCROLL PANEL ----- */
 
-	.sp-viewport {
-	}
-	.sp-scrollbar {
-		width: 2px;
-		cursor: pointer;
-		right: 0px !important;
-	}
+		.sp-viewport {
+		}
+		.sp-scrollbar {
+			width: 2px;
+			cursor: pointer;
+			right: 0px !important;
+		}
 
-	.sp-scrollbar .sp-thumb {
-		background-color: rgba(255, 255, 255, 0.4);
-		-webkit-transition: height 0.2s ease-in-out;
-		-moz-transition: height 0.2s ease-in-out;
-		-ms-transition: height 0.2s ease-in-out;
-		-o-transition: height 0.2s ease-in-out;
-		transition: height 0.2s ease-in-out;
-	}
+		.sp-scrollbar .sp-thumb {
+			background-color: rgba(255, 255, 255, 0.4);
+			-webkit-transition: height 0.2s ease-in-out;
+			-moz-transition: height 0.2s ease-in-out;
+			-ms-transition: height 0.2s ease-in-out;
+			-o-transition: height 0.2s ease-in-out;
+			transition: height 0.2s ease-in-out;
+		}
 
-	.sp-scrollbar.active .sp-thumb {
-		background-color: #ffffff;
-	}
+		.sp-scrollbar.active .sp-thumb {
+			background-color: $white;
+		}
 
-	/* ------ VIDEO ----- */
-	video.transition {
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		width: auto;
-		height: 1000px;
-		margin-top: 80px;
-		-webkit-transform: translate(-50%, -50%);
-		-o-transform: translate(-50%, -50%);
-		-ms-transform: translate(-50%, -50%);
-		transform: translate(-50%, -50%);
+		/* ------ VIDEO ----- */
+		video.transition {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			width: auto;
+			height: 1000px;
+			margin-top: 80px;
+			-webkit-transform: translate(-50%, -50%);
+			-o-transform: translate(-50%, -50%);
+			-ms-transform: translate(-50%, -50%);
+			transform: translate(-50%, -50%);
+		}
 	}
 }
 
+// ** MOBILE ** //
 #wrapper {
 	&.mobile {
 		position: absolute;
@@ -402,342 +410,329 @@ body {
 		overflow-y: scroll;
 		-webkit-overflow-scrolling: touch;
 
-		@media (min-width: $md) {
-			display: none;
+		.mobile-header {
+			margin-top: 50px;
 		}
-		display: block;
-	}
 
-	#header {
-		margin-top: 50px;
-	}
+		.mobile-header img {
+			width: 100%;
+			height: auto;
+		}
 
-	#project-modal {
-		position: fixed;
-		top: 0px;
-		left: 0px;
-		width: 100%;
-		height: 100%;
-		overflow-y: scroll;
-		-webkit-overflow-scrolling: touch;
-		overflow-x: hidden;
-		visibility: hidden;
-		opacity: 0;
-		background-color: #000000;
-	}
+		.mobile-header h1 {
+			margin-bottom: 40px;
+		}
 
-	#project-modal img {
-		width: 100%;
-		height: auto;
-		margin-bottom: 5px;
-	}
+		.copytop-mobile {
+			font-weight: 700;
+			font-size: 20px;
+			letter-spacing: 1px;
 
-	#project-modal iframe {
-		margin-top: 50px;
-		margin-bottom: 5px;
-	}
+			li {
+				//text-align:center;
+				margin-bottom: 1px;
+			}
+			ul {
+				margin-top: 7px;
+			}
+		}
 
-	#project-modal .copy {
-		margin-bottom: 100px;
-	}
+		#copybottom {
+			margin-top: 50px;
+			margin-bottom: 70px;
+		}
 
-	#header img {
-		width: 100%;
-		height: auto;
-	}
+		#copybottom a {
+			color: rgba(255, 255, 255, 0.65);
+		}
 
-	#header h1 {
-		margin-bottom: 40px;
-	}
+		#copybottom a:hover {
+			color: rgba(255, 255, 255, 1);
+		}
 
-	.copy {
-	}
+		#copybottom li {
+			font-family: Verdana, Arial, sans-serif;
+			font-weight: 400;
+			font-size: 14px;
+			margin-bottom: 1px;
+			text-align: center;
+		}
 
-	#copytop {
-		font-weight: 700;
-		font-size: 20px;
-		letter-spacing: 1px;
-	}
+		#copybottom h1 {
+			font-size: 16px !important;
+		}
 
-	#copytop li {
-		//text-align:center;
-		margin-bottom: 1px;
-	}
+		h1 {
+			color: $grey;
+			font-weight: bold;
+			font-size: 20px;
+			text-align: center;
+		}
 
-	#copytop ul {
-		margin-top: 7px;
-	}
+		.bold {
+			color: $grey;
+			font-weight: 700 !important;
+			font-size: 14px !important;
+		}
 
-	#copybottom {
-		margin-top: 50px;
-		margin-bottom: 70px;
-	}
+		li {
+			list-style: none;
+			font-size: 9px;
+			color: rgba(255, 255, 255, 0.4);
+			margin-bottom: 3px;
+		}
 
-	#copybottom a {
-		color: rgba(255, 255, 255, 0.65);
-	}
+		#navWrapper {
+			position: absolute;
+			top: 50%;
+			width: 100%;
+			overflow: hidden;
+			left: 0px;
+			z-index: 10;
+		}
 
-	#copybottom a:hover {
-		color: rgba(255, 255, 255, 1);
-	}
+		#nav {
+			position: relative;
+		}
 
-	#copybottom li {
-		font-family: Verdana, Arial, sans-serif;
-		font-weight: 400;
-		font-size: 14px;
-		margin-bottom: 1px;
-		text-align: center;
-	}
+		.thumb {
+			width: 100%;
+		}
 
-	#copybottom h1 {
-		font-size: 16px !important;
-	}
+		.thumb img {
+			width: 100%;
+			height: auto;
+		}
 
-	.thumb .copy,
-	#project-modal .copy {
-		padding-left: 20px;
-		padding-right: 20px;
-		margin-bottom: 70px;
-	}
+		#nav .thumb {
+			opacity: 0;
+		}
 
-	.thumb .copy h1,
-	#project-modal .copy h1 {
-		text-align: left;
-		font-size: 16px;
-		margin-bottom: 5px;
-		margin-top: 5px;
-	}
+		#nav .thumb img,
+		#nav .center img {
+			width: 100%;
+			height: 100%;
+		}
 
-	.thumb .copy li,
-	#project-modal .copy li {
-		text-align: left;
-		font-size: 14px;
-	}
+		.highlight {
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			background-color: $grey;
+			opacity: 0;
+		}
 
-	h1 {
-		color: #b5b5b5;
-		font-weight: bold;
-		font-size: 20px;
-		text-align: center;
-	}
+		.page {
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			width: 100%;
+			height: 100%;
+			visibility: hidden;
+		}
 
-	.bold {
-		color: #b5b5b5;
-		font-weight: 700 !important;
-		font-size: 14px !important;
-	}
+		.page .imgContainer {
+			position: absolute;
+			width: 44.45%;
+			height: 44.5%;
+			overflow: hidden;
+			cursor: pointer;
+			opacity: 0;
+		}
 
-	li {
-		list-style: none;
-		font-size: 9px;
-		color: rgba(255, 255, 255, 0.4);
-		margin-bottom: 3px;
-	}
+		.page img {
+			width: auto;
+			height: 100%;
+			display: block;
+		}
 
-	#navWrapper {
-		position: absolute;
-		top: 50%;
-		width: 100%;
-		overflow: hidden;
-		left: 0px;
-		z-index: 10;
-	}
+		.topleft {
+			top: 0px;
+			left: 0px;
+		}
 
-	#nav {
-		position: relative;
-	}
+		.topright {
+			top: 0px;
+			left: 55.6%;
+		}
 
-	.thumb {
-		width: 100%;
-	}
+		.bottomleft {
+			bottom: 0px;
+			left: 0px;
+		}
 
-	.thumb img {
-		width: 100%;
-		height: auto;
-	}
+		.bottomright {
+			bottom: 0px;
+			left: 55.6%;
+		}
 
-	#nav .thumb {
-		opacity: 0;
-	}
+		#player {
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			width: 0%;
+			height: 100%;
+			z-index: 20;
+			overflow: hidden;
+		}
 
-	#nav .thumb img,
-	#nav .center img {
-		width: 100%;
-		height: 100%;
-	}
+		#playerContainer {
+			position: relative;
+		}
 
-	.highlight {
-		width: 100%;
-		height: 100%;
-		position: absolute;
-		top: 0px;
-		left: 0px;
-		background-color: #b5b5b5;
-		opacity: 0;
-	}
+		#pageContainer {
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			width: 100%;
+			height: 100%;
+			visibility: hidden;
+		}
 
-	.page {
-		position: absolute;
-		top: 0px;
-		left: 0px;
-		width: 100%;
-		height: 100%;
-		visibility: hidden;
-	}
+		#awards,
+		#press {
+			width: 100%;
+			height: auto;
+			padding: 20px;
+		}
 
-	.page .imgContainer {
-		position: absolute;
-		width: 44.45%;
-		height: 44.5%;
-		overflow: hidden;
-		cursor: pointer;
-		opacity: 0;
-	}
+		#press li {
+			margin-bottom: 8px;
+		}
 
-	.page img {
-		width: auto;
-		height: 100%;
-		display: block;
-	}
+		#awards li,
+		#press li {
+			opacity: 1;
+			padding-right: 10px;
+			font-size: 12px;
+		}
 
-	.topleft {
-		top: 0px;
-		left: 0px;
-	}
+		#press a:hover {
+			color: $white;
+		}
 
-	.topright {
-		top: 0px;
-		left: 55.6%;
-	}
+		#awards a:hover {
+			color: $white;
+		}
 
-	.bottomleft {
-		bottom: 0px;
-		left: 0px;
-	}
+		#footer {
+			position: relative;
+			width: 100%;
+			text-align: center;
+			color: rgba(255, 255, 255, 0.4);
+			letter-spacing: 1px;
+			font-size: 14px;
+			margin-bottom: 30px;
+			margin-top: 50px;
+		}
 
-	.bottomright {
-		bottom: 0px;
-		left: 55.6%;
-	}
+		#footer a:hover {
+			color: $white;
+		}
 
-	#player {
-		position: absolute;
-		top: 0px;
-		left: 0px;
-		width: 0%;
-		height: 100%;
-		z-index: 20;
-		overflow: hidden;
-	}
+		.close {
+			position: absolute;
+			z-index: 10;
+			top: 10px;
+			right: 10px;
+			cursor: pointer;
+		}
 
-	#playerContainer {
-		position: relative;
-	}
+		#guide {
+			position: absolute;
+			left: 0px;
+			top: 0px;
+			z-index: 0;
+		}
 
-	#pageContainer {
-		position: absolute;
-		top: 0px;
-		left: 0px;
-		width: 100%;
-		height: 100%;
-		visibility: hidden;
-	}
+		#guide img {
+			width: 100%;
+			display: block;
+		}
 
-	#awards,
-	#press {
-		width: 100%;
-		height: auto;
-		padding: 20px;
-	}
+		/* ------ SCROLL PANEL ----- */
 
-	#press li {
-		margin-bottom: 8px;
-	}
+		.sp-viewport {
+		}
+		.sp-scrollbar {
+			width: 2px;
+			cursor: pointer;
+			right: 0px !important;
+		}
 
-	#awards li,
-	#press li {
-		opacity: 1;
-		padding-right: 10px;
-		font-size: 12px;
-	}
+		.sp-scrollbar .sp-thumb {
+			background-color: rgba(255, 255, 255, 0.4);
+			-webkit-transition: height 0.2s ease-in-out;
+			-moz-transition: height 0.2s ease-in-out;
+			-ms-transition: height 0.2s ease-in-out;
+			-o-transition: height 0.2s ease-in-out;
+			transition: height 0.2s ease-in-out;
+		}
 
-	#press a:hover {
-		color: #ffffff;
-	}
+		.sp-scrollbar.active .sp-thumb {
+			background-color: $white;
+		}
 
-	#awards a:hover {
-		color: #ffffff;
-	}
+		/* ------ VIDEO ----- */
+		video.transition {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			width: auto;
+			height: 1000px;
+			margin-top: 80px;
+			-webkit-transform: translate(-50%, -50%);
+			-o-transform: translate(-50%, -50%);
+			-ms-transform: translate(-50%, -50%);
+			transform: translate(-50%, -50%);
+		}
 
-	#footer {
-		position: relative;
-		width: 100%;
-		text-align: center;
-		color: rgba(255, 255, 255, 0.4);
-		letter-spacing: 1px;
-		font-size: 14px;
-		margin-bottom: 30px;
-		margin-top: 50px;
-	}
+		+ .project-modal {
+			position: fixed;
+			top: 0px;
+			left: 0px;
+			width: 100%;
+			height: 100%;
+			overflow-y: scroll;
+			-webkit-overflow-scrolling: touch;
+			overflow-x: hidden;
+			visibility: hidden;
+			opacity: 0;
+			background-color: $black;
 
-	#footer a:hover {
-		color: #ffffff;
-	}
+			h1 {
+				font-weight: bold;
+				text-align: left;
+				font-size: 16px;
+				margin-bottom: 5px;
+				margin-top: 5px;
+			}
 
-	.close {
-		position: absolute;
-		z-index: 10;
-		top: 10px;
-		right: 10px;
-		cursor: pointer;
-	}
+			li {
+				text-align: left;
+				font-size: 14px;
+			}
 
-	#guide {
-		position: absolute;
-		left: 0px;
-		top: 0px;
-		z-index: 0;
-	}
+			img {
+				width: 100%;
+				height: auto;
+				margin-bottom: 5px;
+			}
 
-	#guide img {
-		width: 100%;
-		display: block;
-	}
+			iframe {
+				margin-top: 50px;
+				margin-bottom: 5px;
+			}
 
-	/* ------ SCROLL PANEL ----- */
-
-	.sp-viewport {
-	}
-	.sp-scrollbar {
-		width: 2px;
-		cursor: pointer;
-		right: 0px !important;
-	}
-
-	.sp-scrollbar .sp-thumb {
-		background-color: rgba(255, 255, 255, 0.4);
-		-webkit-transition: height 0.2s ease-in-out;
-		-moz-transition: height 0.2s ease-in-out;
-		-ms-transition: height 0.2s ease-in-out;
-		-o-transition: height 0.2s ease-in-out;
-		transition: height 0.2s ease-in-out;
-	}
-
-	.sp-scrollbar.active .sp-thumb {
-		background-color: #ffffff;
-	}
-
-	/* ------ VIDEO ----- */
-	video.transition {
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		width: auto;
-		height: 1000px;
-		margin-top: 80px;
-		-webkit-transform: translate(-50%, -50%);
-		-o-transform: translate(-50%, -50%);
-		-ms-transform: translate(-50%, -50%);
-		transform: translate(-50%, -50%);
+			.copy {
+				// margin-bottom: 100px;
+				padding-left: 20px;
+				padding-right: 20px;
+				margin-bottom: 70px;
+				color: $grey;
+			}
+		}
 	}
 }
