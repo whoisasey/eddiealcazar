@@ -315,6 +315,14 @@ function parseData(d) {
 		}
 	});
 
+	$("#awards").click(function () {
+		closePageContainer();
+	});
+
+	$("#press").click(function () {
+		closePageContainer();
+	});
+
 	// Add an event listener for the scroll event to translate vertical scroll to horizontal scroll
 	$(window).on("wheel", function (event) {
 		if (event.originalEvent.deltaY !== 0) {
