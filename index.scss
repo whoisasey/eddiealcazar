@@ -8,6 +8,7 @@ $xxl: 1440px;
 $grey: #b5b5b5;
 $black: #000000;
 $white: #ffffff;
+$lightgrey: rgba(255, 255, 255, 0.4);
 
 @font-face {
 	font-family: "Trade";
@@ -333,11 +334,19 @@ body {
 			font-size: 10px;
 			font-size: 0.7vw;
 			opacity: 0;
-		}
 
-		#footer a:hover {
-			color: $white;
-			transition: all 0.5s ease-out allow-discrete;
+			li {
+				display: inline;
+				color: rgba(255, 255, 255, 0.4);
+				opacity: initial;
+				cursor: pointer;
+			}
+
+			a:hover,
+			li:hover {
+				color: $white;
+				transition: all 0.5s ease-out allow-discrete;
+			}
 		}
 
 		.close {
