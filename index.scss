@@ -419,11 +419,6 @@ body {
 		overflow-y: scroll;
 		-webkit-overflow-scrolling: touch;
 
-		@media (min-width: 768px) {
-			display: none;
-		}
-		display: block;
-
 		.mobile-header {
 			margin-top: 50px;
 		}
@@ -563,11 +558,6 @@ body {
 			visibility: hidden;
 			opacity: 0;
 			background-color: $black;
-
-			@media (min-width: 768px) {
-				display: none;
-			}
-			display: block;
 
 			h1 {
 				font-weight: bold;

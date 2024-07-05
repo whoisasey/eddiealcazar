@@ -20,7 +20,7 @@ var to;
 function init() {
 	//Init resize event
 	$(window).resize(onResize);
-
+	checkWindowSize();
 	if (window.innerWidth > 768) {
 		onResize();
 
@@ -255,6 +255,15 @@ function parseData(d) {
 	});
 
 	onResize();
+}
+
+function checkWindowSize() {
+	if ($(window).width() <= 768) {
+		$(".desktop").remove();
+	} else {
+		$(".mobile").remove();
+		$(".project-modal").remove();
+	}
 }
 
 function parseMobileData(d) {
