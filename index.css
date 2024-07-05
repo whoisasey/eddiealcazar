@@ -67,35 +67,35 @@ body {
   padding-left: 0.5%;
   padding-right: 0.5%;
 }
-#wrapper.desktop #copytop {
+#wrapper.desktop .copytop-desktop {
   margin-top: -11%;
   font-weight: 700;
   font-size: 20px;
   letter-spacing: 1px;
 }
-#wrapper.desktop #copytop li {
+#wrapper.desktop .copytop-desktop li {
   margin-bottom: 1px;
 }
-#wrapper.desktop #copytop ul {
+#wrapper.desktop .copytop-desktop ul {
   margin-top: 7px;
 }
-#wrapper.desktop #copybottom {
+#wrapper.desktop .copybottom-desktop {
   margin-top: 7%;
 }
-#wrapper.desktop #copybottom a {
+#wrapper.desktop .copybottom-desktop a {
   color: rgba(255, 255, 255, 0.65);
 }
-#wrapper.desktop #copybottom a:hover {
+#wrapper.desktop .copybottom-desktop a:hover {
   color: rgb(255, 255, 255);
 }
-#wrapper.desktop #copybottom li {
+#wrapper.desktop .copybottom-desktop li {
   font-family: Verdana, Arial, sans-serif;
   font-weight: 400;
   font-size: 8px;
   font-size: 0.7vw;
   margin-bottom: 1px;
 }
-#wrapper.desktop #copybottom h1 {
+#wrapper.desktop .copybottom-desktop h1 {
   font-size: 9px !important;
   font-size: 0.7vw !important;
 }
@@ -218,8 +218,8 @@ body {
   height: 100%;
   visibility: hidden;
 }
-#wrapper.desktop .mobile-awards,
-#wrapper.desktop .mobile-press {
+#wrapper.desktop #awards,
+#wrapper.desktop #press {
   width: auto;
   height: auto;
   position: absolute;
@@ -229,14 +229,14 @@ body {
   padding: 10px;
   visibility: hidden;
 }
-#wrapper.desktop .mobile-press {
+#wrapper.desktop #press {
   top: -8%;
   right: 10%;
   left: auto;
   width: 22%;
   height: 40%;
 }
-#wrapper.desktop .mobile-awards {
+#wrapper.desktop #awards {
   height: 27%;
 }
 #wrapper.desktop .mobile-press-scroller {
@@ -244,23 +244,23 @@ body {
   height: 100%;
   overflow-y: hidden;
 }
-#wrapper.desktop .mobile-awards-scroller {
+#wrapper.desktop #awards-scroller {
   width: 100%;
   height: 100%;
   overflow-y: hidden;
 }
-#wrapper.desktop .mobile-press li {
+#wrapper.desktop #press li {
   margin-bottom: 8px;
 }
-#wrapper.desktop .mobile-awards li,
-#wrapper.desktop .mobile-press li {
+#wrapper.desktop #awards li,
+#wrapper.desktop #press li {
   opacity: 1;
   padding-right: 10px;
 }
-#wrapper.desktop .mobile-press a:hover {
+#wrapper.desktop #press a:hover {
   color: #ffffff;
 }
-#wrapper.desktop .mobile-awards a:hover {
+#wrapper.desktop #awards a:hover {
   color: #ffffff;
 }
 #wrapper.desktop #footer {
@@ -326,6 +326,12 @@ body {
   height: 100%;
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
+  display: block;
+}
+@media (min-width: 768px) {
+  #wrapper.mobile {
+    display: none;
+  }
 }
 #wrapper.mobile .mobile-header {
   margin-top: 50px;
@@ -445,6 +451,12 @@ body {
   visibility: hidden;
   opacity: 0;
   background-color: #000000;
+  display: block;
+}
+@media (min-width: 768px) {
+  #wrapper.mobile + .project-modal {
+    display: none;
+  }
 }
 #wrapper.mobile + .project-modal h1 {
   font-weight: bold;
