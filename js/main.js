@@ -8,88 +8,6 @@
 //@codekit-prepend "libs/PxLoader.js";
 //@codekit-prepend "libs/PxLoaderImage.js";
 
-//detect phone and tablet devices and redirect accordingly
-// var isMobile = {
-// 	AndroidPhone: function () {
-// 		if (
-// 			navigator.userAgent.match(/Android/i) &&
-// 			navigator.userAgent.match(/Mobile/i)
-// 		) {
-// 			return true;
-// 		} else {
-// 			return false;
-// 		}
-// 	},
-// 	AndroidTablet: function () {
-// 		if (
-// 			navigator.userAgent.match(/Android/i) &&
-// 			!navigator.userAgent.match(/Mobile/i)
-// 		) {
-// 			return true;
-// 		} else {
-// 			return false;
-// 		}
-// 	},
-// 	BlackBerry: function () {
-// 		return navigator.userAgent.match(/BlackBerry/i) ? true : false;
-// 	},
-// 	iPad: function () {
-// 		return navigator.userAgent.match(/iPad/i) ? true : false;
-// 	},
-// 	iPhone: function () {
-// 		return navigator.userAgent.match(/iPhone|iPod/i) ? true : false;
-// 	},
-// 	Windows: function () {
-// 		return navigator.userAgent.match(/IEMobile/i) ? true : false;
-// 	},
-// 	any: function () {
-// 		return (
-// 			isMobile.AndroidPhone() ||
-// 			isMobile.AndroidTablet() ||
-// 			isMobile.BlackBerry() ||
-// 			isMobile.iPad() ||
-// 			isMobile.Windows()
-// 		);
-// 	},
-// };
-
-// if (isMobile.iPhone() || isMobile.BlackBerry() || isMobile.AndroidPhone()) {
-// 	document.location =
-// 		document.location.href.replace(document.location.hash, "") +
-// 		"mobile/" +
-// 		document.location.hash;
-// }
-
-//Set namesapce
-var H = H || {};
-
-// H.createScroll = function (el) {
-// 	var ret;
-// 	if (Modernizr.touch) {
-// 		var rand = Math.floor(Math.random() * 1000);
-// 		$(el).wrapInner('<div id="' + rand + 'viewport" />');
-// 		$("#" + rand + "viewport").css({
-// 			height: $(el).height(),
-// 			overflow: "hidden",
-// 		});
-// 		ret = new iScroll($("#" + rand + "viewport")[0], {
-// 			vScrollbar: false,
-// 			bounce: true,
-// 		});
-// 	} else {
-// 		ret = $(el).scrollpanel().data("scrollpanel");
-// 	}
-// 	return ret;
-// };
-
-H.updateScroll = function (scroll) {
-	if (scroll.refresh) {
-		scroll.refresh();
-	} else {
-		scroll.update();
-	}
-};
-
 var data, loader;
 var pages = [];
 var thumbs = [];
@@ -147,19 +65,11 @@ function parseData(d) {
 	//Init thumbs
 	var count = 0;
 	for (var i = 0; i < data.projects.length; i++) {
-		// if (data.projects[i].isCenter == "true
 		var div = document.createElement("div");
 		div.setAttribute("class", "thumb");
 
-		// div.style.left = count * (100 / data.projects.length) + "%";
-		// div.style.width = 100 / data.projects.length + "%";
-
-		// at regular desktop screens, width should be capped at 100/8
-		// at large screens, width should be capped at 100/9
-
 		if (window.innerWidth <= 1440) {
 			// assuming 1440px as the laptop screen width threshold
-			// console.log("width = 100 /8");
 			div.style.left = count * (100 / 8) + "%";
 			div.style.width = 100 / 8 + "%";
 		}
@@ -325,11 +235,22 @@ function parseData(d) {
 
 	// Add an event listener for the scroll event to translate vertical scroll to horizontal scroll
 	$(window).on("wheel", function (event) {
-		if (event.originalEvent.deltaY !== 0) {
-			($("#scroll-container")[0].scrollLeft += event.originalEvent.deltaY),
-				{
-					passive: true,
-				};
+		var pressScroller = $("#press-scroller");
+		var awardsScroller = $("#awards-scroller");
+
+		// Check if the mouse is over elements with class 'press' or 'awards'
+		var isPressHovered = $(".press:hover").length > 0;
+		var isAwardsHovered = $(".awards:hover").length > 0;
+
+		if (isPressHovered) {
+			// Allow vertical scrolling within #press-scroller
+			pressScroller[0].scrollTop += event.originalEvent.deltaY;
+		} else if (isAwardsHovered) {
+			// Allow vertical scrolling within #awards-scroller
+			awardsScroller[0].scrollTop += event.originalEvent.deltaY;
+		} else {
+			// Allow horizontal scrolling within #scroll-container
+			$("#scroll-container")[0].scrollLeft += event.originalEvent.deltaY;
 		}
 	});
 
@@ -450,6 +371,8 @@ function closePageContainer() {
 		TweenMax.to($("#awards"), 0.5, { autoAlpha: 0 });
 		TweenMax.to($("#press"), 0.5, { autoAlpha: 0, delay: 0.1 });
 	}
+
+	// TODO: if #awards or #press is open, clicking #container would also close
 }
 
 var isPressOpen = false;
@@ -521,9 +444,6 @@ function openPress() {
 					$("#copybottom").css("z-index", "15");
 				},
 			);
-
-			H.updateScroll(pressScroll);
-			H.updateScroll(awardsScroll);
 		});
 	}
 
@@ -706,10 +626,7 @@ function animateIn() {
 		},
 	);
 
-	TweenMax.to($("#footer"), 1, { opacity: 1 });
-
-	// pressScroll = H.createScroll($("#press-scroller")[0]);
-	// awardsScroll = H.createScroll($("#awards-scroller")[0]);
+	TweenMax.to($("#footer"), 4, { opacity: 1 });
 
 	onResize();
 }
@@ -762,17 +679,24 @@ function onResize() {
 		"height",
 		$("#press").height() - $("#press").find("h1").eq(0).height() - 20 + "px",
 	);
+
+	let contentHeight = $("#press-scroller").height();
+
+	// Set CSS rules for scrolling based on content height
+	if (contentHeight > 230) {
+		// Check if content height exceeds the set height
+		$("#press-scroller").css({
+			"overflow-y": "auto", // Enable vertical scrolling if needed
+			"overflow-x": "hidden", // Hide horizontal scrollbar
+		});
+	} else {
+		$("#press-scroller").css("overflow-y", "hidden"); // Disable scrolling if content fits within 230px
+	}
+
 	$("#awards-scroller").css(
 		"height",
 		$("#awards").height() - $("#awards").find("h1").eq(0).height() - 20 + "px",
 	);
-
-	if (pressScroll) {
-		H.updateScroll(pressScroll);
-	}
-	if (awardsScroll) {
-		H.updateScroll(awardsScroll);
-	}
 }
 
 function getProject(ident, spot) {
