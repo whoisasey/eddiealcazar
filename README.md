@@ -9,15 +9,10 @@ https://www.npmjs.com/package/uglify-js
 TO DO:
 ✅ Keep current layout
 ✅ Horizontal scroll wheel for Projects on Landing Page when new projects are added
-Modernize site and hover effects
+✅ Modernize site and hover effects
 ✅ Newly added projects appear left, pushing or adjusting older projects to shift right.
 Add newest projects (Eddie to provide assets)
-Optimize/update Mobile
+✅ Optimize/update Mobile
 ✅ Add (close photos overlay) on click outside
 Menu - make more user friendly
 ✅ Add link to alcazararchives - separate domain
-
-questions for mobile:
-
-1. are there only selected works?
-2. why are the thumbnails https://i.vimeocdn.com/video/499804950_640.jpg
