@@ -74,8 +74,14 @@ function parseData(d) {
 			div.style.width = 100 / 8 + "%";
 		}
 		if (window.innerWidth > 1440) {
-			div.style.left = count * (100 / 9) + "%";
-			div.style.width = 100 / 9 + "%";
+			if (data.projects.length <= 8) {
+				div.style.left = count * (100 / data.projects.length) + "%";
+				div.style.width = 100 / data.projects.length + "%";
+			} else {
+				// if there are more projects on a large screen, start scrolling
+				div.style.left = count * (100 / 9) + "%";
+				div.style.width = 100 / 9 + "%";
+			}
 		}
 
 		$("#nav")[0].appendChild(div);
@@ -214,13 +220,28 @@ function parseData(d) {
 		});
 	});
 
-	// when the current project is open, close the stills if user clicks blackspace
+	// when the current project is open, close the current project if user clicks blackspace
 	$(".page").click(function (event) {
 		if (
 			!$(event.target).hasClass("imgContainer") &&
 			!$(event.target).hasClass("thumb") &&
 			!$(event.target).closest(".imgContainer").length
 		) {
+			closePageContainer();
+		}
+	});
+
+	// close current project when margin is clicked
+	$(".desktop").click(function (event) {
+		var container = $(".container");
+		var offset = container.offset();
+		var marginTop = parseInt(container.css("marginTop"));
+
+		var clickY = event.pageY;
+
+		var withinMargin = clickY > offset.top - marginTop && clickY < offset.top;
+
+		if (withinMargin) {
 			closePageContainer();
 		}
 	});
@@ -380,8 +401,6 @@ function closePageContainer() {
 		TweenMax.to($("#awards"), 0.5, { autoAlpha: 0 });
 		TweenMax.to($("#press"), 0.5, { autoAlpha: 0, delay: 0.1 });
 	}
-
-	// TODO: if #awards or #press is open, clicking #container would also close
 }
 
 var isPressOpen = false;
