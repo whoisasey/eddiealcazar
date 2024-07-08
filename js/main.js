@@ -8,88 +8,6 @@
 //@codekit-prepend "libs/PxLoader.js";
 //@codekit-prepend "libs/PxLoaderImage.js";
 
-//detect phone and tablet devices and redirect accordingly
-var isMobile = {
-	AndroidPhone: function () {
-		if (
-			navigator.userAgent.match(/Android/i) &&
-			navigator.userAgent.match(/Mobile/i)
-		) {
-			return true;
-		} else {
-			return false;
-		}
-	},
-	AndroidTablet: function () {
-		if (
-			navigator.userAgent.match(/Android/i) &&
-			!navigator.userAgent.match(/Mobile/i)
-		) {
-			return true;
-		} else {
-			return false;
-		}
-	},
-	BlackBerry: function () {
-		return navigator.userAgent.match(/BlackBerry/i) ? true : false;
-	},
-	iPad: function () {
-		return navigator.userAgent.match(/iPad/i) ? true : false;
-	},
-	iPhone: function () {
-		return navigator.userAgent.match(/iPhone|iPod/i) ? true : false;
-	},
-	Windows: function () {
-		return navigator.userAgent.match(/IEMobile/i) ? true : false;
-	},
-	any: function () {
-		return (
-			isMobile.AndroidPhone() ||
-			isMobile.AndroidTablet() ||
-			isMobile.BlackBerry() ||
-			isMobile.iPad() ||
-			isMobile.Windows()
-		);
-	},
-};
-
-if (isMobile.iPhone() || isMobile.BlackBerry() || isMobile.AndroidPhone()) {
-	document.location =
-		document.location.href.replace(document.location.hash, "") +
-		"mobile/" +
-		document.location.hash;
-}
-
-//Set namesapce
-var H = H || {};
-
-// H.createScroll = function (el) {
-// 	var ret;
-// 	if (Modernizr.touch) {
-// 		var rand = Math.floor(Math.random() * 1000);
-// 		$(el).wrapInner('<div id="' + rand + 'viewport" />');
-// 		$("#" + rand + "viewport").css({
-// 			height: $(el).height(),
-// 			overflow: "hidden",
-// 		});
-// 		ret = new iScroll($("#" + rand + "viewport")[0], {
-// 			vScrollbar: false,
-// 			bounce: true,
-// 		});
-// 	} else {
-// 		ret = $(el).scrollpanel().data("scrollpanel");
-// 	}
-// 	return ret;
-// };
-
-H.updateScroll = function (scroll) {
-	if (scroll.refresh) {
-		scroll.refresh();
-	} else {
-		scroll.update();
-	}
-};
-
 var data, loader;
 var pages = [];
 var thumbs = [];
@@ -102,17 +20,31 @@ var to;
 function init() {
 	//Init resize event
 	$(window).resize(onResize);
-	onResize();
+	checkWindowSize();
+	if (window.innerWidth > 768) {
+		onResize();
 
-	//Load xml
-	$.ajax({
-		type: "GET",
-		url: "json/site.json",
-		dataType: "jsonp",
-		crossDomain: "true",
-		success: parseData,
-		jsonpCallback: "callback",
-	});
+		//Load xml
+		$.ajax({
+			type: "GET",
+			url: "json/desktop.json",
+			dataType: "jsonp",
+			crossDomain: "true",
+			success: parseData,
+			jsonpCallback: "callback",
+		});
+	}
+
+	if (window.innerWidth <= 768) {
+		$.ajax({
+			type: "GET",
+			url: "json/mobile.json",
+			dataType: "jsonp",
+			crossDomain: "true",
+			success: parseMobileData,
+			jsonpCallback: "callback",
+		});
+	}
 }
 
 function parseData(d) {
@@ -133,25 +65,23 @@ function parseData(d) {
 	//Init thumbs
 	var count = 0;
 	for (var i = 0; i < data.projects.length; i++) {
-		// if (data.projects[i].isCenter == "true
 		var div = document.createElement("div");
 		div.setAttribute("class", "thumb");
 
-		// div.style.left = count * (100 / data.projects.length) + "%";
-		// div.style.width = 100 / data.projects.length + "%";
-
-		// at regular desktop screens, width should be capped at 100/8
-		// at large screens, width should be capped at 100/9
-
 		if (window.innerWidth <= 1440) {
 			// assuming 1440px as the laptop screen width threshold
-			// console.log("width = 100 /8");
 			div.style.left = count * (100 / 8) + "%";
 			div.style.width = 100 / 8 + "%";
 		}
 		if (window.innerWidth > 1440) {
-			div.style.left = count * (100 / 9) + "%";
-			div.style.width = 100 / 9 + "%";
+			if (data.projects.length <= 8) {
+				div.style.left = count * (100 / data.projects.length) + "%";
+				div.style.width = 100 / data.projects.length + "%";
+			} else {
+				// if there are more projects on a large screen, start scrolling
+				div.style.left = count * (100 / 9) + "%";
+				div.style.width = 100 / 9 + "%";
+			}
 		}
 
 		$("#nav")[0].appendChild(div);
@@ -290,7 +220,7 @@ function parseData(d) {
 		});
 	});
 
-	// when the current project is open, close the stills if user clicks blackspace
+	// when the current project is open, close the current project if user clicks blackspace
 	$(".page").click(function (event) {
 		if (
 			!$(event.target).hasClass("imgContainer") &&
@@ -301,14 +231,101 @@ function parseData(d) {
 		}
 	});
 
+	// close current project when margin is clicked
+	$(".desktop").click(function (event) {
+		var container = $(".container");
+		var offset = container.offset();
+		var marginTop = parseInt(container.css("marginTop"));
+
+		var clickY = event.pageY;
+
+		var withinMargin = clickY > offset.top - marginTop && clickY < offset.top;
+
+		if (withinMargin) {
+			closePageContainer();
+		}
+	});
+
+	$("#awards").click(function () {
+		closePageContainer();
+	});
+
+	$("#press").click(function () {
+		closePageContainer();
+	});
+
 	// Add an event listener for the scroll event to translate vertical scroll to horizontal scroll
 	$(window).on("wheel", function (event) {
-		if (event.originalEvent.deltaY !== 0) {
+		var pressScroller = $("#press-scroller");
+		var awardsScroller = $("#awards-scroller");
+
+		// Check if the mouse is over elements with class 'press' or 'awards'
+		var isPressHovered = $(".press:hover").length > 0;
+		var isAwardsHovered = $(".awards:hover").length > 0;
+
+		if (isPressHovered) {
+			// Allow vertical scrolling within #press-scroller
+			pressScroller[0].scrollTop += event.originalEvent.deltaY;
+		} else if (isAwardsHovered) {
+			// Allow vertical scrolling within #awards-scroller
+			awardsScroller[0].scrollTop += event.originalEvent.deltaY;
+		} else {
+			// Allow horizontal scrolling within #scroll-container
 			$("#scroll-container")[0].scrollLeft += event.originalEvent.deltaY;
 		}
 	});
 
 	onResize();
+}
+
+function checkWindowSize() {
+	if ($(window).width() <= 768) {
+		$(".desktop").remove();
+	} else {
+		$(".mobile").remove();
+		$(".project-modal").remove();
+	}
+}
+
+function parseMobileData(d) {
+	data = d;
+
+	//Init copy
+	$(".copytop-mobile").html(data.copy.top);
+	$(".copybottom-mobile").html(data.copy.bottom);
+
+	//Init thumbs
+	var count = 0;
+	for (var i = 0; i < data.projects.length; i++) {
+		if (data.projects[i].thumb) {
+			var div = document.createElement("div");
+			div.setAttribute("class", "thumb");
+			$("#projects")[0].appendChild(div);
+
+			for (var j = 0; j < data.projects[i].spots.length; j++) {
+				var img = new Image();
+				if (data.projects[i].spots[j].thumb) {
+					img.src = data.projects[i].spots[j].thumb;
+				} else {
+					img.src = "../" + data.projects[i].spots[j].folder + "01.jpg";
+				}
+				div.appendChild(img);
+				jQuery.data(img, "ident", i);
+				jQuery.data(img, "spot", j);
+			}
+
+			count++;
+		}
+	}
+
+	//Init events
+	$("#projects")
+		.find("img")
+		.click(function () {
+			var index = jQuery.data(this, "ident");
+			var spot = jQuery.data(this, "spot");
+			getProject(index, spot);
+		});
 }
 
 function closePageContainer() {
@@ -455,9 +472,6 @@ function openPress() {
 					$("#copybottom").css("z-index", "15");
 				},
 			);
-
-			H.updateScroll(pressScroll);
-			H.updateScroll(awardsScroll);
 		});
 	}
 
@@ -640,10 +654,7 @@ function animateIn() {
 		},
 	);
 
-	TweenMax.to($("#footer"), 1, { opacity: 1 });
-
-	// pressScroll = H.createScroll($("#press-scroller")[0]);
-	// awardsScroll = H.createScroll($("#awards-scroller")[0]);
+	TweenMax.to($("#footer"), 4, { opacity: 1 });
 
 	onResize();
 }
@@ -696,17 +707,82 @@ function onResize() {
 		"height",
 		$("#press").height() - $("#press").find("h1").eq(0).height() - 20 + "px",
 	);
+
+	let contentHeight = $("#press-scroller").height();
+
+	// Set CSS rules for scrolling based on content height
+	if (contentHeight > 230) {
+		// Check if content height exceeds the set height
+		$("#press-scroller").css({
+			"overflow-y": "auto", // Enable vertical scrolling if needed
+			"overflow-x": "hidden", // Hide horizontal scrollbar
+		});
+	} else {
+		$("#press-scroller").css("overflow-y", "hidden"); // Disable scrolling if content fits within 230px
+	}
+
 	$("#awards-scroller").css(
 		"height",
 		$("#awards").height() - $("#awards").find("h1").eq(0).height() - 20 + "px",
 	);
+}
 
-	if (pressScroll) {
-		H.updateScroll(pressScroll);
+function getProject(ident, spot) {
+	$("#project-modal").html("");
+	if (data.projects[ident].spots[spot].video) {
+		$("#project-modal").append(
+			"<iframe width=" +
+				$(window).width() +
+				" height=" +
+				$(window).width() / 2.7 +
+				' src="' +
+				data.projects[ident].spots[spot].video +
+				'" frameborder=0></iframe>',
+		);
 	}
-	if (awardsScroll) {
-		H.updateScroll(awardsScroll);
+	if (data.projects[ident].spots[spot].video) {
+		$("#project-modal").append(
+			'<img src="' + data.projects[ident].spots[spot].folder + '01.jpg" />',
+		);
+	} else {
+		$("#project-modal").append(
+			'<img style="margin-top:50px" src="' +
+				data.projects[ident].spots[spot].folder +
+				'01.jpg" />',
+		);
 	}
+	$("#project-modal").append(
+		'<img src="' + data.projects[ident].spots[spot].folder + '02.jpg" />',
+	);
+	$("#project-modal").append(
+		'<img src="' + data.projects[ident].spots[spot].folder + '03.jpg" />',
+	);
+	$("#project-modal").append(
+		'<img src="' + data.projects[ident].spots[spot].folder + '04.jpg" />',
+	);
+	var description = document.createElement("div");
+	description.setAttribute("class", "copy");
+	description.innerHTML = data.projects[ident].copybottom;
+	$("#project-modal")[0].appendChild(description);
+	$("#project-modal").append(
+		'<img src="assets/img/ui/back.png" style="position:absolute;top:5px;left:5px;width:auto;" class="backBtn" />',
+	);
+
+	TweenMax.set($("#project-modal")[0], { x: $(window).width(), autoAlpha: 1 });
+	TweenMax.to($("#project-modal")[0], 1, { x: 0, ease: Expo.easeOut });
+
+	$("#project-modal").find(".backBtn").click(closeProject);
+}
+
+function closeProject() {
+	TweenMax.to($("#project-modal")[0], 0.6, {
+		x: $(window).width(),
+		ease: Expo.easeOut,
+		onComplete: function () {
+			TweenMax.set($("#project-modal")[0], { autoAlpha: 0 });
+			$("#project-modal")[0].innerHTML = "";
+		},
+	});
 }
 
 $(document).ready(init);
