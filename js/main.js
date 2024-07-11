@@ -275,6 +275,16 @@ function parseData(d) {
 		}
 	});
 
+	// Show fullscreen video on click of .full-video button
+	$(".full-video").click(function () {
+		$(".fullscreen-video").fadeIn(1000);
+	});
+
+	// Close fullscreen video on click of #full-video-close button
+	$("#full-video-close").click(function () {
+		$(".fullscreen-video").fadeOut(1000);
+	});
+
 	onResize();
 }
 

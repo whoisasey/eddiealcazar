@@ -77,12 +77,42 @@
 					autoplay
 					muted
 					width="100%"></video>
+				<div class="fullscreen-video" style="display: none">
+					<button
+						style="
+							position: absolute;
+							font-size: 50px;
+							color: wheat;
+							z-index: 50;
+							right: 0;
+							background: transparent;
+							border: none;
+						"
+						id="full-video-close">
+						Close
+					</button>
+					<video
+						id="video"
+						src="assets/img/ui/video.mp4"
+						controls
+						fullscreen
+						autoplay
+						width="100%"
+						style="
+							position: absolute;
+							top: 0;
+							z-index: 15;
+							height: inherit;
+							background-color: black;
+						"></video>
+				</div>
 				<div id="container">
 					<!-- 
 				TODO:
 					add icon that user can click to open full screen video with audio above name
 				-->
 					<div id="copytop" class="copy copytop-desktop"></div>
+
 					<div id="copybottom" class="copy copybottom-desktop"></div>
 					<div id="navWrapper">
 						<div id="scroll-container">
