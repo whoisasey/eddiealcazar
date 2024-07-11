@@ -233,7 +233,7 @@ function parseData(d) {
 
 	// close current project when margin is clicked
 	$(".desktop").click(function (event) {
-		var container = $(".container");
+		var container = $("#container");
 		var offset = container.offset();
 		var marginTop = parseInt(container.css("marginTop"));
 
