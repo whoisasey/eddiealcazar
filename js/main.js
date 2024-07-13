@@ -275,6 +275,16 @@ function parseData(d) {
 		}
 	});
 
+	// Show fullscreen video on click of .full-video button
+	$(".full-video").click(function () {
+		$(".fullscreen-video").fadeIn(1500);
+	});
+
+	// Close fullscreen video on click of #full-video-close button
+	$("#full-video-close").click(function () {
+		$(".fullscreen-video").fadeOut(1500);
+	});
+
 	onResize();
 }
 
@@ -682,12 +692,11 @@ function onResize() {
 	container.style.height = height;
 	container.style.marginTop = marginTop;
 
-	// $("#guide").css("width", w + "px");
-	// $("#guide").css("height", w / (1600 / 600) + "px");
-	// $("#guide").css(
-	// 	"top",
-	// 	($(window).height() - $("#container").height()) / 2 + "px",
-	// );
+	const icon = document.querySelector(".full-video");
+	icon.style.top = `${
+		0 - (window.innerHeight - parseFloat(height)) / 4 + 50
+	}px`;
+	icon.style.left = w / 2 - 50 + "px";
 
 	$("iframe").css("width", w + "px");
 	$("iframe").css("height", $(window).width() / (1600 / 600) + "px");

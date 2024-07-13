@@ -76,6 +76,13 @@ body {
 		#container {
 			position: relative;
 			z-index: 10;
+			.full-video {
+				position: absolute;
+				top: 0;
+				width: 100px;
+				height: 100px;
+				cursor: pointer;
+			}
 		}
 
 		.copy {
@@ -94,14 +101,15 @@ body {
 			font-weight: 700;
 			font-size: 20px;
 			letter-spacing: 1px;
-		}
+			// text-align: center;
 
-		.copytop-desktop li {
-			margin-bottom: 1px;
-		}
+			li {
+				margin-bottom: 1px;
+			}
 
-		.copytop-desktop ul {
-			margin-top: 7px;
+			ul {
+				margin-top: 7px;
+			}
 		}
 
 		.copybottom-desktop {
