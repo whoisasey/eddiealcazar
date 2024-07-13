@@ -693,7 +693,9 @@ function onResize() {
 	container.style.marginTop = marginTop;
 
 	const icon = document.querySelector(".full-video");
-	icon.style.top = `${0 - (window.innerHeight - parseFloat(height)) / 4}px`;
+	icon.style.top = `${
+		0 - (window.innerHeight - parseFloat(height)) / 4 + 50
+	}px`;
 	icon.style.left = w / 2 - 50 + "px";
 
 	$("iframe").css("width", w + "px");
