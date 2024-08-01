@@ -66,13 +66,12 @@ callback({
 					"folder": "assets/img/projects/taylormade/",
 					"video": "http://player.vimeo.com/video/111592051",
 					"thumb": "assets/img/projects/taylormade/thumb.jpg",
-
 					"title": "SPOT 1"
 				},
 				{
 					"folder": "assets/img/projects/taylormade2/",
 					"video": "http://player.vimeo.com/video/111592052",
-					"thumb": "assets/img/projects/taylormade2/thumb.jpg",
+					"thumb": "assets/img/projects/taylormade2/04.jpg",
 					"title": "SPOT 2"
 				}
 			],
