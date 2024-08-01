@@ -279,11 +279,24 @@ function parseData(d) {
 	// Show fullscreen video on click of .full-video button
 	$(".full-video").click(function () {
 		$(".fullscreen-video").fadeIn(1500);
+
+		// Get the video element
+		var videoElement = $("#video")[0];
+
+		// Play the video
+		videoElement.play();
 	});
 
 	// Close fullscreen video on click of #full-video-close button
 	$("#full-video-close").click(function () {
 		$(".fullscreen-video").fadeOut(1500);
+
+		// Get the video element
+		var videoElement = $("#video")[0];
+
+		// Pause the video and reset its playback
+		videoElement.pause();
+		videoElement.currentTime = 0;
 	});
 
 	onResize();
