@@ -170,7 +170,6 @@ function parseData(d) {
 		var index = jQuery.data(this, "ident");
 		if (!isAnimating) {
 			getPage(index, 0);
-			console.log("project clicked...");
 		}
 	});
 
@@ -296,7 +295,6 @@ function parseData(d) {
 	// Close the player on pressing the "Escape" key
 	$(document).keydown(function (e) {
 		if (e.key === "Escape" || e.keyCode === 27) {
-			console.log("esc key logged...");
 			$(".fullscreen-video").fadeOut(1500);
 			resetVideo();
 		}
