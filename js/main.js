@@ -290,13 +290,16 @@ function parseData(d) {
 	// Close fullscreen video on click of #full-video-close button
 	$("#full-video-close").click(function () {
 		$(".fullscreen-video").fadeOut(1500);
+		resetVideo();
+	});
 
-		// Get the video element
-		var videoElement = $("#video")[0];
-
-		// Pause the video and reset its playback
-		videoElement.pause();
-		videoElement.currentTime = 0;
+	// Close the player on pressing the "Escape" key
+	$(document).keydown(function (e) {
+		if (e.key === "Escape" || e.keyCode === 27) {
+			console.log("esc key logged...");
+			$(".fullscreen-video").fadeOut(1500);
+			resetVideo();
+		}
 	});
 
 	onResize();
@@ -427,6 +430,15 @@ function closePageContainer() {
 		TweenMax.to($("#awards"), 0.5, { autoAlpha: 0 });
 		TweenMax.to($("#press"), 0.5, { autoAlpha: 0, delay: 0.1 });
 	}
+}
+
+function resetVideo() {
+	// Get the video element
+	var videoElement = $("#video")[0];
+
+	// Pause the video and reset its playback
+	videoElement.pause();
+	videoElement.currentTime = 0;
 }
 
 var isPressOpen = false;
