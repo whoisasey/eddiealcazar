@@ -170,6 +170,7 @@ function parseData(d) {
 		var index = jQuery.data(this, "ident");
 		if (!isAnimating) {
 			getPage(index, 0);
+			console.log("project clicked...");
 		}
 	});
 
@@ -341,6 +342,7 @@ function parseMobileData(d) {
 function closePageContainer() {
 	if (currPage != null) {
 		var prevPage = currPage;
+		const icon = $(".full-video");
 		isAnimating = true;
 		TweenMax.staggerTo(
 			currPage.find(".imgContainer"),
@@ -354,7 +356,8 @@ function closePageContainer() {
 			},
 		);
 		currPage = null;
-
+		console.log("icon showing after project close...");
+		icon.show();
 		TweenMax.staggerTo(
 			$("#copytop").find("li"),
 			0.3,
@@ -494,7 +497,7 @@ function openPress() {
 function getPage(indexPage, indexSpot) {
 	if (indexPage != currPageID || indexSpot != currSpotID) {
 		var page = $(".page" + indexPage + "" + indexSpot);
-
+		const icon = $(".full-video");
 		TweenMax.set(page.find("img"), { scale: 1 });
 		TweenMax.set(page.find(".imgContainer"), { opacity: 0 });
 
@@ -504,6 +507,7 @@ function getPage(indexPage, indexSpot) {
 		}
 		page.css("z-index", "5");
 		page.css("visibility", "visible");
+		icon.hide();
 
 		if (currPage != null) {
 			var prevPage = currPage;
