@@ -3,36 +3,34 @@ callback({
 		{
 			"spots": [
 				{
-					"folder": "assets/img/projects/taylormade/",
-					"video": "http://player.vimeo.com/video/111592051",
-					"title": "PLACEHOLDER"
-				},
-				{
-					"folder": "assets/img/projects/taylormade2/",
-					"video": "http://player.vimeo.com/video/111592052",
-					"title": "PLACEHOLDER"
+					"folder": "assets/img/projects/divinity/",
+					"video": "http://player.vimeo.com/video/789505958"
 				}
 			],
-			"thumb": "assets/img/projects/taylormade/thumb.jpg",
-			"copytop": "<h1>PLACEHOLDER</h1>",
-			"copybottom": "<h1>PLACEHOLDER</h1>"
+			"thumb": "assets/img/projects/divinity/thumb.jpg",
+			"copytop": "<h1>EDDIE ALCAZAR</h1><ul><li>Director</li><li>Producer</li></ul>",
+			"copybottom": "<h1>Divinity</h1><h1>Film</h1>"
 		},
 		{
 			"spots": [
 				{
-					"folder": "assets/img/projects/taylormade/",
-					"video": "http://player.vimeo.com/video/111592051",
-					"title": "PLACEHOLDER"
-				},
+					"folder": "assets/img/projects/perfect/",
+					"video":"http://player.vimeo.com/video/260708231"}
+			],
+			"thumb": "assets/img/projects/perfect/thumb.jpg",
+			"copytop": "<h1>EDDIE ALCAZAR</h1><ul><li>Director</li><li>Producer</li></ul>",
+			"copybottom": "<h1>Perfect</h1><h1>Film</h1>"
+		},
+		{
+			"spots": [
 				{
-					"folder": "assets/img/projects/taylormade2/",
-					"video": "http://player.vimeo.com/video/111592052",
-					"title": "PLACEHOLDER"
+"folder": "assets/img/projects/thevandal/",
+					"video": "http://player.vimeo.com/video/572876701"
 				}
 			],
-			"thumb": "assets/img/projects/taylormade/thumb.jpg",
-			"copytop": "<h1>PLACEHOLDER</h1>",
-			"copybottom": "<h1>PLACEHOLDER</h1>"
+			"thumb": "assets/img/projects/thevandal/thumb.jpg",
+			"copytop": "<h1>EDDIE ALCAZAR</h1><ul><li>Director</li><li>Producer</li></ul>",
+			"copybottom": "<h1>Vandal</h1><h1>Film</h1>"
 		},
 		{
 			"spots": [
@@ -84,9 +82,7 @@ callback({
 			"copytop": "<h1>EDDIE ALCAZAR</h1><ul><li>Director</li><li>Writer</li><li>Producer</li><li>Editor</li></ul>",
 			"copybottom": "<h1>TAPIA</h1><h1>Documentary</h1><ul><li><a href='http://tapiathemovie.com/' target='_blank'>tapiathemovie.com</a></li><li>*HBO</li><li>*LA Film Fest World Premiere</li><li>*Winner Best Doc SFIFF</li><li>*Winner Best Doc Julien Dubuque</li></ul>"
 		},
-		// {
-		// 	"isCenter": "true"
-		// },
+
 		{
 			"spots": [
 				{

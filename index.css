@@ -92,16 +92,19 @@ body {
 #wrapper.desktop .copybottom-desktop a:hover {
   color: rgb(255, 255, 255);
 }
+#wrapper.desktop .copybottom-desktop h1 {
+  font-size: 9px !important;
+  font-size: 0.7vw !important;
+}
+#wrapper.desktop .copybottom-desktop h1:first-child {
+  text-transform: uppercase;
+}
 #wrapper.desktop .copybottom-desktop li {
   font-family: Verdana, Arial, sans-serif;
   font-weight: 400;
   font-size: 8px;
   font-size: 0.7vw;
   margin-bottom: 1px;
-}
-#wrapper.desktop .copybottom-desktop h1 {
-  font-size: 9px !important;
-  font-size: 0.7vw !important;
 }
 #wrapper.desktop h1 {
   color: #b5b5b5;
@@ -155,6 +158,9 @@ body {
 #wrapper.desktop #nav .center img {
   width: 100%;
   height: 100%;
+  aspect-ratio: 8/3;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 #wrapper.desktop .highlight {
   width: 100%;
@@ -182,9 +188,12 @@ body {
   opacity: 0;
 }
 #wrapper.desktop .page img {
-  width: auto;
-  height: 100%;
   display: block;
+  height: auto;
+  width: 100%;
+  aspect-ratio: 8/3;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 #wrapper.desktop .topleft {
   top: 0px;
@@ -379,6 +388,9 @@ body {
 #wrapper.mobile .copybottom-mobile h1 {
   font-size: 16px !important;
 }
+#wrapper.mobile .copybottom-mobile h1:first-child {
+  text-transform: uppercase;
+}
 #wrapper.mobile h1 {
   color: #b5b5b5;
   font-weight: bold;
@@ -400,8 +412,12 @@ body {
   width: 100%;
 }
 #wrapper.mobile .thumb img {
-  width: 100%;
+  display: block;
   height: auto;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  aspect-ratio: 9/3;
 }
 #wrapper.mobile .mobile-awards,
 #wrapper.mobile .mobile-press {
@@ -469,8 +485,13 @@ body {
   font-size: 14px;
 }
 #wrapper.mobile + .project-modal img {
-  width: 100%;
+  display: block;
+  max-width: 389px;
+  max-height: 144px;
   height: auto;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
   margin-bottom: 5px;
 }
 #wrapper.mobile + .project-modal iframe {

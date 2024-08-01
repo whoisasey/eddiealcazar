@@ -1,5 +1,37 @@
 callback({
 	"projects": [
+				{
+			"spots": [
+				{
+					"folder": "assets/img/projects/divinity/",
+					"video": "http://player.vimeo.com/video/789505958"
+				}
+			],
+			"thumb": "assets/img/projects/divinity/thumb.jpg",
+			"copytop": "<h1>EDDIE ALCAZAR</h1><ul><li>Director</li><li>Producer</li></ul>",
+			"copybottom": "<h1>Divinity</h1><h1>Film</h1>"
+		},
+		{
+			"spots": [
+				{
+					"folder": "assets/img/projects/perfect/",
+					"video":"http://player.vimeo.com/video/260708231"}
+			],
+			"thumb": "assets/img/projects/perfect/thumb.jpg",
+			"copytop": "<h1>EDDIE ALCAZAR</h1><ul><li>Director</li><li>Producer</li></ul>",
+			"copybottom": "<h1>Perfect</h1><h1>Film</h1>"
+		},
+		{
+			"spots": [
+				{
+"folder": "assets/img/projects/thevandal/",
+					"video": "http://player.vimeo.com/video/572876701"
+				}
+			],
+			"thumb": "assets/img/projects/thevandal/thumb.jpg",
+			"copytop": "<h1>EDDIE ALCAZAR</h1><ul><li>Director</li><li>Producer</li></ul>",
+			"copybottom": "<h1>Vandal</h1><h1>Film</h1>"
+		},
 		{
 			"spots": [
 				{

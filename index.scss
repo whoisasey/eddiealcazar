@@ -114,27 +114,29 @@ body {
 
 		.copybottom-desktop {
 			margin-top: 7%;
-		}
 
-		.copybottom-desktop a {
-			color: rgba(255, 255, 255, 0.65);
-		}
+			a {
+				color: rgba(255, 255, 255, 0.65);
 
-		.copybottom-desktop a:hover {
-			color: rgba(255, 255, 255, 1);
-		}
+				&:hover {
+					color: rgba(255, 255, 255, 1);
+				}
+			}
+			h1 {
+				font-size: 9px !important;
+				font-size: 0.7vw !important;
+			}
+			h1:first-child {
+				text-transform: uppercase;
+			}
 
-		.copybottom-desktop li {
-			font-family: Verdana, Arial, sans-serif;
-			font-weight: 400;
-			font-size: 8px;
-			font-size: 0.7vw;
-			margin-bottom: 1px;
-		}
-
-		.copybottom-desktop h1 {
-			font-size: 9px !important;
-			font-size: 0.7vw !important;
+			li {
+				font-family: Verdana, Arial, sans-serif;
+				font-weight: 400;
+				font-size: 8px;
+				font-size: 0.7vw;
+				margin-bottom: 1px;
+			}
 		}
 
 		h1 {
@@ -196,6 +198,8 @@ body {
 		#nav .center img {
 			width: 100%;
 			height: 100%;
+			aspect-ratio: 8/3;
+			object-fit: cover;
 		}
 
 		.highlight {
@@ -227,9 +231,13 @@ body {
 		}
 
 		.page img {
-			width: auto;
-			height: 100%;
 			display: block;
+			// max-width: 645px;
+			// max-height: 254px;
+			height: auto;
+			width: 100%;
+			aspect-ratio: 8 / 3;
+			object-fit: cover;
 		}
 
 		.topleft {
@@ -473,6 +481,10 @@ body {
 
 			h1 {
 				font-size: 16px !important;
+
+				&:first-child {
+					text-transform: uppercase;
+				}
 			}
 		}
 
@@ -500,8 +512,11 @@ body {
 			width: 100%;
 
 			img {
-				width: 100%;
+				display: block;
 				height: auto;
+				width: 100%;
+				object-fit: cover;
+				aspect-ratio: 9 / 3;
 			}
 		}
 
@@ -579,8 +594,12 @@ body {
 			}
 
 			img {
-				width: 100%;
+				display: block;
+				max-width: 389px;
+				max-height: 144px;
 				height: auto;
+				width: 100%;
+				object-fit: cover;
 				margin-bottom: 5px;
 			}
 
