@@ -94,6 +94,9 @@ body {
 #wrapper.desktop .copybottom-desktop {
 	margin-top: 7%;
 }
+#wrapper.desktop .copybottom-desktop h1:first-child {
+	text-transform: uppercase;
+}
 #wrapper.desktop .copybottom-desktop a {
 	color: rgba(255, 255, 255, 0.65);
 }
