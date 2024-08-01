@@ -1,485 +1,496 @@
 @font-face {
-  font-family: "Trade";
-  font-style: normal;
-  font-weight: 400;
-  src: local("Trade"), local("TradeGothic BoldCondTwenty"), url(../assets/fonts/tradegothic-boldcondtwenty-webfont.woff) format("woff");
+	font-family: "Trade";
+	font-style: normal;
+	font-weight: 400;
+	src: local("Trade"), local("TradeGothic BoldCondTwenty"),
+		url(../assets/fonts/tradegothic-boldcondtwenty-webfont.woff) format("woff");
 }
 @font-face {
-  font-family: "AltTrade";
-  src: url("../assets/fonts/ufonts.com_alternate_gothic_no3_d-webfont.eot");
-  src: url("../assets/fonts/ufonts.com_alternate_gothic_no3_d-webfont.eot?#iefix") format("embedded-opentype"), url("../assets/fonts/ufonts.com_alternate_gothic_no3_d-webfont.woff") format("woff"), url("../assets/fonts/ufonts.com_alternate_gothic_no3_d-webfont.ttf") format("truetype"), url("../assets/fonts/ufonts.com_alternate_gothic_no3_d-webfont.svg#alternate_gothic_no3_dregular") format("svg");
-  font-weight: normal;
-  font-style: normal;
+	font-family: "AltTrade";
+	src: url("../assets/fonts/ufonts.com_alternate_gothic_no3_d-webfont.eot");
+	src: url("../assets/fonts/ufonts.com_alternate_gothic_no3_d-webfont.eot?#iefix")
+			format("embedded-opentype"),
+		url("../assets/fonts/ufonts.com_alternate_gothic_no3_d-webfont.woff")
+			format("woff"),
+		url("../assets/fonts/ufonts.com_alternate_gothic_no3_d-webfont.ttf")
+			format("truetype"),
+		url("../assets/fonts/ufonts.com_alternate_gothic_no3_d-webfont.svg#alternate_gothic_no3_dregular")
+			format("svg");
+	font-weight: normal;
+	font-style: normal;
 }
 * {
-  -webkit-font-smoothing: antialiased;
-  box-sizing: border-box;
-  -moz-box-sizing: border-box; /* Firefox */
+	-webkit-font-smoothing: antialiased;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box; /* Firefox */
 }
 
 ul {
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
 }
 
 img,
 a {
-  border: none;
-  text-decoration: none;
-  color: inherit;
+	border: none;
+	text-decoration: none;
+	color: inherit;
 }
 
 body {
-  background-color: #000000;
-  margin: 0;
-  padding: 0;
-  font-family: "Open Sans Condensed", "Arial Narrow", Arial, sans-serif;
-  font-family: Verdana;
-  overflow: hidden;
-  width: 100%;
-  height: 100%;
+	background-color: #000000;
+	margin: 0;
+	padding: 0;
+	font-family: "Open Sans Condensed", "Arial Narrow", Arial, sans-serif;
+	font-family: Verdana;
+	overflow: hidden;
+	width: 100%;
+	height: 100%;
 }
 
 #wrapper.desktop {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  /* ------ SCROLL PANEL ----- */
-  /* ------ VIDEO ----- */
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	/* ------ SCROLL PANEL ----- */
+	/* ------ VIDEO ----- */
 }
 #wrapper.desktop #container {
-  position: relative;
-  z-index: 10;
+	position: relative;
+	z-index: 10;
 }
 #wrapper.desktop #container .full-video {
-  position: absolute;
-  top: 0;
-  width: 100px;
-  height: 100px;
-  cursor: pointer;
+	position: absolute;
+	top: 0;
+	width: 100px;
+	height: 100px;
+	cursor: pointer;
 }
 #wrapper.desktop .copy {
-  height: 80px;
-  width: 190px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin-left: -70px;
-  padding-left: 0.5%;
-  padding-right: 0.5%;
+	height: 80px;
+	width: 190px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-left: -70px;
+	padding-left: 0.5%;
+	padding-right: 0.5%;
 }
 #wrapper.desktop .copytop-desktop {
-  margin-top: -11%;
-  font-weight: 700;
-  font-size: 20px;
-  letter-spacing: 1px;
+	margin-top: -11%;
+	font-weight: 700;
+	font-size: 20px;
+	letter-spacing: 1px;
 }
 #wrapper.desktop .copytop-desktop li {
-  margin-bottom: 1px;
+	margin-bottom: 1px;
 }
 #wrapper.desktop .copytop-desktop ul {
-  margin-top: 7px;
+	margin-top: 7px;
 }
 #wrapper.desktop .copybottom-desktop {
-  margin-top: 7%;
+	margin-top: 7%;
 }
 #wrapper.desktop .copybottom-desktop a {
-  color: rgba(255, 255, 255, 0.65);
+	color: rgba(255, 255, 255, 0.65);
 }
 #wrapper.desktop .copybottom-desktop a:hover {
-  color: rgb(255, 255, 255);
+	color: rgb(255, 255, 255);
 }
 #wrapper.desktop .copybottom-desktop li {
-  font-family: Verdana, Arial, sans-serif;
-  font-weight: 400;
-  font-size: 8px;
-  font-size: 0.7vw;
-  margin-bottom: 1px;
+	font-family: Verdana, Arial, sans-serif;
+	font-weight: 400;
+	font-size: 8px;
+	font-size: 0.7vw;
+	margin-bottom: 1px;
 }
 #wrapper.desktop .copybottom-desktop h1 {
-  font-size: 9px !important;
-  font-size: 0.7vw !important;
+	font-size: 9px !important;
+	font-size: 0.7vw !important;
 }
 #wrapper.desktop h1 {
-  color: #b5b5b5;
-  font-weight: bold;
-  font-size: 11px;
-  font-size: 0.8vw;
+	color: #b5b5b5;
+	font-weight: bold;
+	font-size: 11px;
+	font-size: 0.8vw;
 }
 #wrapper.desktop .bold {
-  color: #b5b5b5;
-  font-weight: 700 !important;
-  font-size: 9px !important;
-  font-size: 0.7vw !important;
+	color: #b5b5b5;
+	font-weight: 700 !important;
+	font-size: 9px !important;
+	font-size: 0.7vw !important;
 }
 #wrapper.desktop li {
-  list-style: none;
-  font-size: 9px;
-  font-size: 0.7vw;
-  color: rgba(255, 255, 255, 0.4);
-  opacity: 0;
-  margin-bottom: 3px;
+	list-style: none;
+	font-size: 9px;
+	font-size: 0.7vw;
+	color: rgba(255, 255, 255, 0.4);
+	opacity: 0;
+	margin-bottom: 3px;
 }
 #wrapper.desktop #navWrapper {
-  position: absolute;
-  top: 50%;
-  width: 100%;
-  overflow: hidden;
-  left: 0px;
-  z-index: 10;
+	position: absolute;
+	top: 50%;
+	width: 100%;
+	overflow: hidden;
+	left: 0px;
+	z-index: 10;
 }
 #wrapper.desktop #scroll-container {
-  overflow-x: auto;
-  white-space: nowrap;
-  height: 200px;
+	overflow-x: auto;
+	white-space: nowrap;
+	height: 200px;
 }
 #wrapper.desktop #nav {
-  position: relative;
-  display: inline-block;
+	position: relative;
+	display: inline-block;
 }
 #wrapper.desktop #nav .thumb,
 #wrapper.desktop #nav .center {
-  position: absolute;
-  /* width:11.1111%; */
-  height: 100%;
-  display: block;
-  cursor: pointer;
+	position: absolute;
+	/* width:11.1111%; */
+	height: 100%;
+	display: block;
+	cursor: pointer;
 }
 #wrapper.desktop #nav .thumb {
-  opacity: 0;
+	opacity: 0;
 }
 #wrapper.desktop #nav .thumb img,
 #wrapper.desktop #nav .center img {
-  width: 100%;
-  height: 100%;
+	width: 100%;
+	height: 100%;
 }
 #wrapper.desktop .highlight {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  background-color: #b5b5b5;
-  opacity: 0;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	background-color: #b5b5b5;
+	opacity: 0;
 }
 #wrapper.desktop .page {
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  width: 100%;
-  height: 100%;
-  visibility: hidden;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+	visibility: hidden;
 }
 #wrapper.desktop .page .imgContainer {
-  position: absolute;
-  width: 44.45%;
-  height: 44.5%;
-  overflow: hidden;
-  cursor: pointer;
-  opacity: 0;
+	position: absolute;
+	width: 44.45%;
+	height: 44.5%;
+	overflow: hidden;
+	cursor: pointer;
+	opacity: 0;
 }
 #wrapper.desktop .page img {
-  width: auto;
-  height: 100%;
-  display: block;
+	display: block;
+	max-width: 645px;
+	max-height: 254px;
+	height: auto;
+	width: 100%;
+	object-fit: cover;
 }
 #wrapper.desktop .topleft {
-  top: 0px;
-  left: 0px;
+	top: 0px;
+	left: 0px;
 }
 #wrapper.desktop .topright {
-  top: 0px;
-  left: 55.6%;
+	top: 0px;
+	left: 55.6%;
 }
 #wrapper.desktop .bottomleft {
-  bottom: 0px;
-  left: 0px;
+	bottom: 0px;
+	left: 0px;
 }
 #wrapper.desktop .bottomright {
-  bottom: 0px;
-  left: 55.6%;
+	bottom: 0px;
+	left: 55.6%;
 }
 #wrapper.desktop #player {
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  width: 0%;
-  height: 100%;
-  z-index: 20;
-  overflow: hidden;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 0%;
+	height: 100%;
+	z-index: 20;
+	overflow: hidden;
 }
 #wrapper.desktop #playerContainer {
-  position: relative;
+	position: relative;
 }
 #wrapper.desktop #pageContainer {
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  width: 100%;
-  height: 100%;
-  visibility: hidden;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+	visibility: hidden;
 }
 #wrapper.desktop #awards,
 #wrapper.desktop #press {
-  width: auto;
-  height: auto;
-  position: absolute;
-  top: 0px;
-  left: 10%;
-  background-color: #111111;
-  padding: 10px;
-  visibility: hidden;
+	width: auto;
+	height: auto;
+	position: absolute;
+	top: 0px;
+	left: 10%;
+	background-color: #111111;
+	padding: 10px;
+	visibility: hidden;
 }
 #wrapper.desktop #press {
-  top: -8%;
-  right: 10%;
-  left: auto;
-  width: 22%;
-  height: 40%;
+	top: -8%;
+	right: 10%;
+	left: auto;
+	width: 22%;
+	height: 40%;
 }
 #wrapper.desktop #awards {
-  height: 27%;
+	height: 27%;
 }
 #wrapper.desktop .mobile-press-scroller {
-  width: 100%;
-  height: 100%;
-  overflow-y: hidden;
+	width: 100%;
+	height: 100%;
+	overflow-y: hidden;
 }
 #wrapper.desktop #awards-scroller {
-  width: 100%;
-  height: 100%;
-  overflow-y: hidden;
+	width: 100%;
+	height: 100%;
+	overflow-y: hidden;
 }
 #wrapper.desktop #press li {
-  margin-bottom: 8px;
+	margin-bottom: 8px;
 }
 #wrapper.desktop #awards li,
 #wrapper.desktop #press li {
-  opacity: 1;
-  padding-right: 10px;
+	opacity: 1;
+	padding-right: 10px;
 }
 #wrapper.desktop #press a:hover {
-  color: #ffffff;
+	color: #ffffff;
 }
 #wrapper.desktop #awards a:hover {
-  color: #ffffff;
+	color: #ffffff;
 }
 #wrapper.desktop #footer {
-  position: absolute;
-  left: 0px;
-  bottom: 10px;
-  width: 100%;
-  text-align: center;
-  color: rgba(255, 255, 255, 0.4);
-  letter-spacing: 1px;
-  font-size: 10px;
-  font-size: 0.7vw;
-  opacity: 0;
+	position: absolute;
+	left: 0px;
+	bottom: 10px;
+	width: 100%;
+	text-align: center;
+	color: rgba(255, 255, 255, 0.4);
+	letter-spacing: 1px;
+	font-size: 10px;
+	font-size: 0.7vw;
+	opacity: 0;
 }
 #wrapper.desktop #footer li {
-  display: inline;
-  color: rgba(255, 255, 255, 0.4);
-  opacity: initial;
-  cursor: pointer;
+	display: inline;
+	color: rgba(255, 255, 255, 0.4);
+	opacity: initial;
+	cursor: pointer;
 }
 #wrapper.desktop #footer a:hover,
 #wrapper.desktop #footer li:hover {
-  color: #ffffff;
-  transition: all 0.5s ease-out allow-discrete;
+	color: #ffffff;
+	transition: all 0.5s ease-out allow-discrete;
 }
 #wrapper.desktop .close {
-  position: absolute;
-  z-index: 10;
-  top: 10px;
-  right: 10px;
-  cursor: pointer;
+	position: absolute;
+	z-index: 10;
+	top: 10px;
+	right: 10px;
+	cursor: pointer;
 }
 #wrapper.desktop #guide {
-  position: absolute;
-  left: 0px;
-  top: 0px;
-  z-index: 0;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	z-index: 0;
 }
 #wrapper.desktop #guide img {
-  width: 100%;
-  display: block;
+	width: 100%;
+	display: block;
 }
 #wrapper.desktop .sp-scrollbar {
-  width: 2px;
-  cursor: pointer;
-  right: 0px !important;
+	width: 2px;
+	cursor: pointer;
+	right: 0px !important;
 }
 #wrapper.desktop .sp-scrollbar .sp-thumb {
-  background-color: rgba(255, 255, 255, 0.4);
-  transition: height 0.2s ease-in-out;
+	background-color: rgba(255, 255, 255, 0.4);
+	transition: height 0.2s ease-in-out;
 }
 #wrapper.desktop .sp-scrollbar.active .sp-thumb {
-  background-color: #ffffff;
+	background-color: #ffffff;
 }
 #wrapper.desktop video.transition {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: auto;
-  height: 1000px;
-  margin-top: 80px;
-  transform: translate(-50%, -50%);
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: auto;
+	height: 1000px;
+	margin-top: 80px;
+	transform: translate(-50%, -50%);
 }
 
 #wrapper.mobile {
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  width: 100%;
-  height: 100%;
-  overflow-y: scroll;
-  -webkit-overflow-scrolling: touch;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+	overflow-y: scroll;
+	-webkit-overflow-scrolling: touch;
 }
 #wrapper.mobile .mobile-header {
-  margin-top: 50px;
+	margin-top: 50px;
 }
 #wrapper.mobile .mobile-header img {
-  width: 100%;
-  height: auto;
+	width: 100%;
+	height: auto;
 }
 #wrapper.mobile .mobile-header h1 {
-  margin-bottom: 40px;
+	margin-bottom: 40px;
 }
 #wrapper.mobile .copytop-mobile {
-  font-weight: 700;
-  font-size: 20px;
-  letter-spacing: 1px;
+	font-weight: 700;
+	font-size: 20px;
+	letter-spacing: 1px;
 }
 #wrapper.mobile .copytop-mobile li {
-  margin-bottom: 1px;
+	margin-bottom: 1px;
 }
 #wrapper.mobile .copytop-mobile ul {
-  margin-top: 7px;
+	margin-top: 7px;
 }
 #wrapper.mobile .copybottom-mobile {
-  margin-top: 50px;
-  margin-bottom: 70px;
+	margin-top: 50px;
+	margin-bottom: 70px;
 }
 #wrapper.mobile .copybottom-mobile a {
-  color: rgba(255, 255, 255, 0.65);
+	color: rgba(255, 255, 255, 0.65);
 }
 #wrapper.mobile .copybottom-mobile a:hover {
-  color: rgb(255, 255, 255);
+	color: rgb(255, 255, 255);
 }
 #wrapper.mobile .copybottom-mobile li {
-  font-family: Verdana, Arial, sans-serif;
-  font-weight: 400;
-  font-size: 14px;
-  margin-bottom: 1px;
-  text-align: center;
+	font-family: Verdana, Arial, sans-serif;
+	font-weight: 400;
+	font-size: 14px;
+	margin-bottom: 1px;
+	text-align: center;
 }
 #wrapper.mobile .copybottom-mobile h1 {
-  font-size: 16px !important;
+	font-size: 16px !important;
 }
 #wrapper.mobile h1 {
-  color: #b5b5b5;
-  font-weight: bold;
-  font-size: 20px;
-  text-align: center;
+	color: #b5b5b5;
+	font-weight: bold;
+	font-size: 20px;
+	text-align: center;
 }
 #wrapper.mobile .bold {
-  color: #b5b5b5;
-  font-weight: 700 !important;
-  font-size: 14px !important;
+	color: #b5b5b5;
+	font-weight: 700 !important;
+	font-size: 14px !important;
 }
 #wrapper.mobile li {
-  list-style: none;
-  font-size: 9px;
-  color: rgba(255, 255, 255, 0.4);
-  margin-bottom: 3px;
+	list-style: none;
+	font-size: 9px;
+	color: rgba(255, 255, 255, 0.4);
+	margin-bottom: 3px;
 }
 #wrapper.mobile .thumb {
-  width: 100%;
+	width: 100%;
 }
 #wrapper.mobile .thumb img {
-  width: 100%;
-  height: auto;
+	width: 100%;
+	height: auto;
 }
 #wrapper.mobile .mobile-awards,
 #wrapper.mobile .mobile-press {
-  width: 100%;
-  height: auto;
-  padding: 20px;
+	width: 100%;
+	height: auto;
+	padding: 20px;
 }
 #wrapper.mobile .mobile-awards li,
 #wrapper.mobile .mobile-press li {
-  opacity: 1;
-  padding-right: 10px;
-  font-size: 12px;
+	opacity: 1;
+	padding-right: 10px;
+	font-size: 12px;
 }
 #wrapper.mobile .mobile-awards a:hover,
 #wrapper.mobile .mobile-awards a :focus-within,
 #wrapper.mobile .mobile-press a:hover,
 #wrapper.mobile .mobile-press a :focus-within {
-  color: #ffffff;
+	color: #ffffff;
 }
 #wrapper.mobile .mobile-press li {
-  margin-bottom: 8px;
+	margin-bottom: 8px;
 }
 #wrapper.mobile .mobile-footer {
-  position: relative;
-  width: 100%;
-  text-align: center;
-  color: rgba(255, 255, 255, 0.4);
-  letter-spacing: 1px;
-  font-size: 14px;
-  margin-bottom: 30px;
-  margin-top: 50px;
+	position: relative;
+	width: 100%;
+	text-align: center;
+	color: rgba(255, 255, 255, 0.4);
+	letter-spacing: 1px;
+	font-size: 14px;
+	margin-bottom: 30px;
+	margin-top: 50px;
 }
 #wrapper.mobile .mobile-footer a:hover {
-  color: #ffffff;
+	color: #ffffff;
 }
 #wrapper.mobile .close {
-  position: absolute;
-  z-index: 10;
-  top: 10px;
-  right: 10px;
-  cursor: pointer;
+	position: absolute;
+	z-index: 10;
+	top: 10px;
+	right: 10px;
+	cursor: pointer;
 }
 #wrapper.mobile + .project-modal {
-  position: fixed;
-  top: 0px;
-  left: 0px;
-  width: 100%;
-  height: 100%;
-  overflow-y: scroll;
-  -webkit-overflow-scrolling: touch;
-  overflow-x: hidden;
-  visibility: hidden;
-  opacity: 0;
-  background-color: #000000;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+	overflow-y: scroll;
+	-webkit-overflow-scrolling: touch;
+	overflow-x: hidden;
+	visibility: hidden;
+	opacity: 0;
+	background-color: #000000;
 }
 #wrapper.mobile + .project-modal h1 {
-  font-weight: bold;
-  text-align: left;
-  font-size: 16px;
-  margin-bottom: 5px;
-  margin-top: 5px;
+	font-weight: bold;
+	text-align: left;
+	font-size: 16px;
+	margin-bottom: 5px;
+	margin-top: 5px;
 }
 #wrapper.mobile + .project-modal li {
-  text-align: left;
-  font-size: 14px;
+	text-align: left;
+	font-size: 14px;
 }
 #wrapper.mobile + .project-modal img {
-  width: 100%;
-  height: auto;
-  margin-bottom: 5px;
+	width: 100%;
+	height: auto;
+	margin-bottom: 5px;
 }
 #wrapper.mobile + .project-modal iframe {
-  margin-top: 50px;
-  margin-bottom: 5px;
+	margin-top: 50px;
+	margin-bottom: 5px;
 }
 #wrapper.mobile + .project-modal .copy {
-  padding-left: 20px;
-  padding-right: 20px;
-  margin-bottom: 70px;
-  color: #b5b5b5;
-}/*# sourceMappingURL=index.css.map */
+	padding-left: 20px;
+	padding-right: 20px;
+	margin-bottom: 70px;
+	color: #b5b5b5;
+} /*# sourceMappingURL=index.css.map */
