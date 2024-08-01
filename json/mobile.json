@@ -1,10 +1,11 @@
 callback({
 	"projects": [
-				{
+		{
 			"spots": [
 				{
 					"folder": "assets/img/projects/divinity/",
-					"video": "http://player.vimeo.com/video/789505958"
+					"video": "http://player.vimeo.com/video/789505958",
+					"thumb": "assets/img/projects/divinity/thumb.jpg"
 				}
 			],
 			"thumb": "assets/img/projects/divinity/thumb.jpg",
@@ -15,7 +16,9 @@ callback({
 			"spots": [
 				{
 					"folder": "assets/img/projects/perfect/",
-					"video":"http://player.vimeo.com/video/260708231"}
+					"video": "http://player.vimeo.com/video/260708231",
+					"thumb": "assets/img/projects/perfect/thumb.jpg"
+				}
 			],
 			"thumb": "assets/img/projects/perfect/thumb.jpg",
 			"copytop": "<h1>EDDIE ALCAZAR</h1><ul><li>Director</li><li>Producer</li></ul>",
@@ -24,8 +27,9 @@ callback({
 		{
 			"spots": [
 				{
-"folder": "assets/img/projects/thevandal/",
-					"video": "http://player.vimeo.com/video/572876701"
+					"folder": "assets/img/projects/thevandal/",
+					"video": "http://player.vimeo.com/video/572876701",
+					"thumb": "assets/img/projects/thevandal/thumb.jpg"
 				}
 			],
 			"thumb": "assets/img/projects/thevandal/thumb.jpg",
@@ -61,12 +65,14 @@ callback({
 				{
 					"folder": "assets/img/projects/taylormade/",
 					"video": "http://player.vimeo.com/video/111592051",
+					"thumb": "assets/img/projects/taylormade/thumb.jpg",
+
 					"title": "SPOT 1"
 				},
 				{
 					"folder": "assets/img/projects/taylormade2/",
-					"thumb": "assets/img/projects/taylormade2/04.jpg",
 					"video": "http://player.vimeo.com/video/111592052",
+					"thumb": "assets/img/projects/taylormade/thumb.jpg",
 					"title": "SPOT 2"
 				}
 			],
@@ -125,7 +131,8 @@ callback({
 		{
 			"spots": [
 				{
-					"folder": "assets/img/projects/stills/"
+					"folder": "assets/img/projects/stills/",
+					"thumb": "assets/img/projects/stills/thumb.jpg"
 				}
 			],
 			"thumb": "assets/img/projects/stills/thumb.jpg",
