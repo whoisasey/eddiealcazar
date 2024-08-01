@@ -21,7 +21,7 @@ function init() {
 	//Init resize event
 	$(window).resize(onResize);
 	checkWindowSize();
-	if (window.innerWidth > 768) {
+	if (window.innerWidth > 820) {
 		onResize();
 
 		//Load xml
@@ -35,7 +35,7 @@ function init() {
 		});
 	}
 
-	if (window.innerWidth <= 768) {
+	if (window.innerWidth <= 820) {
 		$.ajax({
 			type: "GET",
 			url: "json/mobile.json",
@@ -289,7 +289,7 @@ function parseData(d) {
 }
 
 function checkWindowSize() {
-	if ($(window).width() <= 768) {
+	if ($(window).width() <= 820) {
 		$(".desktop").remove();
 	} else {
 		$(".mobile").remove();
