@@ -370,7 +370,6 @@ function closePageContainer() {
 			},
 		);
 		currPage = null;
-		console.log("icon showing after project close...");
 		icon.show();
 		TweenMax.staggerTo(
 			$("#copytop").find("li"),
@@ -643,15 +642,21 @@ var awardsScroll;
 
 function animateIn() {
 	$(".thumb").each(function (i) {
-		TweenMax.to(this, 1, { opacity: 1, delay: Math.abs(i - 3.5) * 0.2 });
+		var $this = $(this); // Store the current element
+		var delay = Math.abs(i - 3.5) * 0.2 * 1000; // Calculate delay in milliseconds
+
+		setTimeout(function () {
+			$this.css("opacity", 1); // Change the opacity to 1
+		}, delay);
 	});
 
 	TweenMax.to($("#copytop").find("h1"), 0.5, {
 		x: 0,
 		opacity: 1,
-		delay: 1,
+		delay: 1.2,
 		ease: Expo.easeOut,
 	});
+
 	TweenMax.staggerTo(
 		$("#copytop").find("li"),
 		0.5,
@@ -662,22 +667,14 @@ function animateIn() {
 	TweenMax.to($("#copybottom").find("h1"), 0.5, {
 		x: 0,
 		opacity: 1,
-		delay: 1.2,
+		delay: 1.4,
 		ease: Expo.easeOut,
 	});
 	TweenMax.staggerTo(
 		$("#copybottom").find("li"),
 		0.5,
-		{ x: 0, opacity: 1, delay: 1.3, ease: Expo.easeOut },
+		{ x: 0, opacity: 1, delay: 1.5, ease: Expo.easeOut },
 		0.1,
-	);
-
-	$(".center").hover(
-		function () {
-			TweenMax.set($(this).find(".highlight"), { opacity: 0.2 });
-			TweenMax.to($(this).find(".highlight"), 0.5, { opacity: 0 });
-		},
-		function () {},
 	);
 
 	$(".thumb").hover(
@@ -700,7 +697,9 @@ function onTimeout() {
 	isTimeout = true;
 
 	if (isLoaded) {
-		animateIn();
+		setTimeout(() => {
+			animateIn();
+		}, 4500);
 	}
 }
 
