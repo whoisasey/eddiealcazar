@@ -152,17 +152,27 @@ function parseData(d) {
 		}
 	}
 
+	const leftImageWidth = $(".container3").outerWidth(true);
+	const rightImageWidth = $(".container4").outerWidth(true);
+
+	const parentContainer = $("#pageContainer").width();
+	const availableWidth = parentContainer - (leftImageWidth + rightImageWidth);
+
+	$(".copy").css({
+		width: availableWidth + "px",
+	});
+
 	loader.start();
 	// Remove the video after 4 seconds
 	setTimeout(function () {
-		$("#blackOverlay").fadeIn(2000, function () {
-			$("#video").fadeOut(2000, function () {
+		$("#blackOverlay").fadeIn(200, function () {
+			$("#video").fadeOut(200, function () {
 				$(this).remove();
-				$("#blackOverlay").fadeOut(1500);
+				$("#blackOverlay").fadeOut(100);
 			});
 		});
-	}, 4000);
-	to = setTimeout(onTimeout, 4000);
+	}, 2000);
+	to = setTimeout(onTimeout, 2000);
 	isLoaded = true;
 
 	//Init events
@@ -384,13 +394,17 @@ function closePageContainer() {
 			delay: 0.1,
 			ease: Expo.easeOut,
 		});
+
+		console.log("...closing container");
+
 		TweenMax.staggerTo(
-			$("#copybottom").find("li"),
+			$("#copybottom").find("p"),
 			0.3,
 			{ x: 50, opacity: 0, delay: 0.2, ease: Expo.easeOut },
 			0.05,
 		);
 		$("#copybottom").css("z-index", "0");
+
 		TweenMax.delayedCall(1, function () {
 			$("#copytop").html(data.copy.top);
 			$("#copybottom").html(data.copy.bottom);
@@ -412,7 +426,7 @@ function closePageContainer() {
 				ease: Expo.easeOut,
 			});
 			TweenMax.staggerTo(
-				$("#copybottom").find("li"),
+				$("#copybottom").find("p"),
 				0.5,
 				{ x: 0, opacity: 1, delay: 0.3, ease: Expo.easeOut },
 				0.1,
@@ -471,13 +485,17 @@ function openPress() {
 			delay: 0.1,
 			ease: Expo.easeOut,
 		});
+		console.log("...opening");
+
 		TweenMax.staggerTo(
-			$("#copybottom").find("li"),
+			$("#copybottom").find("p"),
 			0.3,
 			{ x: 50, opacity: 0, delay: 0.2, ease: Expo.easeOut },
 			0.05,
 		);
+
 		$("#copybottom").css("z-index", "0");
+
 		TweenMax.delayedCall(1, function () {
 			$("#copytop").html(data.copy.top);
 			$("#copybottom").html(data.copy.bottom);
@@ -499,7 +517,7 @@ function openPress() {
 				ease: Expo.easeOut,
 			});
 			TweenMax.staggerTo(
-				$("#copybottom").find("li"),
+				$("#copybottom").find("p"),
 				0.5,
 				{ x: 0, opacity: 1, delay: 0.3, ease: Expo.easeOut },
 				0.1,
@@ -577,12 +595,29 @@ function getPage(indexPage, indexSpot) {
 				delay: 0.1,
 				ease: Expo.easeOut,
 			});
-			TweenMax.staggerTo(
-				$("#copybottom").find("li"),
-				0.3,
-				{ x: 50, opacity: 0, delay: 0.2, ease: Expo.easeOut },
-				0.05,
-			);
+			console.log("...get page");
+
+			// TweenMax.staggerTo(
+			// 	$("#copybottom").find("p"),
+			// 	0.3,
+			// 	{ x: 50, opacity: 0, delay: 0.2, ease: Expo.easeOut },
+			// 	0.05,
+			// );
+
+			$("#copybottom")
+				.find("p")
+				.each(function (index) {
+					$(this)
+						.delay(200 + index * 100)
+						.animate(
+							{
+								opacity: 1,
+								transform: "translateX(0)",
+							},
+							400,
+						);
+				});
+
 			$("#copybottom")[0].style.zIndex = "0";
 			TweenMax.delayedCall(1, function () {
 				$("#copytop").html(data.projects[indexPage].copytop);
@@ -620,7 +655,7 @@ function getPage(indexPage, indexSpot) {
 					ease: Expo.easeOut,
 				});
 				TweenMax.staggerTo(
-					$("#copybottom").find("li"),
+					$("#copybottom").find("p"),
 					0.5,
 					{ x: 0, opacity: 1, delay: 0.3, ease: Expo.easeOut },
 					0.1,
@@ -670,6 +705,9 @@ function animateIn() {
 		delay: 1.4,
 		ease: Expo.easeOut,
 	});
+
+	console.log("..animate in");
+
 	TweenMax.staggerTo(
 		$("#copybottom").find("li"),
 		0.5,
@@ -699,7 +737,7 @@ function onTimeout() {
 	if (isLoaded) {
 		setTimeout(() => {
 			animateIn();
-		}, 4500);
+		}, 500);
 	}
 }
 

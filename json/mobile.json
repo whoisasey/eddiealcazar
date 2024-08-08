@@ -10,7 +10,7 @@ callback({
 			],
 			"thumb": "assets/img/projects/divinity/thumb.jpg",
 			"copytop": "<h1>EDDIE ALCAZAR</h1><ul><li>Director</li><li>Producer</li></ul>",
-			"copybottom": "<h1>Divinity</h1><h1>Film</h1>"
+			"copybottom": "<div><h1>Divinity</h1><h1>Film</h1><p>A Film by Eddie Alcazar Presented by Steven Soderbergh</p><p class='bold'>Starring:</p><p>Stephen Dorff, Moises Arias, Jason Genao, Karrueche Tran, Mike O'Hearn, Emily Wills, with Scott Bakula and Bella Thorne <br/>Music by DJ Muggs and Bella Thorne</p></div>"
 		},
 		{
 			"spots": [

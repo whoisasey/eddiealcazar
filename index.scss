@@ -82,13 +82,19 @@ body {
 
 		.copy {
 			height: 80px;
-			width: 190px;
 			position: absolute;
-			top: 50%;
+			top: 60%;
 			left: 50%;
-			margin-left: -70px;
-			padding-left: 0.5%;
-			padding-right: 0.5%;
+			transform: translate(
+				-50%,
+				-50%
+			); /* Modern way to center both vertically and horizontally */
+			padding: 0.5%; /* Padding to add space within the box */
+			display: flex;
+			text-align: left;
+			flex-direction: column;
+			justify-content: center; /* Vertically center the content within the box */
+			box-sizing: border-box; /* Ensures padding is included in the element's width and height */
 		}
 
 		.copytop-desktop {
@@ -134,13 +140,21 @@ body {
 				font-size: 0.7vw;
 				margin-bottom: 1px;
 			}
+
+			p {
+				opacity: 0;
+			}
+		}
+
+		h1,
+		p {
+			color: $grey;
+			font-size: 0.7vw !important;
+			font-size: 0.8vw;
 		}
 
 		h1 {
-			color: $grey;
 			font-weight: bold;
-			font-size: 11px;
-			font-size: 0.8vw;
 		}
 
 		.bold {
