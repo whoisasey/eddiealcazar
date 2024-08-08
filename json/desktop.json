@@ -42,7 +42,7 @@ callback({
 			],
 			"thumb": "assets/img/projects/perfect/thumb.jpg",
 			"copytop": "<h1>EDDIE ALCAZAR</h1><ul><li>Director</li><li>Producer</li></ul>",
-			"copybottom": "<div><h1>Perfect</h1><h1>Film</h1><p>A Film By Eddie Alcazar</p></div>"
+			"copybottom": "<div><h1>Perfect</h1><h1>Feature Film</h1><h1>Presented by Steven Soderbergh</h1><li>*World Premiere SXSW</li></div>"
 		},
 		{
 			"spots": [
@@ -53,7 +53,7 @@ callback({
 			],
 			"thumb": "assets/img/projects/divinity/thumb.jpg",
 			"copytop": "<h1>EDDIE ALCAZAR</h1><ul><li>Director</li><li>Producer</li></ul>",
-			"copybottom": "<div><h1>Divinity</h1><h1>Film</h1><p>A Film by Eddie Alcazar Presented by Steven Soderbergh</p><p class='bold'>Starring:</p><p>Stephen Dorff, Moises Arias, Jason Genao, Karrueche Tran, Mike O'Hearn, Emily Wills, with Scott Bakula and Bella Thorne <br/>Music by DJ Muggs and Bella Thorne</p></div>"
+			"copybottom": "<div><h1>Divinity</h1><h1>Feature Film</h1><h1>Presented by Steven Soderbergh</h1><h1>Shudder</h1><li>*World Premiere Sundance Film Festival 2023</li><li>*Official Selection Sitges Film Festival</li></div>"
 		},
 		{
 			"spots": [
@@ -64,8 +64,8 @@ callback({
 			],
 			"thumb": "assets/img/projects/thevandal/thumb.jpg",
 			"copytop": "<h1>EDDIE ALCAZAR</h1><ul><li>Director</li><li>Producer</li></ul>",
-			"copybottom": "<div><h1>Vandal</h1><h1>Film</h1><p>A Film By Eddie Alcazar Presented by Darren Aronofsky</p></div>"
-		},
+			"copybottom": "<div><h1>Vandal</h1><h1>Short</h1><li>*World Premiere Cannes Directors Fortnight</li><li>*Official Selection Telluride Film Festival</li></div>"	
+			},
 		{
 			"spots": [
 				{

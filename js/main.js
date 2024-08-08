@@ -396,7 +396,7 @@ function closePageContainer() {
 		});
 
 		TweenMax.staggerTo(
-			$("#copybottom").find("p"),
+			$("#copybottom").find("li"),
 			0.3,
 			{ x: 50, opacity: 0, delay: 0.2, ease: Expo.easeOut },
 			0.05,
@@ -594,7 +594,7 @@ function getPage(indexPage, indexSpot) {
 			});
 
 			TweenMax.staggerTo(
-				$("#copybottom").find("p"),
+				$("#copybottom").find("li"),
 				0.3,
 				{ x: 50, opacity: 0, delay: 0.2, ease: Expo.easeOut },
 				0.08,
@@ -638,7 +638,7 @@ function getPage(indexPage, indexSpot) {
 				});
 
 				TweenMax.staggerTo(
-					$("#copybottom").find("p"),
+					$("#copybottom").find("li"),
 					0.5,
 					{ x: 0, opacity: 1, delay: 0.3, ease: Expo.easeOut },
 					0.1,
