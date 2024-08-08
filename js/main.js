@@ -395,8 +395,6 @@ function closePageContainer() {
 			ease: Expo.easeOut,
 		});
 
-		console.log("...closing container");
-
 		TweenMax.staggerTo(
 			$("#copybottom").find("p"),
 			0.3,
@@ -485,7 +483,6 @@ function openPress() {
 			delay: 0.1,
 			ease: Expo.easeOut,
 		});
-		console.log("...opening");
 
 		TweenMax.staggerTo(
 			$("#copybottom").find("p"),
@@ -595,28 +592,13 @@ function getPage(indexPage, indexSpot) {
 				delay: 0.1,
 				ease: Expo.easeOut,
 			});
-			console.log("...get page");
 
-			// TweenMax.staggerTo(
-			// 	$("#copybottom").find("p"),
-			// 	0.3,
-			// 	{ x: 50, opacity: 0, delay: 0.2, ease: Expo.easeOut },
-			// 	0.05,
-			// );
-
-			$("#copybottom")
-				.find("p")
-				.each(function (index) {
-					$(this)
-						.delay(200 + index * 100)
-						.animate(
-							{
-								opacity: 1,
-								transform: "translateX(0)",
-							},
-							400,
-						);
-				});
+			TweenMax.staggerTo(
+				$("#copybottom").find("p"),
+				0.3,
+				{ x: 50, opacity: 0, delay: 0.2, ease: Expo.easeOut },
+				0.08,
+			);
 
 			$("#copybottom")[0].style.zIndex = "0";
 			TweenMax.delayedCall(1, function () {
@@ -654,6 +636,7 @@ function getPage(indexPage, indexSpot) {
 					delay: 0.2,
 					ease: Expo.easeOut,
 				});
+
 				TweenMax.staggerTo(
 					$("#copybottom").find("p"),
 					0.5,
@@ -705,8 +688,6 @@ function animateIn() {
 		delay: 1.4,
 		ease: Expo.easeOut,
 	});
-
-	console.log("..animate in");
 
 	TweenMax.staggerTo(
 		$("#copybottom").find("li"),
