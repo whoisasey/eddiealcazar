@@ -16,6 +16,7 @@ var isLoaded = false;
 var isTimeout = false;
 var isAnimating = false;
 var to;
+let thumbWidth;
 
 function init() {
 	//Init resize event
@@ -395,8 +396,6 @@ function closePageContainer() {
 			ease: Expo.easeOut,
 		});
 
-		console.log("... close project container");
-
 		TweenMax.staggerTo(
 			$("#copybottom").find("li"),
 			0.3,
@@ -411,7 +410,6 @@ function closePageContainer() {
 			$("#copybottom").html(data.copy.bottom);
 
 			TweenMax.set($(".copy").find("li"), { x: -50, opacity: 0 });
-			console.log(".. close page container - delayed call");
 
 			TweenMax.set($("#copybottom").find("h1"), { x: -50, opacity: 0 });
 			TweenMax.set($("#copybottom").find("li"), { x: -50, opacity: 0 });
@@ -499,8 +497,6 @@ function openPress() {
 			ease: Expo.easeOut,
 		});
 
-		console.log("...open press");
-
 		TweenMax.staggerTo(
 			$("#copybottom").find("li"),
 			0.3,
@@ -573,7 +569,6 @@ function getPage(indexPage, indexSpot) {
 		page.css("z-index", "5");
 		page.css("visibility", "visible");
 		icon.hide();
-		swapThumbnail();
 
 		if (currPage != null) {
 			var prevPage = currPage;
@@ -623,6 +618,7 @@ function getPage(indexPage, indexSpot) {
 			});
 
 			console.log("... get page");
+			swapThumbnail();
 
 			TweenMax.staggerTo(
 				$("#copybottom").find("li"),
@@ -680,6 +676,8 @@ function getPage(indexPage, indexSpot) {
 						$("#copybottom")[0].style.zIndex = "15";
 					},
 				);
+
+				swapThumbnail();
 			});
 		}
 
@@ -701,6 +699,9 @@ function animateIn() {
 			$this.css("opacity", 1); // Change the opacity to 1
 		}, delay);
 	});
+
+	// get thumbnail width of first thumbnail
+	thumbWidth = $("#nav").children()[0].offsetWidth;
 
 	TweenMax.to($("#copytop").find("h1"), 0.5, {
 		x: 0,
@@ -877,33 +878,43 @@ function closeProject() {
 
 function swapThumbnail() {
 	$("#nav").on("click", ".thumb", function () {
-		// Get the clicked element and its index
-		var clickedIndex = $(this).index();
+		let newThumbPos;
+		let targetElNewPos;
 
 		var clickedElement = $(this);
+		// console.log("clickedElement...", clickedElement);
 
-		// Define the target index (index 4 in this case)
-		var targetIndex = 4;
-		var targetElement = $(".thumb").eq(targetIndex);
+		// var targetIndex = 4;
+		// var targetElement = $(".thumb").eq(targetIndex);
 
-		// Swap the elements' positions
-		if (clickedIndex !== targetIndex) {
-			// Get the positions of the clicked element and the target element
-			// var clickedPosition = clickedElement.css("left");
+		var clickedPosition = clickedElement.css("left");
+		var targetPosition = targetElement.css("left");
 
-			// var targetPosition = targetElement.css("left");
+		// instead of index, place the clicked thumbnail at this position
+		// 1) get width of first thumb
+		if (thumbWidth === 213) {
+			// Swap the left CSS values to switch their positions
+			newThumbPos = thumbWidth * 4;
+			targetElNewPos = clickedElement.index() * thumbWidth;
 
-			// // Swap the left CSS values to switch their positions
-			// clickedElement.css("left", `${targetPosition}`);
-			// targetElement.css("left", `${clickedPosition}`);
+			// clicked el should have position @ newThumbPos
+			// target el should have position @ index of clicked el * thumbwidth
 
-			// Optionally, you can also swap their HTML content
-			var tempHTML = clickedElement.html();
-			clickedElement.html(targetElement.html());
-			targetElement.html(tempHTML);
+			clickedElement.css("left", `${newThumbPos}px`);
+			targetElement.css("left", `${clickedPosition}`);
 
-			// only works on first clicked item
+			// Reorder the elements in the DOM to reset their indices
+			if (clickedElement.index() < targetIndex) {
+				clickedElement.insertAfter(targetElement); // Place clickedElement after targetElement
+			} else {
+				clickedElement.insertBefore(targetElement); // Place clickedElement before targetElement
+			}
 		}
+
+		// if screen has 9 thumbnails, multiply with by 5 to get position of 4th index
+		// if screen has 8 thumbnails, multiply by 4 to get position of 3rd index?
+
+		// only works on first clicked item
 	});
 }
 
