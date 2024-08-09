@@ -141,7 +141,7 @@ callback({
 		}
 	],
 	"copy": {
-		"bottom": "<h1>REPRESENTATION</h1><ul><li>FEATURE FILM</li><li class='bold'><a href='http://www.anonymouscontent.com/' target='_blank'>ANONYMOUS CONTENT</a></li><li>LUKE RIVETT</li><li>BARD DOROS</li><li>310.558.9387</li></ul>",
+		"bottom": "<h1>REPRESENTATION</h1><ul><li>CAA</li><li class='bold'><a href='http://www.anonymouscontent.com/' target='_blank'>ANONYMOUS CONTENT</a></li><li><a href='https://www.chromista.tv/' target='_blank'>Chromista</a></li></ul>",
 		"top": "<h1>EDDIE ALCAZAR</h1><h1 style='font-size:14px;font-weight:400'>DIRECTOR<h1>"
 	}
 })
