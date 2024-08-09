@@ -283,6 +283,7 @@ function parseData(d) {
 		} else {
 			// Allow horizontal scrolling within #scroll-container
 			$("#scroll-container")[0].scrollLeft += event.originalEvent.deltaY;
+			// findCenterThumb();
 		}
 	});
 
@@ -700,8 +701,35 @@ function animateIn() {
 		}, delay);
 	});
 
-	// get thumbnail width of first thumbnail
+	// get thumbnail width of first thumbnail to be used in swapThumnail function
 	thumbWidth = $("#nav").children()[0].offsetWidth;
+
+	// automatically scroll the #nav
+	// Define the speed of scrolling (e.g., 1 pixel per 10 milliseconds)
+	var scrollSpeed = 1; // Speed in pixels
+	var intervalTime = 50; // Interval time in milliseconds (lower value = faster scrolling)
+
+	// Automatically scroll the #nav container
+	function autoScrollNav() {
+		// Get the current scroll position
+		var currentScrollPosition = $("#scroll-container").scrollLeft();
+
+		// Set the new scroll position by adding the scrollSpeed to the current position
+		var newScrollPosition = currentScrollPosition + scrollSpeed;
+
+		// Scroll the #scroll-container container to the new position
+		$("#scroll-container").scrollLeft(newScrollPosition);
+
+		// If we reach the end, stop scrolling
+		var maxScrollPosition =
+			$("#scroll-container")[0].scrollWidth - $("#scroll-container").width();
+		if (newScrollPosition >= maxScrollPosition) {
+			clearInterval(scrollInterval); // Stop the interval
+		}
+	}
+
+	// Start the auto-scroll on page load
+	// var scrollInterval = setInterval(autoScrollNav, intervalTime);
 
 	TweenMax.to($("#copytop").find("h1"), 0.5, {
 		x: 0,
@@ -743,6 +771,16 @@ function animateIn() {
 			TweenMax.to($(this).find(".cs"), 0.3, { opacity: 0 });
 		},
 	);
+
+	// Stop scrolling when a .thumb element is hovered
+	// $("#nav").on("mouseenter", ".thumb", function () {
+	// 	clearInterval(scrollInterval);
+	// });
+
+	// // Stop scrolling when a .thumb element is clicked
+	// $("#nav").on("click", ".thumb", function () {
+	// 	clearInterval(scrollInterval);
+	// });
 
 	TweenMax.to($("#footer"), 4, { opacity: 1 });
 
@@ -879,13 +917,15 @@ function closeProject() {
 function swapThumbnail() {
 	$("#nav").on("click", ".thumb", function () {
 		let newThumbPos;
-		let targetElNewPos;
 
 		var clickedElement = $(this);
-		// console.log("clickedElement...", clickedElement);
 
-		// var targetIndex = 4;
-		// var targetElement = $(".thumb").eq(targetIndex);
+		var targetIndex = 4;
+		var targetElement = $(".thumb").eq(targetIndex);
+		// TODO: when the thumbs have scrolled, get the position of the thumbnail currently in the middle of the screen
+		// set position there instead of index 4
+
+		// TODO: when thumb is clicked, reset/re-align thumbnails to grid?
 
 		var clickedPosition = clickedElement.css("left");
 		var targetPosition = targetElement.css("left");
@@ -895,7 +935,6 @@ function swapThumbnail() {
 		if (thumbWidth === 213) {
 			// Swap the left CSS values to switch their positions
 			newThumbPos = thumbWidth * 4;
-			targetElNewPos = clickedElement.index() * thumbWidth;
 
 			// clicked el should have position @ newThumbPos
 			// target el should have position @ index of clicked el * thumbwidth
@@ -910,12 +949,52 @@ function swapThumbnail() {
 				clickedElement.insertBefore(targetElement); // Place clickedElement before targetElement
 			}
 		}
+		// if(thumbWidth === {width at 8 thumbnails})
 
 		// if screen has 9 thumbnails, multiply with by 5 to get position of 4th index
 		// if screen has 8 thumbnails, multiply by 4 to get position of 3rd index?
 
 		// only works on first clicked item
 	});
+}
+
+function findCenterThumb() {
+	// Get the scroll position of #nav
+	var scrollLeft = $("#nav").scrollLeft();
+
+	// Get the width of the viewport (the visible area within #nav)
+	var viewportWidth = $(window).width();
+
+	// Calculate the center of the viewport relative to #nav
+	var centerViewport = scrollLeft + viewportWidth / 2;
+
+	// Variable to track the closest thumb to the center
+	var closestThumb = null;
+	var closestDistance = Infinity;
+
+	// Iterate through each thumb to find the one closest to the center
+	$(".thumb").each(function () {
+		// Get the position and width of the current thumb
+		var thumbLeft = $(this).offset().left;
+		var thumbWidth = $(this).outerWidth();
+		var thumbCenter = thumbLeft + thumbWidth / 2;
+
+		// Calculate the distance from the center of the viewport
+		var distance = Math.abs(thumbCenter - centerViewport);
+
+		// Update closest thumb if this one is closer
+		if (distance < closestDistance) {
+			closestDistance = distance;
+			closestThumb = $(this);
+		}
+	});
+
+	// Now, `closestThumb` contains the element in the center of the screen
+	if (closestThumb) {
+		console.log("The thumb closest to the center is:", closestThumb);
+		// You can add any additional behavior here, such as highlighting the element
+		// closestThumb.addClass('center-thumb'); // Example of adding a class to the center thumb
+	}
 }
 
 $(document).ready(init);
