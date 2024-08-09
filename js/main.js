@@ -395,12 +395,15 @@ function closePageContainer() {
 			ease: Expo.easeOut,
 		});
 
+		console.log("... close project container");
+
 		TweenMax.staggerTo(
 			$("#copybottom").find("li"),
 			0.3,
 			{ x: 50, opacity: 0, delay: 0.2, ease: Expo.easeOut },
 			0.05,
 		);
+
 		$("#copybottom").css("z-index", "0");
 
 		TweenMax.delayedCall(1, function () {
@@ -408,7 +411,10 @@ function closePageContainer() {
 			$("#copybottom").html(data.copy.bottom);
 
 			TweenMax.set($(".copy").find("li"), { x: -50, opacity: 0 });
+			console.log(".. close page container - delayed call");
+
 			TweenMax.set($("#copybottom").find("h1"), { x: -50, opacity: 0 });
+			TweenMax.set($("#copybottom").find("li"), { x: -50, opacity: 0 });
 
 			TweenMax.staggerTo(
 				$("#copytop").find("li"),
@@ -425,6 +431,15 @@ function closePageContainer() {
 			});
 			TweenMax.staggerTo(
 				$("#copybottom").find("p"),
+				0.5,
+				{ x: 0, opacity: 1, delay: 0.3, ease: Expo.easeOut },
+				0.1,
+				function () {
+					$("#copybottom").css("z-index", "15");
+				},
+			);
+			TweenMax.staggerTo(
+				$("#copybottom").find("li"),
 				0.5,
 				{ x: 0, opacity: 1, delay: 0.3, ease: Expo.easeOut },
 				0.1,
@@ -484,8 +499,10 @@ function openPress() {
 			ease: Expo.easeOut,
 		});
 
+		console.log("...open press");
+
 		TweenMax.staggerTo(
-			$("#copybottom").find("p"),
+			$("#copybottom").find("li"),
 			0.3,
 			{ x: 50, opacity: 0, delay: 0.2, ease: Expo.easeOut },
 			0.05,
@@ -513,6 +530,17 @@ function openPress() {
 				delay: 0.2,
 				ease: Expo.easeOut,
 			});
+
+			TweenMax.to(
+				$("#copybottom").find("li"),
+				0.5,
+				{ x: 0, opacity: 1, delay: 0.3, ease: Expo.easeOut },
+				0.1,
+				function () {
+					$("#copybottom").css("z-index", "15");
+				},
+			);
+
 			TweenMax.staggerTo(
 				$("#copybottom").find("p"),
 				0.5,
@@ -593,6 +621,8 @@ function getPage(indexPage, indexSpot) {
 				ease: Expo.easeOut,
 			});
 
+			console.log("... get page");
+
 			TweenMax.staggerTo(
 				$("#copybottom").find("li"),
 				0.3,
@@ -622,6 +652,7 @@ function getPage(indexPage, indexSpot) {
 
 				TweenMax.set($(".copy").find("li"), { x: -50, opacity: 0 });
 				TweenMax.set($("#copybottom").find("h1"), { x: -50, opacity: 0 });
+				TweenMax.set($("#copybottom").find("li"), { x: -50, opacity: 0 });
 
 				TweenMax.staggerTo(
 					$("#copytop").find("li"),
@@ -636,6 +667,8 @@ function getPage(indexPage, indexSpot) {
 					delay: 0.2,
 					ease: Expo.easeOut,
 				});
+
+				console.log("...get current project");
 
 				TweenMax.staggerTo(
 					$("#copybottom").find("li"),
@@ -681,6 +714,8 @@ function animateIn() {
 		{ x: 0, opacity: 1, delay: 1.1, ease: Expo.easeOut },
 		0.1,
 	);
+
+	console.log("...animate in - first load");
 
 	TweenMax.to($("#copybottom").find("h1"), 0.5, {
 		x: 0,
