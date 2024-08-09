@@ -573,6 +573,7 @@ function getPage(indexPage, indexSpot) {
 		page.css("z-index", "5");
 		page.css("visibility", "visible");
 		icon.hide();
+		swapThumbnail();
 
 		if (currPage != null) {
 			var prevPage = currPage;
@@ -871,6 +872,38 @@ function closeProject() {
 			TweenMax.set($("#project-modal")[0], { autoAlpha: 0 });
 			$("#project-modal")[0].innerHTML = "";
 		},
+	});
+}
+
+function swapThumbnail() {
+	$("#nav").on("click", ".thumb", function () {
+		// Get the clicked element and its index
+		var clickedIndex = $(this).index();
+
+		var clickedElement = $(this);
+
+		// Define the target index (index 4 in this case)
+		var targetIndex = 4;
+		var targetElement = $(".thumb").eq(targetIndex);
+
+		// Swap the elements' positions
+		if (clickedIndex !== targetIndex) {
+			// Get the positions of the clicked element and the target element
+			// var clickedPosition = clickedElement.css("left");
+
+			// var targetPosition = targetElement.css("left");
+
+			// // Swap the left CSS values to switch their positions
+			// clickedElement.css("left", `${targetPosition}`);
+			// targetElement.css("left", `${clickedPosition}`);
+
+			// Optionally, you can also swap their HTML content
+			var tempHTML = clickedElement.html();
+			clickedElement.html(targetElement.html());
+			targetElement.html(tempHTML);
+
+			// only works on first clicked item
+		}
 	});
 }
 
