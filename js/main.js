@@ -861,7 +861,7 @@ function swapThumbnail() {
 
 		// instead of index, place the clicked thumbnail at this position
 		// 1) get width of first thumb
-		if (thumbWidth === 213) {
+		if (thumbWidth === 213 || thumbWidth === 237) {
 			// Swap the left CSS values to switch their positions
 			newThumbPos = thumbWidth * 4;
 			// newThumbPos = thumbWidth * centerThumbIdx;
