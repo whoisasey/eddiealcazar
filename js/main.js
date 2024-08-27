@@ -17,6 +17,8 @@ var isTimeout = false;
 var isAnimating = false;
 var to;
 let thumbWidth;
+let centerThumb;
+let centerThumbIdx;
 
 function init() {
 	//Init resize event
@@ -61,11 +63,19 @@ function parseData(d) {
 	TweenMax.set($(".copy").find("li"), { x: -50, opacity: 0 });
 	TweenMax.set($(".copy").find("h1"), { x: -50, opacity: 0 });
 
-	console.log("projects length:", data.projects.length);
-
 	//Init thumbs
 	var count = 0;
-	for (var i = 0; i < data.projects.length; i++) {
+	let projects;
+	// if (window.innerWidth <= 1440) {
+	// 	projects = data.projects.slice(0, 8);
+	// }
+	// if (window.innerWidth > 1440) {
+	// 	projects = data.projects.slice(0, 9);
+	// }
+	projects = data.projects;
+	console.log("projects length:", projects.length);
+
+	for (var i = 0; i < projects.length; i++) {
 		var div = document.createElement("div");
 		div.setAttribute("class", "thumb");
 
@@ -75,9 +85,9 @@ function parseData(d) {
 			div.style.width = 100 / 8 + "%";
 		}
 		if (window.innerWidth > 1440) {
-			if (data.projects.length <= 8) {
-				div.style.left = count * (100 / data.projects.length) + "%";
-				div.style.width = 100 / data.projects.length + "%";
+			if (projects.length <= 8) {
+				div.style.left = count * (100 / projects.length) + "%";
+				div.style.width = 100 / projects.length + "%";
 			} else {
 				// if there are more projects on a large screen, start scrolling
 				div.style.left = count * (100 / 9) + "%";
@@ -87,18 +97,17 @@ function parseData(d) {
 
 		$("#nav")[0].appendChild(div);
 
-		var img = loader.addImage(data.projects[i].thumb);
+		var img = loader.addImage(projects[i].thumb);
 		div.appendChild(img);
 
 		jQuery.data(div, "ident", i);
 
 		count++;
 	}
-
-	for (i = 0; i < data.projects.length; i++) {
-		if (data.projects[i].isCenter != "true") {
-			for (var j = 0; j < data.projects[i].spots.length; j++) {
-				var spot = data.projects[i].spots[j];
+	for (i = 0; i < projects.length; i++) {
+		if (projects[i].isCenter != "true") {
+			for (var j = 0; j < projects[i].spots.length; j++) {
+				var spot = projects[i].spots[j];
 
 				var page = document.createElement("div");
 				page.setAttribute("class", "page page" + i + "" + j);
@@ -185,17 +194,17 @@ function parseData(d) {
 	});
 
 	$(".imgContainer").click(function () {
-		if (data.projects[jQuery.data(this, "projectID")].isStills == "true") {
+		if (projects[jQuery.data(this, "projectID")].isStills == "true") {
 			window.open("https://www.flickr.com/photos/eddiealcazar/", "_blank");
 		} else if (
-			data.projects[jQuery.data(this, "projectID")].spots[
+			projects[jQuery.data(this, "projectID")].spots[
 				jQuery.data(this, "spotID")
 			].video != null
 		) {
 			var index = $(".imgContainer").index(this);
 			$("iframe").attr(
 				"src",
-				data.projects[jQuery.data(this, "projectID")].spots[
+				projects[jQuery.data(this, "projectID")].spots[
 					jQuery.data(this, "spotID")
 				].video + "?title=0&byline=0&badge=0&loop=1&autoplay=1&color=333",
 			);
@@ -287,31 +296,6 @@ function parseData(d) {
 		}
 	});
 
-	// Show fullscreen video on click of .full-video button
-	$(".full-video").click(function () {
-		$(".fullscreen-video").fadeIn(1500);
-
-		// Get the video element
-		var videoElement = $("#video")[0];
-
-		// Play the video
-		videoElement.play();
-	});
-
-	// Close fullscreen video on click of #full-video-close button
-	$("#full-video-close").click(function () {
-		$(".fullscreen-video").fadeOut(1500);
-		resetVideo();
-	});
-
-	// Close the player on pressing the "Escape" key
-	$(document).keydown(function (e) {
-		if (e.key === "Escape" || e.keyCode === 27) {
-			$(".fullscreen-video").fadeOut(1500);
-			resetVideo();
-		}
-	});
-
 	onResize();
 }
 
@@ -333,18 +317,18 @@ function parseMobileData(d) {
 
 	//Init thumbs
 	var count = 0;
-	for (var i = 0; i < data.projects.length; i++) {
-		if (data.projects[i].thumb) {
+	for (var i = 0; i < projects.length; i++) {
+		if (projects[i].thumb) {
 			var div = document.createElement("div");
 			div.setAttribute("class", "thumb");
 			$("#projects")[0].appendChild(div);
 
-			for (var j = 0; j < data.projects[i].spots.length; j++) {
+			for (var j = 0; j < projects[i].spots.length; j++) {
 				var img = new Image();
-				if (data.projects[i].spots[j].thumb) {
-					img.src = data.projects[i].spots[j].thumb;
+				if (projects[i].spots[j].thumb) {
+					img.src = projects[i].spots[j].thumb;
 				} else {
-					img.src = "../" + data.projects[i].spots[j].folder + "01.jpg";
+					img.src = "../" + projects[i].spots[j].folder + "01.jpg";
 				}
 				div.appendChild(img);
 				jQuery.data(img, "ident", i);
@@ -368,7 +352,6 @@ function parseMobileData(d) {
 function closePageContainer() {
 	if (currPage != null) {
 		var prevPage = currPage;
-		const icon = $(".full-video");
 		isAnimating = true;
 		TweenMax.staggerTo(
 			currPage.find(".imgContainer"),
@@ -382,7 +365,7 @@ function closePageContainer() {
 			},
 		);
 		currPage = null;
-		icon.show();
+
 		TweenMax.staggerTo(
 			$("#copytop").find("li"),
 			0.3,
@@ -453,15 +436,6 @@ function closePageContainer() {
 		TweenMax.to($("#awards"), 0.5, { autoAlpha: 0 });
 		TweenMax.to($("#press"), 0.5, { autoAlpha: 0, delay: 0.1 });
 	}
-}
-
-function resetVideo() {
-	// Get the video element
-	var videoElement = $("#video")[0];
-
-	// Pause the video and reset its playback
-	videoElement.pause();
-	videoElement.currentTime = 0;
 }
 
 var isPressOpen = false;
@@ -559,7 +533,7 @@ function openPress() {
 function getPage(indexPage, indexSpot) {
 	if (indexPage != currPageID || indexSpot != currSpotID) {
 		var page = $(".page" + indexPage + "" + indexSpot);
-		const icon = $(".full-video");
+
 		TweenMax.set(page.find("img"), { scale: 1 });
 		TweenMax.set(page.find(".imgContainer"), { opacity: 0 });
 
@@ -569,7 +543,6 @@ function getPage(indexPage, indexSpot) {
 		}
 		page.css("z-index", "5");
 		page.css("visibility", "visible");
-		icon.hide();
 
 		if (currPage != null) {
 			var prevPage = currPage;
@@ -618,7 +591,6 @@ function getPage(indexPage, indexSpot) {
 				ease: Expo.easeOut,
 			});
 
-			console.log("... get page");
 			swapThumbnail();
 
 			TweenMax.staggerTo(
@@ -630,12 +602,12 @@ function getPage(indexPage, indexSpot) {
 
 			$("#copybottom")[0].style.zIndex = "0";
 			TweenMax.delayedCall(1, function () {
-				$("#copytop").html(data.projects[indexPage].copytop);
-				$("#copybottom").html(data.projects[indexPage].copybottom);
+				$("#copytop").html(projects[indexPage].copytop);
+				$("#copybottom").html(projects[indexPage].copybottom);
 
-				if (data.projects[indexPage].spots.length > 1) {
-					for (var i = 0; i < data.projects[indexPage].spots.length; i++) {
-						var spot = data.projects[indexPage].spots[i];
+				if (projects[indexPage].spots.length > 1) {
+					for (var i = 0; i < projects[indexPage].spots.length; i++) {
+						var spot = projects[indexPage].spots[i];
 						$("#copybottom").append(
 							'<h1><a href="#" onclick="getPage(' +
 								indexPage +
@@ -665,8 +637,6 @@ function getPage(indexPage, indexSpot) {
 					delay: 0.2,
 					ease: Expo.easeOut,
 				});
-
-				console.log("...get current project");
 
 				TweenMax.staggerTo(
 					$("#copybottom").find("li"),
@@ -704,33 +674,6 @@ function animateIn() {
 	// get thumbnail width of first thumbnail to be used in swapThumnail function
 	thumbWidth = $("#nav").children()[0].offsetWidth;
 
-	// automatically scroll the #nav
-	// Define the speed of scrolling (e.g., 1 pixel per 10 milliseconds)
-	var scrollSpeed = 1; // Speed in pixels
-	var intervalTime = 50; // Interval time in milliseconds (lower value = faster scrolling)
-
-	// Automatically scroll the #nav container
-	function autoScrollNav() {
-		// Get the current scroll position
-		var currentScrollPosition = $("#scroll-container").scrollLeft();
-
-		// Set the new scroll position by adding the scrollSpeed to the current position
-		var newScrollPosition = currentScrollPosition + scrollSpeed;
-
-		// Scroll the #scroll-container container to the new position
-		$("#scroll-container").scrollLeft(newScrollPosition);
-
-		// If we reach the end, stop scrolling
-		var maxScrollPosition =
-			$("#scroll-container")[0].scrollWidth - $("#scroll-container").width();
-		if (newScrollPosition >= maxScrollPosition) {
-			clearInterval(scrollInterval); // Stop the interval
-		}
-	}
-
-	// Start the auto-scroll on page load
-	// var scrollInterval = setInterval(autoScrollNav, intervalTime);
-
 	TweenMax.to($("#copytop").find("h1"), 0.5, {
 		x: 0,
 		opacity: 1,
@@ -744,8 +687,6 @@ function animateIn() {
 		{ x: 0, opacity: 1, delay: 1.1, ease: Expo.easeOut },
 		0.1,
 	);
-
-	console.log("...animate in - first load");
 
 	TweenMax.to($("#copybottom").find("h1"), 0.5, {
 		x: 0,
@@ -771,16 +712,6 @@ function animateIn() {
 			TweenMax.to($(this).find(".cs"), 0.3, { opacity: 0 });
 		},
 	);
-
-	// Stop scrolling when a .thumb element is hovered
-	// $("#nav").on("mouseenter", ".thumb", function () {
-	// 	clearInterval(scrollInterval);
-	// });
-
-	// // Stop scrolling when a .thumb element is clicked
-	// $("#nav").on("click", ".thumb", function () {
-	// 	clearInterval(scrollInterval);
-	// });
 
 	TweenMax.to($("#footer"), 4, { opacity: 1 });
 
@@ -811,12 +742,6 @@ function onResize() {
 	container.style.width = width;
 	container.style.height = height;
 	container.style.marginTop = marginTop;
-
-	const icon = document.querySelector(".full-video");
-
-	icon.style.top = `${0 - (window.innerHeight - parseFloat(height)) / 4}px`;
-
-	icon.style.left = w / 2 - 50 + "px";
 
 	$("iframe").css("width", w + "px");
 	$("iframe").css("height", $(window).width() / (1600 / 600) + "px");
@@ -858,40 +783,40 @@ function onResize() {
 
 function getProject(ident, spot) {
 	$("#project-modal").html("");
-	if (data.projects[ident].spots[spot].video) {
+	if (projects[ident].spots[spot].video) {
 		$("#project-modal").append(
 			"<iframe width=" +
 				$(window).width() +
 				" height=" +
 				$(window).width() / 2.7 +
 				' src="' +
-				data.projects[ident].spots[spot].video +
+				projects[ident].spots[spot].video +
 				'" frameborder=0></iframe>',
 		);
 	}
-	if (data.projects[ident].spots[spot].video) {
+	if (projects[ident].spots[spot].video) {
 		$("#project-modal").append(
-			'<img src="' + data.projects[ident].spots[spot].folder + '01.jpg" />',
+			'<img src="' + projects[ident].spots[spot].folder + '01.jpg" />',
 		);
 	} else {
 		$("#project-modal").append(
 			'<img style="margin-top:50px" src="' +
-				data.projects[ident].spots[spot].folder +
+				projects[ident].spots[spot].folder +
 				'01.jpg" />',
 		);
 	}
 	$("#project-modal").append(
-		'<img src="' + data.projects[ident].spots[spot].folder + '02.jpg" />',
+		'<img src="' + projects[ident].spots[spot].folder + '02.jpg" />',
 	);
 	$("#project-modal").append(
-		'<img src="' + data.projects[ident].spots[spot].folder + '03.jpg" />',
+		'<img src="' + projects[ident].spots[spot].folder + '03.jpg" />',
 	);
 	$("#project-modal").append(
-		'<img src="' + data.projects[ident].spots[spot].folder + '04.jpg" />',
+		'<img src="' + projects[ident].spots[spot].folder + '04.jpg" />',
 	);
 	var description = document.createElement("div");
 	description.setAttribute("class", "copy");
-	description.innerHTML = data.projects[ident].copybottom;
+	description.innerHTML = projects[ident].copybottom;
 	$("#project-modal")[0].appendChild(description);
 	$("#project-modal").append(
 		'<img src="assets/img/ui/back.png" style="position:absolute;top:5px;left:5px;width:auto;" class="backBtn" />',
@@ -925,8 +850,6 @@ function swapThumbnail() {
 		// TODO: when the thumbs have scrolled, get the position of the thumbnail currently in the middle of the screen
 		// set position there instead of index 4
 
-		// TODO: when thumb is clicked, reset/re-align thumbnails to grid?
-
 		var clickedPosition = clickedElement.css("left");
 		var targetPosition = targetElement.css("left");
 
@@ -935,12 +858,21 @@ function swapThumbnail() {
 		if (thumbWidth === 213) {
 			// Swap the left CSS values to switch their positions
 			newThumbPos = thumbWidth * 4;
+			// newThumbPos = thumbWidth * centerThumbIdx;
+			// index should be of the closet thumb to center
 
 			// clicked el should have position @ newThumbPos
 			// target el should have position @ index of clicked el * thumbwidth
 
+			// console.log("new thumb pos...", newThumbPos);
+			// console.log("new first thumb", centerThumbIdx - 4);
+
 			clickedElement.css("left", `${newThumbPos}px`);
 			targetElement.css("left", `${clickedPosition}`);
+
+			// $("#nav").animate({ scrollLeft: newThumbPos }, 300);
+
+			// console.log("new position", thumbWidth * centerThumbIdx);
 
 			// Reorder the elements in the DOM to reset their indices
 			if (clickedElement.index() < targetIndex) {
@@ -986,15 +918,32 @@ function findCenterThumb() {
 		if (distance < closestDistance) {
 			closestDistance = distance;
 			closestThumb = $(this);
+			centerThumb = closestThumb;
 		}
 	});
 
 	// Now, `closestThumb` contains the element in the center of the screen
 	if (closestThumb) {
-		console.log("The thumb closest to the center is:", closestThumb);
-		// You can add any additional behavior here, such as highlighting the element
-		// closestThumb.addClass('center-thumb'); // Example of adding a class to the center thumb
+		centerThumbIdx = closestThumb.index();
+
+		// console.log("The thumb closest to the center is:", closestThumb);
+		// console.log("Index of the closest thumb:", centerThumbIdx);
+
+		// TODO: snap thumb to 213 (width) * 4
 	}
 }
+
+// function trimProjects(data) {
+// 	// Check if the projects array length is greater than 9
+// 	if (projects.length > 9) {
+// 		console.log("trim projects....");
+
+// 		// Trim the projects array to the first 9 elements
+// 		return (projects = projects.slice(0, 9));
+// 	}
+
+// 	// Now you can work with the trimmed data object as needed
+// 	console.log(projects);
+// }
 
 $(document).ready(init);

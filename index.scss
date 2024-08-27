@@ -186,10 +186,19 @@ body {
 		#nav {
 			position: relative;
 			display: inline-block;
+			// display: flex;
+			// scroll-snap-type: x mandatory; /* Enable snapping */
+			// scroll-behavior: smooth; /* Smooth scrolling */
+
+			// &::-webkit-scrollbar {
+			// 	display: none; /* Hide scrollbar for a cleaner look */
+			// }
 
 			.thumb {
 				opacity: 0;
 				transition: opacity 1s ease-in-out;
+				// flex: 0 0 213px; /* Fixed width for each item */
+				// scroll-snap-align: start; /* Snap to the start of the item */
 			}
 
 			.thumb,
