@@ -840,18 +840,13 @@ function closeProject() {
 }
 
 function swapThumbnail() {
-	console.log("thumbnail swap fn");
-
 	$("#nav").on("click", ".thumb", function () {
 		let newThumbPos;
-		console.log("newThumbPos...", newThumbPos);
-		console.log("thumbWidth...", thumbWidth);
 
 		var clickedElement = $(this);
 
 		var targetIndex = 4;
 		var targetElement = $(".thumb").eq(targetIndex);
-		console.log("targetElement...", targetElement);
 
 		// TODO: when the thumbs have scrolled, get the position of the thumbnail currently in the middle of the screen
 		// set position there instead of index 4
@@ -875,7 +870,6 @@ function swapThumbnail() {
 
 			clickedElement.css("left", `${newThumbPos}px`);
 			targetElement.css("left", `${clickedPosition}`);
-			console.log("thumbnail swapped...");
 
 			// $("#nav").animate({ scrollLeft: newThumbPos }, 300);
 
