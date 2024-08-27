@@ -844,11 +844,15 @@ function swapThumbnail() {
 
 	$("#nav").on("click", ".thumb", function () {
 		let newThumbPos;
+		console.log("newThumbPos...", newThumbPos);
+		console.log("thumbWidth...", thumbWidth);
 
 		var clickedElement = $(this);
 
 		var targetIndex = 4;
 		var targetElement = $(".thumb").eq(targetIndex);
+		console.log("targetElement...", targetElement);
+
 		// TODO: when the thumbs have scrolled, get the position of the thumbnail currently in the middle of the screen
 		// set position there instead of index 4
 
