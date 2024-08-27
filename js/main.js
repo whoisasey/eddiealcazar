@@ -840,6 +840,8 @@ function closeProject() {
 }
 
 function swapThumbnail() {
+	console.log("thumbnail swap fn");
+
 	$("#nav").on("click", ".thumb", function () {
 		let newThumbPos;
 
@@ -869,6 +871,7 @@ function swapThumbnail() {
 
 			clickedElement.css("left", `${newThumbPos}px`);
 			targetElement.css("left", `${clickedPosition}`);
+			console.log("thumbnail swapped...");
 
 			// $("#nav").animate({ scrollLeft: newThumbPos }, 300);
 
