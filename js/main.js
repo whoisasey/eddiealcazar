@@ -602,10 +602,10 @@ function getPage(indexPage, indexSpot) {
 
 			$("#copybottom")[0].style.zIndex = "0";
 			TweenMax.delayedCall(1, function () {
-				$("#copytop").html(projects[indexPage].copytop);
-				$("#copybottom").html(projects[indexPage].copybottom);
+				$("#copytop").html(data.projects[indexPage].copytop);
+				$("#copybottom").html(data.projects[indexPage].copybottom);
 
-				if (projects[indexPage].spots.length > 1) {
+				if (data.projects[indexPage].spots.length > 1) {
 					for (var i = 0; i < projects[indexPage].spots.length; i++) {
 						var spot = projects[indexPage].spots[i];
 						$("#copybottom").append(
