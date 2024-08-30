@@ -16,9 +16,6 @@ var isLoaded = false;
 var isTimeout = false;
 var isAnimating = false;
 var to;
-let thumbWidth;
-let centerThumb;
-let centerThumbIdx;
 
 function init() {
 	//Init resize event
@@ -185,10 +182,24 @@ function parseData(d) {
 	to = setTimeout(onTimeout, 2000);
 	isLoaded = true;
 
+	var previousThumb = null;
 	//Init events
 	$(".thumb").click(function () {
 		var index = jQuery.data(this, "ident");
+
 		if (!isAnimating) {
+			// Remove border from the previous thumb, if any
+			if (previousThumb) {
+				$(previousThumb).css("border", "none");
+			}
+
+			// Apply CSS to the clicked element
+			$(this).css("border", "1px solid #b5b5b5");
+
+			// Update the previousThumb to the currently clicked thumb
+			previousThumb = this;
+
+			// Call the getPage function
 			getPage(index, 0);
 		}
 	});
@@ -292,7 +303,6 @@ function parseData(d) {
 		} else {
 			// Allow horizontal scrolling within #scroll-container
 			$("#scroll-container")[0].scrollLeft += event.originalEvent.deltaY;
-			// findCenterThumb();
 		}
 	});
 
@@ -533,6 +543,7 @@ function openPress() {
 function getPage(indexPage, indexSpot) {
 	if (indexPage != currPageID || indexSpot != currSpotID) {
 		var page = $(".page" + indexPage + "" + indexSpot);
+		console.log(page);
 
 		TweenMax.set(page.find("img"), { scale: 1 });
 		TweenMax.set(page.find(".imgContainer"), { opacity: 0 });
@@ -591,8 +602,6 @@ function getPage(indexPage, indexSpot) {
 				ease: Expo.easeOut,
 			});
 
-			swapThumbnail();
-
 			TweenMax.staggerTo(
 				$("#copybottom").find("li"),
 				0.3,
@@ -647,8 +656,6 @@ function getPage(indexPage, indexSpot) {
 						$("#copybottom")[0].style.zIndex = "15";
 					},
 				);
-
-				swapThumbnail();
 			});
 		}
 
@@ -664,15 +671,13 @@ var awardsScroll;
 function animateIn() {
 	$(".thumb").each(function (i) {
 		var $this = $(this); // Store the current element
+
 		var delay = Math.abs(i - 3.5) * 0.2 * 1000; // Calculate delay in milliseconds
 
 		setTimeout(function () {
 			$this.css("opacity", 1); // Change the opacity to 1
 		}, delay);
 	});
-
-	// get thumbnail width of first thumbnail to be used in swapThumnail function
-	thumbWidth = $("#nav").children()[0].offsetWidth;
 
 	TweenMax.to($("#copytop").find("h1"), 0.5, {
 		x: 0,
@@ -838,113 +843,5 @@ function closeProject() {
 		},
 	});
 }
-
-function swapThumbnail() {
-	$("#nav").on("click", ".thumb", function () {
-		let newThumbPos;
-
-		var clickedElement = $(this);
-
-		var targetIndex = 4;
-		var targetElement = $(".thumb").eq(targetIndex);
-
-		// TODO: when the thumbs have scrolled, get the position of the thumbnail currently in the middle of the screen
-		// set position there instead of index 4
-
-		var clickedPosition = clickedElement.css("left");
-		var targetPosition = targetElement.css("left");
-
-		// instead of index, place the clicked thumbnail at this position
-		// 1) get width of first thumb
-		if (thumbWidth === 213 || thumbWidth === 237) {
-			// Swap the left CSS values to switch their positions
-			newThumbPos = thumbWidth * 4;
-			// newThumbPos = thumbWidth * centerThumbIdx;
-			// index should be of the closet thumb to center
-
-			// clicked el should have position @ newThumbPos
-			// target el should have position @ index of clicked el * thumbwidth
-
-			// console.log("new thumb pos...", newThumbPos);
-			// console.log("new first thumb", centerThumbIdx - 4);
-
-			clickedElement.css("left", `${newThumbPos}px`);
-			targetElement.css("left", `${clickedPosition}`);
-
-			// $("#nav").animate({ scrollLeft: newThumbPos }, 300);
-
-			// console.log("new position", thumbWidth * centerThumbIdx);
-
-			// Reorder the elements in the DOM to reset their indices
-			if (clickedElement.index() < targetIndex) {
-				clickedElement.insertAfter(targetElement); // Place clickedElement after targetElement
-			} else {
-				clickedElement.insertBefore(targetElement); // Place clickedElement before targetElement
-			}
-		}
-		// if(thumbWidth === {width at 8 thumbnails})
-
-		// if screen has 9 thumbnails, multiply with by 5 to get position of 4th index
-		// if screen has 8 thumbnails, multiply by 4 to get position of 3rd index?
-
-		// only works on first clicked item
-	});
-}
-
-function findCenterThumb() {
-	// Get the scroll position of #nav
-	var scrollLeft = $("#nav").scrollLeft();
-
-	// Get the width of the viewport (the visible area within #nav)
-	var viewportWidth = $(window).width();
-
-	// Calculate the center of the viewport relative to #nav
-	var centerViewport = scrollLeft + viewportWidth / 2;
-
-	// Variable to track the closest thumb to the center
-	var closestThumb = null;
-	var closestDistance = Infinity;
-
-	// Iterate through each thumb to find the one closest to the center
-	$(".thumb").each(function () {
-		// Get the position and width of the current thumb
-		var thumbLeft = $(this).offset().left;
-		var thumbWidth = $(this).outerWidth();
-		var thumbCenter = thumbLeft + thumbWidth / 2;
-
-		// Calculate the distance from the center of the viewport
-		var distance = Math.abs(thumbCenter - centerViewport);
-
-		// Update closest thumb if this one is closer
-		if (distance < closestDistance) {
-			closestDistance = distance;
-			closestThumb = $(this);
-			centerThumb = closestThumb;
-		}
-	});
-
-	// Now, `closestThumb` contains the element in the center of the screen
-	if (closestThumb) {
-		centerThumbIdx = closestThumb.index();
-
-		// console.log("The thumb closest to the center is:", closestThumb);
-		// console.log("Index of the closest thumb:", centerThumbIdx);
-
-		// TODO: snap thumb to 213 (width) * 4
-	}
-}
-
-// function trimProjects(data) {
-// 	// Check if the projects array length is greater than 9
-// 	if (projects.length > 9) {
-// 		console.log("trim projects....");
-
-// 		// Trim the projects array to the first 9 elements
-// 		return (projects = projects.slice(0, 9));
-// 	}
-
-// 	// Now you can work with the trimmed data object as needed
-// 	console.log(projects);
-// }
 
 $(document).ready(init);
