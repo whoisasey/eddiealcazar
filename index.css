@@ -155,7 +155,6 @@ body {
 #wrapper.desktop #nav .thumb,
 #wrapper.desktop #nav .center {
   position: absolute;
-  /* width:11.1111%; */
   height: 100%;
   display: block;
   cursor: pointer;
