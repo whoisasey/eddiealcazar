@@ -85,16 +85,13 @@ body {
 			position: absolute;
 			top: 60%;
 			left: 50%;
-			transform: translate(
-				-50%,
-				-50%
-			); /* Modern way to center both vertically and horizontally */
-			padding: 0.5%; /* Padding to add space within the box */
+			transform: translate(-50%, -50%);
+			padding: 0.5%;
 			display: flex;
 			text-align: left;
 			flex-direction: column;
-			justify-content: center; /* Vertically center the content within the box */
-			box-sizing: border-box; /* Ensures padding is included in the element's width and height */
+			justify-content: flex-start;
+			box-sizing: border-box;
 		}
 
 		.copytop-desktop {
@@ -102,7 +99,6 @@ body {
 			font-weight: 700;
 			font-size: 20px;
 			letter-spacing: 1px;
-			// text-align: center;
 
 			li {
 				margin-bottom: 1px;
@@ -114,7 +110,7 @@ body {
 		}
 
 		.copybottom-desktop {
-			margin-top: 7%;
+			margin-top: 4%;
 
 			a {
 				color: rgba(255, 255, 255, 0.65);

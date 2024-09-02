@@ -66,13 +66,13 @@ body {
   position: absolute;
   top: 60%;
   left: 50%;
-  transform: translate(-50%, -50%); /* Modern way to center both vertically and horizontally */
-  padding: 0.5%; /* Padding to add space within the box */
+  transform: translate(-50%, -50%);
+  padding: 0.5%;
   display: flex;
   text-align: left;
   flex-direction: column;
-  justify-content: center; /* Vertically center the content within the box */
-  box-sizing: border-box; /* Ensures padding is included in the element's width and height */
+  justify-content: flex-start;
+  box-sizing: border-box;
 }
 #wrapper.desktop .copytop-desktop {
   margin-top: -11%;
@@ -87,7 +87,7 @@ body {
   margin-top: 7px;
 }
 #wrapper.desktop .copybottom-desktop {
-  margin-top: 7%;
+  margin-top: 4%;
 }
 #wrapper.desktop .copybottom-desktop a {
   color: rgba(255, 255, 255, 0.65);

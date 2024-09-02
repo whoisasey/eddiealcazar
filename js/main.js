@@ -171,15 +171,20 @@ function parseData(d) {
 
 	loader.start();
 	// Remove the video after 4 seconds
+	//TODO: make flash shorter
+	// TODO: fix speed of clicke dthumbnail overlay animation
+	// TODO: Versace text is too low
+	// TODO: add new thumbnails sent by eddie
+	// TODO: waiting on new linkin.bio link to add
 	setTimeout(function () {
-		$("#blackOverlay").fadeIn(200, function () {
-			$("#video").fadeOut(200, function () {
+		$("#blackOverlay").fadeIn(150, function () {
+			$("#video").fadeOut(150, function () {
 				$(this).remove();
 				$("#blackOverlay").fadeOut(100);
 			});
 		});
-	}, 2000);
-	to = setTimeout(onTimeout, 2000);
+	}, 1500);
+	to = setTimeout(onTimeout, 1500);
 	isLoaded = true;
 
 	var previousThumb = null;
@@ -194,7 +199,7 @@ function parseData(d) {
 			}
 
 			// Apply CSS to the clicked element
-			$(this).css("border", "1px solid #b5b5b5");
+			$(this).css("border", "1px solid darkred");
 
 			// Update the previousThumb to the currently clicked thumb
 			previousThumb = this;
