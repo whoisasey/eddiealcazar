@@ -16,6 +16,7 @@ var isLoaded = false;
 var isTimeout = false;
 var isAnimating = false;
 var to;
+var previousThumb = null;
 
 function init() {
 	//Init resize event
@@ -170,10 +171,6 @@ function parseData(d) {
 	});
 
 	loader.start();
-	// Remove the video after 4 seconds
-	//TODO: make flash shorter
-	// TODO: fix speed of clicke dthumbnail overlay animation
-	// TODO: Versace text is too low
 	// TODO: add new thumbnails sent by eddie
 	// TODO: waiting on new linkin.bio link to add
 	setTimeout(function () {
@@ -187,7 +184,6 @@ function parseData(d) {
 	to = setTimeout(onTimeout, 1500);
 	isLoaded = true;
 
-	var previousThumb = null;
 	//Init events
 	$(".thumb").click(function () {
 		var index = jQuery.data(this, "ident");
@@ -368,6 +364,10 @@ function closePageContainer() {
 	if (currPage != null) {
 		var prevPage = currPage;
 		isAnimating = true;
+
+		if (previousThumb) {
+			$(previousThumb).css("border", "none");
+		}
 		TweenMax.staggerTo(
 			currPage.find(".imgContainer"),
 			1,
@@ -402,7 +402,7 @@ function closePageContainer() {
 			0.05,
 		);
 
-		$("#copybottom").css("z-index", "0");
+		$("#copybottom").css({ "z-index": "0" });
 
 		TweenMax.delayedCall(1, function () {
 			$("#copytop").html(data.copy.top);
@@ -548,7 +548,6 @@ function openPress() {
 function getPage(indexPage, indexSpot) {
 	if (indexPage != currPageID || indexSpot != currSpotID) {
 		var page = $(".page" + indexPage + "" + indexSpot);
-		console.log(page);
 
 		TweenMax.set(page.find("img"), { scale: 1 });
 		TweenMax.set(page.find(".imgContainer"), { opacity: 0 });
@@ -714,12 +713,12 @@ function animateIn() {
 
 	$(".thumb").hover(
 		function () {
-			TweenMax.to(this, 0.3, { opacity: 0.5 });
-			TweenMax.to($(this).find(".cs"), 0.3, { opacity: 1 });
+			TweenMax.to(this, 0.1, { opacity: 0.5 });
+			TweenMax.to($(this).find(".cs"), 0.1, { opacity: 1 });
 		},
 		function () {
-			TweenMax.to(this, 0.3, { opacity: 1 });
-			TweenMax.to($(this).find(".cs"), 0.3, { opacity: 0 });
+			TweenMax.to(this, 0.1, { opacity: 1 });
+			TweenMax.to($(this).find(".cs"), 0.1, { opacity: 0 });
 		},
 	);
 
