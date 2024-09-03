@@ -8,15 +8,15 @@
 //@codekit-prepend "libs/PxLoader.js";
 //@codekit-prepend "libs/PxLoaderImage.js";
 
-var data, loader;
-var pages = [];
-var thumbs = [];
-var currPage = null;
-var isLoaded = false;
-var isTimeout = false;
-var isAnimating = false;
-var to;
-var previousThumb = null;
+let data, loader;
+let pages = [];
+let thumbs = [];
+let currPage = null;
+let isLoaded = false;
+let isTimeout = false;
+let isAnimating = false;
+let to;
+let previousThumb = null;
 
 function init() {
 	//Init resize event
@@ -62,19 +62,14 @@ function parseData(d) {
 	TweenMax.set($(".copy").find("h1"), { x: -50, opacity: 0 });
 
 	//Init thumbs
-	var count = 0;
+	let count = 0;
 	let projects;
-	// if (window.innerWidth <= 1440) {
-	// 	projects = data.projects.slice(0, 8);
-	// }
-	// if (window.innerWidth > 1440) {
-	// 	projects = data.projects.slice(0, 9);
-	// }
+
 	projects = data.projects;
 	console.log("projects length:", projects.length);
 
-	for (var i = 0; i < projects.length; i++) {
-		var div = document.createElement("div");
+	for (let i = 0; i < projects.length; i++) {
+		const div = document.createElement("div");
 		div.setAttribute("class", "thumb");
 
 		if (window.innerWidth <= 1440) {
@@ -95,7 +90,7 @@ function parseData(d) {
 
 		$("#nav")[0].appendChild(div);
 
-		var img = loader.addImage(projects[i].thumb);
+		const img = loader.addImage(projects[i].thumb);
 		div.appendChild(img);
 
 		jQuery.data(div, "ident", i);
@@ -104,45 +99,45 @@ function parseData(d) {
 	}
 	for (i = 0; i < projects.length; i++) {
 		if (projects[i].isCenter != "true") {
-			for (var j = 0; j < projects[i].spots.length; j++) {
-				var spot = projects[i].spots[j];
+			for (let j = 0; j < projects[i].spots.length; j++) {
+				let spot = projects[i].spots[j];
 
-				var page = document.createElement("div");
+				let page = document.createElement("div");
 				page.setAttribute("class", "page page" + i + "" + j);
 				$("#pageContainer")[0].appendChild(page);
 
 				jQuery.data(page, "projectID", i);
 				jQuery.data(page, "spotID", j);
 
-				var container1 = document.createElement("div");
+				const container1 = document.createElement("div");
 				container1.setAttribute("class", "imgContainer topleft container1");
 
 				page.appendChild(container1);
 
-				var image1 = loader.addImage(spot.folder + "01.jpg");
+				const image1 = loader.addImage(spot.folder + "01.jpg");
 				container1.appendChild(image1);
 
-				var container2 = document.createElement("div");
+				const container2 = document.createElement("div");
 				container2.setAttribute("class", "imgContainer topright container2");
 				jQuery.data(container2, "ident", i);
 				page.appendChild(container2);
 
-				var image2 = loader.addImage(spot.folder + "02.jpg");
+				const image2 = loader.addImage(spot.folder + "02.jpg");
 				container2.appendChild(image2);
 
-				var container3 = document.createElement("div");
+				const container3 = document.createElement("div");
 				container3.setAttribute("class", "imgContainer bottomleft container3");
 				jQuery.data(container3, "ident", i);
 				page.appendChild(container3);
 
-				var image3 = loader.addImage(spot.folder + "03.jpg");
+				const image3 = loader.addImage(spot.folder + "03.jpg");
 				container3.appendChild(image3);
 
-				var container4 = document.createElement("div");
+				const container4 = document.createElement("div");
 				container4.setAttribute("class", "imgContainer bottomright container4");
 				page.appendChild(container4);
 
-				var image4 = loader.addImage(spot.folder + "04.jpg");
+				const image4 = loader.addImage(spot.folder + "04.jpg");
 				container4.appendChild(image4);
 
 				jQuery.data(container1, "projectID", i);
@@ -186,7 +181,7 @@ function parseData(d) {
 
 	//Init events
 	$(".thumb").click(function () {
-		var index = jQuery.data(this, "ident");
+		const index = jQuery.data(this, "ident");
 
 		if (!isAnimating) {
 			// Remove border from the previous thumb, if any
@@ -213,7 +208,7 @@ function parseData(d) {
 				jQuery.data(this, "spotID")
 			].video != null
 		) {
-			var index = $(".imgContainer").index(this);
+			// const index = $(".imgContainer").index(this);
 			$("iframe").attr(
 				"src",
 				projects[jQuery.data(this, "projectID")].spots[
@@ -265,13 +260,13 @@ function parseData(d) {
 
 	// close current project when margin is clicked
 	$(".desktop").click(function (event) {
-		var container = $("#container");
-		var offset = container.offset();
-		var marginTop = parseInt(container.css("marginTop"));
+		const container = $("#container");
+		const offset = container.offset();
+		const marginTop = parseInt(container.css("marginTop"));
 
-		var clickY = event.pageY;
+		const clickY = event.pageY;
 
-		var withinMargin = clickY > offset.top - marginTop && clickY < offset.top;
+		const withinMargin = clickY > offset.top - marginTop && clickY < offset.top;
 
 		if (withinMargin) {
 			closePageContainer();
@@ -288,12 +283,16 @@ function parseData(d) {
 
 	// Add an event listener for the scroll event to translate vertical scroll to horizontal scroll
 	$(window).on("wheel", function (event) {
-		var pressScroller = $("#press-scroller");
-		var awardsScroller = $("#awards-scroller");
+		const pressScroller = $("#press-scroller");
+		const awardsScroller = $("#awards-scroller");
+		const chevronLeft = $(".chevron-left"); // Replace with your left chevron class or ID
+		const chevronRight = $(".chevron-right"); // Replace with your right chevron class or ID
+		const container = $("#scroll-container")[0];
+		const fadeDuration = 400; // Duration in milliseconds, adjust as needed
 
 		// Check if the mouse is over elements with class 'press' or 'awards'
-		var isPressHovered = $(".press:hover").length > 0;
-		var isAwardsHovered = $(".awards:hover").length > 0;
+		const isPressHovered = $(".press:hover").length > 0;
+		const isAwardsHovered = $(".awards:hover").length > 0;
 
 		if (isPressHovered) {
 			// Allow vertical scrolling within #press-scroller
@@ -303,7 +302,24 @@ function parseData(d) {
 			awardsScroller[0].scrollTop += event.originalEvent.deltaY;
 		} else {
 			// Allow horizontal scrolling within #scroll-container
-			$("#scroll-container")[0].scrollLeft += event.originalEvent.deltaY;
+			container.scrollLeft += event.originalEvent.deltaY;
+
+			if (container.scrollLeft === 0) {
+				// We're at the far left; hide left chevron, show right chevron
+
+				chevronLeft.fadeTo(100, 0); // Fade out to opacity 0
+				chevronRight.fadeTo(fadeDuration, 0.5); // Fade in to opacity 0.5
+			} else if (container.scrollLeft >= 427 - 20) {
+				// We're at the far right; hide right chevron, show left chevron
+
+				chevronRight.fadeTo(100, 0); // Fade out to opacity 0
+				chevronLeft.fadeTo(fadeDuration, 0.5); // Fade in to opacity 0.5
+			} else {
+				// We're somewhere in between; show both chevrons
+
+				chevronLeft.fadeTo(fadeDuration, 0.5);
+				chevronRight.fadeTo(fadeDuration, 0.5);
+			}
 		}
 	});
 
@@ -327,15 +343,15 @@ function parseMobileData(d) {
 	$(".copybottom-mobile").html(data.copy.bottom);
 
 	//Init thumbs
-	var count = 0;
-	for (var i = 0; i < projects.length; i++) {
+	let count = 0;
+	for (let i = 0; i < projects.length; i++) {
 		if (projects[i].thumb) {
-			var div = document.createElement("div");
+			let div = document.createElement("div");
 			div.setAttribute("class", "thumb");
 			$("#projects")[0].appendChild(div);
 
-			for (var j = 0; j < projects[i].spots.length; j++) {
-				var img = new Image();
+			for (let j = 0; j < projects[i].spots.length; j++) {
+				let img = new Image();
 				if (projects[i].spots[j].thumb) {
 					img.src = projects[i].spots[j].thumb;
 				} else {
@@ -354,8 +370,8 @@ function parseMobileData(d) {
 	$("#projects")
 		.find("img")
 		.click(function () {
-			var index = jQuery.data(this, "ident");
-			var spot = jQuery.data(this, "spot");
+			const index = jQuery.data(this, "ident");
+			const spot = jQuery.data(this, "spot");
 			getProject(index, spot);
 		});
 }
@@ -453,8 +469,8 @@ function closePageContainer() {
 	}
 }
 
-var isPressOpen = false;
-var currPageID = -1;
+let isPressOpen = false;
+let currPageID = -1;
 
 function openPress() {
 	if (currPage != null) {
@@ -547,7 +563,7 @@ function openPress() {
 
 function getPage(indexPage, indexSpot) {
 	if (indexPage != currPageID || indexSpot != currSpotID) {
-		var page = $(".page" + indexPage + "" + indexSpot);
+		const page = $(".page" + indexPage + "" + indexSpot);
 
 		TweenMax.set(page.find("img"), { scale: 1 });
 		TweenMax.set(page.find(".imgContainer"), { opacity: 0 });
@@ -619,8 +635,8 @@ function getPage(indexPage, indexSpot) {
 				$("#copybottom").html(data.projects[indexPage].copybottom);
 
 				if (data.projects[indexPage].spots.length > 1) {
-					for (var i = 0; i < projects[indexPage].spots.length; i++) {
-						var spot = projects[indexPage].spots[i];
+					for (let i = 0; i < projects[indexPage].spots.length; i++) {
+						let spot = projects[indexPage].spots[i];
 						$("#copybottom").append(
 							'<h1><a href="#" onclick="getPage(' +
 								indexPage +
@@ -669,14 +685,14 @@ function getPage(indexPage, indexSpot) {
 	}
 }
 
-var pressScroll;
-var awardsScroll;
+let pressScroll;
+let awardsScroll;
 
 function animateIn() {
 	$(".thumb").each(function (i) {
-		var $this = $(this); // Store the current element
+		const $this = $(this); // Store the current element
 
-		var delay = Math.abs(i - 3.5) * 0.2 * 1000; // Calculate delay in milliseconds
+		const delay = Math.abs(i - 3.5) * 0.2 * 1000; // Calculate delay in milliseconds
 
 		setTimeout(function () {
 			$this.css("opacity", 1); // Change the opacity to 1
@@ -738,7 +754,7 @@ function onTimeout() {
 }
 
 function onResize() {
-	var w = $(window).width();
+	const w = $(window).width();
 	/*if(w<1080){
         w=1080;
     }*/
@@ -823,7 +839,7 @@ function getProject(ident, spot) {
 	$("#project-modal").append(
 		'<img src="' + projects[ident].spots[spot].folder + '04.jpg" />',
 	);
-	var description = document.createElement("div");
+	const description = document.createElement("div");
 	description.setAttribute("class", "copy");
 	description.innerHTML = projects[ident].copybottom;
 	$("#project-modal")[0].appendChild(description);
