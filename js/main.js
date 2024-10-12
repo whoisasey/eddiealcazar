@@ -69,33 +69,30 @@ function parseData(d) {
 	console.log("projects length:", projects.length);
 
 	for (let i = 0; i < projects.length; i++) {
-		const div = document.createElement("div");
-		div.setAttribute("class", "thumb");
+		if (data.projects[i].thumb) {
+			var div = document.createElement("div");
+			div.setAttribute("class", "thumb");
+			$("#projects")[0].appendChild(div);
 
-		if (window.innerWidth <= 1440) {
-			// assuming 1440px as the laptop screen width threshold
-			div.style.left = count * (100 / 8) + "%";
-			div.style.width = 100 / 8 + "%";
-		}
-		if (window.innerWidth > 1440) {
-			if (projects.length <= 8) {
-				div.style.left = count * (100 / projects.length) + "%";
-				div.style.width = 100 / projects.length + "%";
-			} else {
-				// if there are more projects on a large screen, start scrolling
-				div.style.left = count * (100 / 9) + "%";
-				div.style.width = 100 / 9 + "%";
+			for (var j = 0; j < data.projects[i].spots.length; j++) {
+				var img = new Image();
+				if (data.projects[i].spots[j].thumb) {
+					img.src = data.projects[i].spots[j].thumb;
+				} else {
+					img.src = "../" + data.projects[i].spots[j].folder + "01.jpg";
+				}
+				div.appendChild(img);
+				jQuery.data(img, "ident", i);
+				jQuery.data(img, "spot", j);
 			}
+
+			/*var description = document.createElement('div');
+            description.setAttribute('class','copy');
+            description.innerHTML = data.projects[i].copybottom;
+            div.appendChild(description);*/
+
+			count++;
 		}
-
-		$("#nav")[0].appendChild(div);
-
-		const img = loader.addImage(projects[i].thumb);
-		div.appendChild(img);
-
-		jQuery.data(div, "ident", i);
-
-		count++;
 	}
 	for (i = 0; i < projects.length; i++) {
 		if (projects[i].isCenter != "true") {
@@ -168,36 +165,27 @@ function parseData(d) {
 	loader.start();
 	// TODO: add new thumbnails sent by eddie
 	// TODO: waiting on new linkin.bio link to add
-	setTimeout(function () {
-		$("#blackOverlay").fadeIn(150, function () {
-			$("#video").fadeOut(150, function () {
-				$(this).remove();
-				$("#blackOverlay").fadeOut(100);
-			});
-		});
-	}, 1500);
-	to = setTimeout(onTimeout, 1500);
 	isLoaded = true;
 
 	//Init events
 	$(".thumb").click(function () {
 		const index = jQuery.data(this, "ident");
 
-		if (!isAnimating) {
-			// Remove border from the previous thumb, if any
-			if (previousThumb) {
-				$(previousThumb).css("border", "none");
-			}
+		// if (!isAnimating) {
+		// 	// Remove border from the previous thumb, if any
+		// 	if (previousThumb) {
+		// 		$(previousThumb).css("border", "none");
+		// 	}
 
-			// Apply CSS to the clicked element
-			$(this).css("border", "1px solid darkred");
+		// 	// Apply CSS to the clicked element
+		// 	$(this).css("border", "1px solid darkred");
 
-			// Update the previousThumb to the currently clicked thumb
-			previousThumb = this;
+		// 	// Update the previousThumb to the currently clicked thumb
+		// 	previousThumb = this;
 
-			// Call the getPage function
-			getPage(index, 0);
-		}
+		// Call the getPage function
+		getPage(index, 0);
+		// }
 	});
 
 	$(".imgContainer").click(function () {
@@ -265,6 +253,7 @@ function parseData(d) {
 		const marginTop = parseInt(container.css("marginTop"));
 
 		const clickY = event.pageY;
+		``;
 
 		const withinMargin = clickY > offset.top - marginTop && clickY < offset.top;
 
@@ -285,8 +274,8 @@ function parseData(d) {
 	$(window).on("wheel", function (event) {
 		const pressScroller = $("#press-scroller");
 		const awardsScroller = $("#awards-scroller");
-		const chevronLeft = $(".chevron-left"); // Replace with your left chevron class or ID
-		const chevronRight = $(".chevron-right"); // Replace with your right chevron class or ID
+		// const chevronLeft = $(".chevron-left"); // Replace with your left chevron class or ID
+		// const chevronRight = $(".chevron-right"); // Replace with your right chevron class or ID
 		const container = $("#scroll-container")[0];
 		const fadeDuration = 400; // Duration in milliseconds, adjust as needed
 
@@ -302,24 +291,20 @@ function parseData(d) {
 			awardsScroller[0].scrollTop += event.originalEvent.deltaY;
 		} else {
 			// Allow horizontal scrolling within #scroll-container
-			container.scrollLeft += event.originalEvent.deltaY;
-
-			if (container.scrollLeft === 0) {
-				// We're at the far left; hide left chevron, show right chevron
-
-				chevronLeft.fadeTo(100, 0); // Fade out to opacity 0
-				chevronRight.fadeTo(fadeDuration, 0.5); // Fade in to opacity 0.5
-			} else if (container.scrollLeft >= 427 - 20) {
-				// We're at the far right; hide right chevron, show left chevron
-
-				chevronRight.fadeTo(100, 0); // Fade out to opacity 0
-				chevronLeft.fadeTo(fadeDuration, 0.5); // Fade in to opacity 0.5
-			} else {
-				// We're somewhere in between; show both chevrons
-
-				chevronLeft.fadeTo(fadeDuration, 0.5);
-				chevronRight.fadeTo(fadeDuration, 0.5);
-			}
+			// container.scrollLeft += event.originalEvent.deltaY;
+			// if (container.scrollLeft === 0) {
+			// 	// We're at the far left; hide left chevron, show right chevron
+			// 	chevronLeft.fadeTo(100, 0); // Fade out to opacity 0
+			// 	chevronRight.fadeTo(fadeDuration, 0.5); // Fade in to opacity 0.5
+			// } else if (container.scrollLeft >= 427 - 20) {
+			// 	// We're at the far right; hide right chevron, show left chevron
+			// 	chevronRight.fadeTo(100, 0); // Fade out to opacity 0
+			// 	chevronLeft.fadeTo(fadeDuration, 0.5); // Fade in to opacity 0.5
+			// } else {
+			// 	// We're somewhere in between; show both chevrons
+			// 	chevronLeft.fadeTo(fadeDuration, 0.5);
+			// 	chevronRight.fadeTo(fadeDuration, 0.5);
+			// }
 		}
 	});
 
