@@ -747,9 +747,7 @@ function onTimeout() {
 	isTimeout = true;
 
 	if (isLoaded) {
-		setTimeout(() => {
-			animateIn();
-		}, 500);
+		animateIn();
 	}
 }
 
