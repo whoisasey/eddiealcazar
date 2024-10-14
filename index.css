@@ -144,19 +144,6 @@ body {
   white-space: nowrap;
   height: 200px;
 }
-#wrapper.desktop .chevron-left,
-#wrapper.desktop .chevron-right {
-  position: absolute;
-  bottom: -60px;
-  opacity: 0.5;
-}
-#wrapper.desktop .chevron-right {
-  right: 200px;
-}
-#wrapper.desktop .chevron-left {
-  opacity: 0;
-  left: 200px;
-}
 #wrapper.desktop #nav {
   position: relative;
   display: inline-block;
