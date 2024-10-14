@@ -44,6 +44,7 @@ callback({
 			"copytop": "<h1>EDDIE ALCAZAR</h1><ul><li>Director</li><li>Producer</li></ul>",
 			"copybottom": "<div><h1>Perfect</h1><h1>Feature Film</h1><h1>Presented by Steven Soderbergh</h1><li>*World Premiere SXSW</li></div>"
 		},
+		{  "isCenter":"true"},
 		{
 			"spots": [
 				{

@@ -68,38 +68,51 @@ function parseData(d) {
 	projects = data.projects;
 	console.log("projects length:", projects.length);
 
-	for (let i = 0; i < projects.length; i++) {
-		if (data.projects[i].thumb) {
-			var div = document.createElement("div");
+	for (let i = 0; i < data.projects.length; i++) {
+		if (data.projects[i].isCenter == "true") {
+			//add center gif
+			const center = document.createElement("div");
+			center.setAttribute("class", "center");
+			center.style.left = count * (100 / 8) + "%";
+			center.style.width = 100 / 8 + "%";
+			$("#nav")[0].appendChild(center);
+
+			const imgCenter = loader.addImage("assets/img/ui/center.gif");
+			//imgCenter.style.opacity = '0';
+			center.appendChild(imgCenter);
+
+			/*$(imgCenter).load(function(){
+                onResize();
+                TweenMax.to(imgCenter,0.5,{opacity:1});
+                loader.start();
+                to = setTimeout(onTimeout,4000);
+                isLoaded = true;
+            });*/
+
+			const imgHighlight = document.createElement("div");
+			imgHighlight.setAttribute("class", "highlight");
+			center.appendChild(imgHighlight);
+		} else {
+			const div = document.createElement("div");
 			div.setAttribute("class", "thumb");
-			$("#projects")[0].appendChild(div);
+			div.style.left = count * (100 / 8) + "%";
+			div.style.width = 100 / 8 + "%";
+			$("#nav")[0].appendChild(div);
 
-			for (var j = 0; j < data.projects[i].spots.length; j++) {
-				var img = new Image();
-				if (data.projects[i].spots[j].thumb) {
-					img.src = data.projects[i].spots[j].thumb;
-				} else {
-					img.src = "../" + data.projects[i].spots[j].folder + "01.jpg";
-				}
-				div.appendChild(img);
-				jQuery.data(img, "ident", i);
-				jQuery.data(img, "spot", j);
-			}
+			const img = loader.addImage(data.projects[i].thumb);
+			div.appendChild(img);
 
-			/*var description = document.createElement('div');
-            description.setAttribute('class','copy');
-            description.innerHTML = data.projects[i].copybottom;
-            div.appendChild(description);*/
-
-			count++;
+			jQuery.data(div, "ident", i);
 		}
-	}
-	for (i = 0; i < projects.length; i++) {
-		if (projects[i].isCenter != "true") {
-			for (let j = 0; j < projects[i].spots.length; j++) {
-				let spot = projects[i].spots[j];
 
-				let page = document.createElement("div");
+		count++;
+	}
+	for (i = 0; i < data.projects.length; i++) {
+		if (data.projects[i].isCenter != "true") {
+			for (let j = 0; j < data.projects[i].spots.length; j++) {
+				const spot = data.projects[i].spots[j];
+
+				const page = document.createElement("div");
 				page.setAttribute("class", "page page" + i + "" + j);
 				$("#pageContainer")[0].appendChild(page);
 
@@ -171,21 +184,7 @@ function parseData(d) {
 	$(".thumb").click(function () {
 		const index = jQuery.data(this, "ident");
 
-		// if (!isAnimating) {
-		// 	// Remove border from the previous thumb, if any
-		// 	if (previousThumb) {
-		// 		$(previousThumb).css("border", "none");
-		// 	}
-
-		// 	// Apply CSS to the clicked element
-		// 	$(this).css("border", "1px solid darkred");
-
-		// 	// Update the previousThumb to the currently clicked thumb
-		// 	previousThumb = this;
-
-		// Call the getPage function
 		getPage(index, 0);
-		// }
 	});
 
 	$(".imgContainer").click(function () {
@@ -253,7 +252,6 @@ function parseData(d) {
 		const marginTop = parseInt(container.css("marginTop"));
 
 		const clickY = event.pageY;
-		``;
 
 		const withinMargin = clickY > offset.top - marginTop && clickY < offset.top;
 
@@ -274,10 +272,6 @@ function parseData(d) {
 	$(window).on("wheel", function (event) {
 		const pressScroller = $("#press-scroller");
 		const awardsScroller = $("#awards-scroller");
-		// const chevronLeft = $(".chevron-left"); // Replace with your left chevron class or ID
-		// const chevronRight = $(".chevron-right"); // Replace with your right chevron class or ID
-		const container = $("#scroll-container")[0];
-		const fadeDuration = 400; // Duration in milliseconds, adjust as needed
 
 		// Check if the mouse is over elements with class 'press' or 'awards'
 		const isPressHovered = $(".press:hover").length > 0;
@@ -286,25 +280,10 @@ function parseData(d) {
 		if (isPressHovered) {
 			// Allow vertical scrolling within #press-scroller
 			pressScroller[0].scrollTop += event.originalEvent.deltaY;
-		} else if (isAwardsHovered) {
+		}
+		if (isAwardsHovered) {
 			// Allow vertical scrolling within #awards-scroller
 			awardsScroller[0].scrollTop += event.originalEvent.deltaY;
-		} else {
-			// Allow horizontal scrolling within #scroll-container
-			// container.scrollLeft += event.originalEvent.deltaY;
-			// if (container.scrollLeft === 0) {
-			// 	// We're at the far left; hide left chevron, show right chevron
-			// 	chevronLeft.fadeTo(100, 0); // Fade out to opacity 0
-			// 	chevronRight.fadeTo(fadeDuration, 0.5); // Fade in to opacity 0.5
-			// } else if (container.scrollLeft >= 427 - 20) {
-			// 	// We're at the far right; hide right chevron, show left chevron
-			// 	chevronRight.fadeTo(100, 0); // Fade out to opacity 0
-			// 	chevronLeft.fadeTo(fadeDuration, 0.5); // Fade in to opacity 0.5
-			// } else {
-			// 	// We're somewhere in between; show both chevrons
-			// 	chevronLeft.fadeTo(fadeDuration, 0.5);
-			// 	chevronRight.fadeTo(fadeDuration, 0.5);
-			// }
 		}
 	});
 
@@ -363,7 +342,7 @@ function parseMobileData(d) {
 
 function closePageContainer() {
 	if (currPage != null) {
-		var prevPage = currPage;
+		let prevPage = currPage;
 		isAnimating = true;
 
 		if (previousThumb) {
@@ -459,7 +438,7 @@ let currPageID = -1;
 
 function openPress() {
 	if (currPage != null) {
-		var prevPage = currPage;
+		let prevPage = currPage;
 		isAnimating = true;
 		TweenMax.staggerTo(
 			currPage.find(".imgContainer"),
@@ -561,7 +540,7 @@ function getPage(indexPage, indexSpot) {
 		page.css("visibility", "visible");
 
 		if (currPage != null) {
-			var prevPage = currPage;
+			const prevPage = currPage;
 		}
 
 		isAnimating = true;
