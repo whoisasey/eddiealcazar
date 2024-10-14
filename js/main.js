@@ -59,7 +59,9 @@ function parseData(d) {
 
 	TweenMax.set($(".copy").find("li"), { x: -50, opacity: 0 });
 	TweenMax.set($(".copy").find("h1"), { x: -50, opacity: 0 });
+	TweenMax.set($(".top-nav").find("ul"), { x: -50, opacity: 0 });
 
+	// TODO: add same transition to top-nav
 	//Init thumbs
 	let count = 0;
 	let projects;
@@ -68,41 +70,41 @@ function parseData(d) {
 	console.log("projects length:", projects.length);
 
 	for (let i = 0; i < data.projects.length; i++) {
-		if (data.projects[i].isCenter == "true") {
-			//add center gif
-			const center = document.createElement("div");
-			center.setAttribute("class", "center");
-			center.style.left = count * (100 / 9) + "%";
-			center.style.width = 100 / 9 + "%";
-			$("#nav")[0].appendChild(center);
+		// if (data.projects[i].isCenter == "true") {
+		// 	//add center gif
+		// 	const center = document.createElement("div");
+		// 	center.setAttribute("class", "center");
+		// 	center.style.left = count * (100 / 9) + "%";
+		// 	center.style.width = 100 / 9 + "%";
+		// 	$("#nav")[0].appendChild(center);
 
-			const imgCenter = loader.addImage("assets/img/ui/center.gif");
-			//imgCenter.style.opacity = '0';
-			center.appendChild(imgCenter);
+		// 	const imgCenter = loader.addImage("assets/img/ui/center.gif");
+		// 	//imgCenter.style.opacity = '0';
+		// 	center.appendChild(imgCenter);
 
-			/*$(imgCenter).load(function(){
-								onResize();
-								TweenMax.to(imgCenter,0.5,{opacity:1});
-								loader.start();
-								to = setTimeout(onTimeout,4000);
-								isLoaded = true;
-						});*/
+		// 	/*$(imgCenter).load(function(){
+		// 						onResize();
+		// 						TweenMax.to(imgCenter,0.5,{opacity:1});
+		// 						loader.start();
+		// 						to = setTimeout(onTimeout,4000);
+		// 						isLoaded = true;
+		// 				});*/
 
-			const imgHighlight = document.createElement("div");
-			imgHighlight.setAttribute("class", "highlight");
-			center.appendChild(imgHighlight);
-		} else {
-			const div = document.createElement("div");
-			div.setAttribute("class", "thumb");
-			div.style.left = count * (100 / 9) + "%";
-			div.style.width = 100 / 9 + "%";
-			$("#nav")[0].appendChild(div);
+		// 	const imgHighlight = document.createElement("div");
+		// 	imgHighlight.setAttribute("class", "highlight");
+		// 	center.appendChild(imgHighlight);
+		// } else {
+		const div = document.createElement("div");
+		div.setAttribute("class", "thumb");
+		div.style.left = count * (100 / 9) + "%";
+		div.style.width = 100 / 9 + "%";
+		$("#nav")[0].appendChild(div);
 
-			const img = loader.addImage(data.projects[i].thumb);
-			div.appendChild(img);
+		const img = loader.addImage(data.projects[i].thumb);
+		div.appendChild(img);
 
-			jQuery.data(div, "ident", i);
-		}
+		jQuery.data(div, "ident", i);
+		// }
 
 		count++;
 	}
@@ -176,7 +178,7 @@ function parseData(d) {
 	});
 
 	loader.start();
-	to = setTimeout(onTimeout, 4000);
+	to = setTimeout(onTimeout, 1000);
 	isLoaded = true;
 
 	//Init events
@@ -766,6 +768,13 @@ function animateIn() {
 		{ x: 0, opacity: 1, delay: 1.5, ease: Expo.easeOut },
 		0.1,
 	);
+
+	TweenMax.staggerTo($(".top-nav").find("ul"), 0.5, {
+		x: 0,
+		opacity: 1,
+		delay: 2,
+		ease: Expo.easeOut,
+	});
 
 	$(".thumb").hover(
 		function () {
