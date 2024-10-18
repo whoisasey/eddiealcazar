@@ -75,14 +75,15 @@ function renderProjects(projects) {
 
 $("#filter-film").on("click", function () {
 	console.log("films clicked");
-
-	// 1 - when clicked, remove current thumbnails
-	// 2 - load json of category file of clicked filter button
+	fetchProjects("film");
+	closePageContainer();
 });
 
 $("#filter-commercials").on("click", function () {
 	console.log("commercials clicked");
 	fetchProjects("commercial"); // Fetch commercial.json
+	// TODO: work on transition when clicking between filters
+	closePageContainer();
 });
 function parseData(d) {
 	data = d;
