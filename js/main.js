@@ -46,15 +46,14 @@ function init() {
 	}
 }
 
-// Function to fetch data and filter by category
-function fetchAndFilter(category) {
+function fetchProjects(category) {
 	$.ajax({
 		type: "GET",
-		url: `json/${category}.json`, // e.g., json/film.json or json/commercial.json
+		url: `json/${category}.json`,
 		dataType: "json",
 		success: function (response) {
-			filteredData = response; // Assign the response to data
-			filterProjects(category); // Call the filter function
+			data = response; // Store the response data
+			renderProjects(data); // Render projects
 		},
 		error: function () {
 			console.error("Error fetching JSON data.");
@@ -63,20 +62,15 @@ function fetchAndFilter(category) {
 }
 
 // Function to render projects based on filtered data
-function renderProjects(filteredProjects) {
-	$("#nav").empty(); // Clear the container
+function renderProjects(projects) {
+	const navContainer = $("#nav");
+	navContainer.empty(); // Clear the container
 
-	if (filteredProjects.length === 0) {
-		$("#nav").append("<p>No projects found for this category.</p>");
+	if (projects.length === 0) {
+		navContainer.append("<p>No projects found for this category.</p>");
 		return;
 	}
-	parseData(filteredProjects);
-}
-
-// Function to filter projects by category
-function filterProjects(category) {
-	const filteredProjects = filteredData;
-	renderProjects(filteredProjects);
+	parseData(projects);
 }
 
 $("#filter-film").on("click", function () {
@@ -88,7 +82,7 @@ $("#filter-film").on("click", function () {
 
 $("#filter-commercials").on("click", function () {
 	console.log("commercials clicked");
-	fetchAndFilter("commercial"); // Fetch commercial.json
+	fetchProjects("commercial"); // Fetch commercial.json
 });
 function parseData(d) {
 	data = d;
