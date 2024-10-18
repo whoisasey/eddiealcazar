@@ -65,10 +65,13 @@ body {
   display: flex;
   text-transform: uppercase;
   justify-content: space-between;
+  align-items: center;
 }
 #wrapper.desktop .top-nav ul li {
-  transition: 0.8s ease-in-out;
   color: #b5b5b5;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: 0.8s ease-in-out;
 }
 #wrapper.desktop .top-nav ul li:hover {
   cursor: pointer;
