@@ -54,12 +54,25 @@ body {
   position: relative;
   z-index: 10;
 }
-#wrapper.desktop #container .full-video {
+#wrapper.desktop .top-nav {
   position: absolute;
-  top: 0;
-  width: 100px;
-  height: 100px;
+  width: 639px;
+  margin: 0 auto;
+  left: 639px;
+  top: -100px;
+}
+#wrapper.desktop .top-nav ul {
+  display: flex;
+  text-transform: uppercase;
+  justify-content: space-between;
+}
+#wrapper.desktop .top-nav ul li {
+  transition: 0.8s ease-in-out;
+  color: #b5b5b5;
+}
+#wrapper.desktop .top-nav ul li:hover {
   cursor: pointer;
+  color: rgb(101, 0, 0);
 }
 #wrapper.desktop .copy {
   height: 80px;
@@ -143,19 +156,6 @@ body {
   overflow-x: auto;
   white-space: nowrap;
   height: 200px;
-}
-#wrapper.desktop .chevron-left,
-#wrapper.desktop .chevron-right {
-  position: absolute;
-  bottom: -60px;
-  opacity: 0.5;
-}
-#wrapper.desktop .chevron-right {
-  right: 200px;
-}
-#wrapper.desktop .chevron-left {
-  opacity: 0;
-  left: 200px;
 }
 #wrapper.desktop #nav {
   position: relative;

@@ -47,7 +47,6 @@ function init() {
 		});
 	}
 }
-
 function parseData(d) {
 	data = d;
 
@@ -60,7 +59,9 @@ function parseData(d) {
 
 	TweenMax.set($(".copy").find("li"), { x: -50, opacity: 0 });
 	TweenMax.set($(".copy").find("h1"), { x: -50, opacity: 0 });
+	TweenMax.set($(".top-nav").find("ul"), { x: -50, opacity: 0 });
 
+	// TODO: add same transition to top-nav
 	//Init thumbs
 	let count = 0;
 	let projects;
@@ -68,41 +69,52 @@ function parseData(d) {
 	projects = data.projects;
 	console.log("projects length:", projects.length);
 
-	for (let i = 0; i < projects.length; i++) {
-		const div = document.createElement("div");
-		div.setAttribute("class", "thumb");
+	for (let i = 0; i < data.projects.length; i++) {
+		if (data.projects[i].isCenter == "true") {
+			//add center gif
+			const center = document.createElement("div");
+			center.setAttribute("class", "center");
+			center.style.left = count * (100 / 9) + "%";
+			center.style.width = 100 / 9 + "%";
+			$("#nav")[0].appendChild(center);
 
-		if (window.innerWidth <= 1440) {
-			// assuming 1440px as the laptop screen width threshold
-			div.style.left = count * (100 / 8) + "%";
-			div.style.width = 100 / 8 + "%";
+			const imgCenter = loader.addImage("assets/img/ui/center.gif");
+			//imgCenter.style.opacity = '0';
+			center.appendChild(imgCenter);
+
+			/*$(imgCenter).load(function(){
+								onResize();
+								TweenMax.to(imgCenter,0.5,{opacity:1});
+								loader.start();
+								to = setTimeout(onTimeout,4000);
+								isLoaded = true;
+						});*/
+
+			const imgHighlight = document.createElement("div");
+			imgHighlight.setAttribute("class", "highlight");
+			center.appendChild(imgHighlight);
+		} else {
+			const div = document.createElement("div");
+			div.setAttribute("class", "thumb");
+			div.style.left = count * (100 / 9) + "%";
+			div.style.width = 100 / 9 + "%";
+			$("#nav")[0].appendChild(div);
+
+			const img = loader.addImage(data.projects[i].thumb);
+			div.appendChild(img);
+
+			jQuery.data(div, "ident", i);
 		}
-		if (window.innerWidth > 1440) {
-			if (projects.length <= 8) {
-				div.style.left = count * (100 / projects.length) + "%";
-				div.style.width = 100 / projects.length + "%";
-			} else {
-				// if there are more projects on a large screen, start scrolling
-				div.style.left = count * (100 / 9) + "%";
-				div.style.width = 100 / 9 + "%";
-			}
-		}
-
-		$("#nav")[0].appendChild(div);
-
-		const img = loader.addImage(projects[i].thumb);
-		div.appendChild(img);
-
-		jQuery.data(div, "ident", i);
 
 		count++;
 	}
-	for (i = 0; i < projects.length; i++) {
-		if (projects[i].isCenter != "true") {
-			for (let j = 0; j < projects[i].spots.length; j++) {
-				let spot = projects[i].spots[j];
 
-				let page = document.createElement("div");
+	for (i = 0; i < data.projects.length; i++) {
+		if (data.projects[i].isCenter != "true") {
+			for (let j = 0; j < data.projects[i].spots.length; j++) {
+				const spot = data.projects[i].spots[j];
+
+				const page = document.createElement("div");
 				page.setAttribute("class", "page page" + i + "" + j);
 				$("#pageContainer")[0].appendChild(page);
 
@@ -166,36 +178,13 @@ function parseData(d) {
 	});
 
 	loader.start();
-	// TODO: add new thumbnails sent by eddie
-	// TODO: waiting on new linkin.bio link to add
-	setTimeout(function () {
-		$("#blackOverlay").fadeIn(150, function () {
-			$("#video").fadeOut(150, function () {
-				$(this).remove();
-				$("#blackOverlay").fadeOut(100);
-			});
-		});
-	}, 1500);
-	to = setTimeout(onTimeout, 1500);
+	to = setTimeout(onTimeout, 1000);
 	isLoaded = true;
 
 	//Init events
 	$(".thumb").click(function () {
 		const index = jQuery.data(this, "ident");
-
 		if (!isAnimating) {
-			// Remove border from the previous thumb, if any
-			if (previousThumb) {
-				$(previousThumb).css("border", "none");
-			}
-
-			// Apply CSS to the clicked element
-			$(this).css("border", "1px solid darkred");
-
-			// Update the previousThumb to the currently clicked thumb
-			previousThumb = this;
-
-			// Call the getPage function
 			getPage(index, 0);
 		}
 	});
@@ -282,44 +271,96 @@ function parseData(d) {
 	});
 
 	// Add an event listener for the scroll event to translate vertical scroll to horizontal scroll
-	$(window).on("wheel", function (event) {
-		const pressScroller = $("#press-scroller");
-		const awardsScroller = $("#awards-scroller");
-		const chevronLeft = $(".chevron-left"); // Replace with your left chevron class or ID
-		const chevronRight = $(".chevron-right"); // Replace with your right chevron class or ID
-		const container = $("#scroll-container")[0];
-		const fadeDuration = 400; // Duration in milliseconds, adjust as needed
+	// $(window).on("wheel", function (event) {
+	// 	const pressScroller = $("#press-scroller");
+	// 	const awardsScroller = $("#awards-scroller");
 
-		// Check if the mouse is over elements with class 'press' or 'awards'
-		const isPressHovered = $(".press:hover").length > 0;
-		const isAwardsHovered = $(".awards:hover").length > 0;
+	// 	// Check if the mouse is over elements with class 'press' or 'awards'
+	// 	const isPressHovered = $(".press:hover").length > 0;
+	// 	const isAwardsHovered = $(".awards:hover").length > 0;
 
-		if (isPressHovered) {
-			// Allow vertical scrolling within #press-scroller
-			pressScroller[0].scrollTop += event.originalEvent.deltaY;
-		} else if (isAwardsHovered) {
-			// Allow vertical scrolling within #awards-scroller
-			awardsScroller[0].scrollTop += event.originalEvent.deltaY;
-		} else {
-			// Allow horizontal scrolling within #scroll-container
-			container.scrollLeft += event.originalEvent.deltaY;
+	// 	if (isPressHovered) {
+	// 		// Allow vertical scrolling within #press-scroller
+	// 		pressScroller[0].scrollTop += event.originalEvent.deltaY;
+	// 	}
+	// 	if (isAwardsHovered) {
+	// 		// Allow vertical scrolling within #awards-scroller
+	// 		awardsScroller[0].scrollTop += event.originalEvent.deltaY;
+	// 	}
+	// });
 
-			if (container.scrollLeft === 0) {
-				// We're at the far left; hide left chevron, show right chevron
+	$(".center").click(function () {
+		if (currPage != null) {
+			let prevPage = currPage;
+			isAnimating = true;
+			TweenMax.staggerTo(
+				currPage.find(".imgContainer"),
+				1,
+				{ opacity: 0, ease: Expo.easeInOut },
+				0.2,
+				function () {
+					$("#pageContainer").css("visibility", "hidden");
+					prevPage.css("visibility", "hidden");
+					isAnimating = false;
+				},
+			);
+			currPage = null;
 
-				chevronLeft.fadeTo(100, 0); // Fade out to opacity 0
-				chevronRight.fadeTo(fadeDuration, 0.5); // Fade in to opacity 0.5
-			} else if (container.scrollLeft >= 427 - 20) {
-				// We're at the far right; hide right chevron, show left chevron
+			TweenMax.staggerTo(
+				$("#copytop").find("li"),
+				0.3,
+				{ x: 50, opacity: 0, delay: 0.1, ease: Expo.easeOut },
+				0.05,
+			);
 
-				chevronRight.fadeTo(100, 0); // Fade out to opacity 0
-				chevronLeft.fadeTo(fadeDuration, 0.5); // Fade in to opacity 0.5
-			} else {
-				// We're somewhere in between; show both chevrons
+			TweenMax.to($("#copybottom").find("h1"), 0.3, {
+				x: 50,
+				opacity: 0,
+				delay: 0.1,
+				ease: Expo.easeOut,
+			});
+			TweenMax.staggerTo(
+				$("#copybottom").find("li"),
+				0.3,
+				{ x: 50, opacity: 0, delay: 0.2, ease: Expo.easeOut },
+				0.05,
+			);
+			$("#copybottom").css("z-index", "0");
+			TweenMax.delayedCall(1, function () {
+				$("#copytop").html(data.copy.top);
+				$("#copybottom").html(data.copy.bottom);
 
-				chevronLeft.fadeTo(fadeDuration, 0.5);
-				chevronRight.fadeTo(fadeDuration, 0.5);
-			}
+				TweenMax.set($(".copy").find("li"), { x: -50, opacity: 0 });
+				TweenMax.set($("#copybottom").find("h1"), { x: -50, opacity: 0 });
+
+				TweenMax.staggerTo(
+					$("#copytop").find("li"),
+					0.5,
+					{ x: 0, opacity: 1, delay: 0.1, ease: Expo.easeOut },
+					0.1,
+				);
+
+				TweenMax.to($("#copybottom").find("h1"), 0.5, {
+					x: 0,
+					opacity: 1,
+					delay: 0.2,
+					ease: Expo.easeOut,
+				});
+				TweenMax.staggerTo(
+					$("#copybottom").find("li"),
+					0.5,
+					{ x: 0, opacity: 1, delay: 0.3, ease: Expo.easeOut },
+					0.1,
+					function () {
+						$("#copybottom").css("z-index", "15");
+					},
+				);
+			});
+		}
+
+		if (isPressOpen) {
+			TweenMax.to($("#awards"), 0.5, { autoAlpha: 0 });
+			TweenMax.to($("#press"), 0.5, { autoAlpha: 0, delay: 0.1 });
 		}
 	});
 
@@ -378,7 +419,7 @@ function parseMobileData(d) {
 
 function closePageContainer() {
 	if (currPage != null) {
-		var prevPage = currPage;
+		let prevPage = currPage;
 		isAnimating = true;
 
 		if (previousThumb) {
@@ -474,7 +515,7 @@ let currPageID = -1;
 
 function openPress() {
 	if (currPage != null) {
-		var prevPage = currPage;
+		let prevPage = currPage;
 		isAnimating = true;
 		TweenMax.staggerTo(
 			currPage.find(".imgContainer"),
@@ -562,6 +603,7 @@ function openPress() {
 }
 
 function getPage(indexPage, indexSpot) {
+	let prevPage;
 	if (indexPage != currPageID || indexSpot != currSpotID) {
 		const page = $(".page" + indexPage + "" + indexSpot);
 
@@ -576,7 +618,7 @@ function getPage(indexPage, indexSpot) {
 		page.css("visibility", "visible");
 
 		if (currPage != null) {
-			var prevPage = currPage;
+			let prevPage = currPage;
 		}
 
 		isAnimating = true;
@@ -727,6 +769,13 @@ function animateIn() {
 		0.1,
 	);
 
+	TweenMax.staggerTo($(".top-nav").find("ul"), 0.5, {
+		x: 0,
+		opacity: 1,
+		delay: 2,
+		ease: Expo.easeOut,
+	});
+
 	$(".thumb").hover(
 		function () {
 			TweenMax.to(this, 0.1, { opacity: 0.5 });
@@ -747,9 +796,7 @@ function onTimeout() {
 	isTimeout = true;
 
 	if (isLoaded) {
-		setTimeout(() => {
-			animateIn();
-		}, 500);
+		animateIn();
 	}
 }
 
@@ -778,9 +825,6 @@ function onResize() {
 	$("#nav").css("height", w / (1600 / 66) + "px");
 	$("#navWrapper").css("height", w / (1600 / 66) + "px");
 	$("#navWrapper").css("margin-top", -$("#nav").height() / 2 + "px");
-
-	$(".copy").css("width", $(".center").width() + "px");
-	$(".copy").css("margin-left", -($(".center").width() / 2) + "px");
 
 	$("#press-scroller").css(
 		"height",
