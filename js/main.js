@@ -70,41 +70,41 @@ function parseData(d) {
 	console.log("projects length:", projects.length);
 
 	for (let i = 0; i < data.projects.length; i++) {
-		// if (data.projects[i].isCenter == "true") {
-		// 	//add center gif
-		// 	const center = document.createElement("div");
-		// 	center.setAttribute("class", "center");
-		// 	center.style.left = count * (100 / 9) + "%";
-		// 	center.style.width = 100 / 9 + "%";
-		// 	$("#nav")[0].appendChild(center);
+		if (data.projects[i].isCenter == "true") {
+			//add center gif
+			const center = document.createElement("div");
+			center.setAttribute("class", "center");
+			center.style.left = count * (100 / 9) + "%";
+			center.style.width = 100 / 9 + "%";
+			$("#nav")[0].appendChild(center);
 
-		// 	const imgCenter = loader.addImage("assets/img/ui/center.gif");
-		// 	//imgCenter.style.opacity = '0';
-		// 	center.appendChild(imgCenter);
+			const imgCenter = loader.addImage("assets/img/ui/center.gif");
+			//imgCenter.style.opacity = '0';
+			center.appendChild(imgCenter);
 
-		// 	/*$(imgCenter).load(function(){
-		// 						onResize();
-		// 						TweenMax.to(imgCenter,0.5,{opacity:1});
-		// 						loader.start();
-		// 						to = setTimeout(onTimeout,4000);
-		// 						isLoaded = true;
-		// 				});*/
+			/*$(imgCenter).load(function(){
+								onResize();
+								TweenMax.to(imgCenter,0.5,{opacity:1});
+								loader.start();
+								to = setTimeout(onTimeout,4000);
+								isLoaded = true;
+						});*/
 
-		// 	const imgHighlight = document.createElement("div");
-		// 	imgHighlight.setAttribute("class", "highlight");
-		// 	center.appendChild(imgHighlight);
-		// } else {
-		const div = document.createElement("div");
-		div.setAttribute("class", "thumb");
-		div.style.left = count * (100 / 9) + "%";
-		div.style.width = 100 / 9 + "%";
-		$("#nav")[0].appendChild(div);
+			const imgHighlight = document.createElement("div");
+			imgHighlight.setAttribute("class", "highlight");
+			center.appendChild(imgHighlight);
+		} else {
+			const div = document.createElement("div");
+			div.setAttribute("class", "thumb");
+			div.style.left = count * (100 / 9) + "%";
+			div.style.width = 100 / 9 + "%";
+			$("#nav")[0].appendChild(div);
 
-		const img = loader.addImage(data.projects[i].thumb);
-		div.appendChild(img);
+			const img = loader.addImage(data.projects[i].thumb);
+			div.appendChild(img);
 
-		jQuery.data(div, "ident", i);
-		// }
+			jQuery.data(div, "ident", i);
+		}
 
 		count++;
 	}
