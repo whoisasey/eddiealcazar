@@ -17,6 +17,7 @@ let isTimeout = false;
 let isAnimating = false;
 let to;
 let previousThumb = null;
+let filteredData = {};
 
 function init() {
 	//Init resize event
@@ -28,11 +29,9 @@ function init() {
 		//Load xml
 		$.ajax({
 			type: "GET",
-			url: "json/desktop.json",
-			dataType: "jsonp",
-			crossDomain: "true",
+			url: "json/film.json",
+			dataType: "json",
 			success: parseData,
-			jsonpCallback: "callback",
 		});
 	}
 
@@ -40,13 +39,57 @@ function init() {
 		$.ajax({
 			type: "GET",
 			url: "json/mobile.json",
-			dataType: "jsonp",
+			dataType: "json",
 			crossDomain: "true",
 			success: parseMobileData,
-			jsonpCallback: "callback",
 		});
 	}
 }
+
+// Function to fetch data and filter by category
+function fetchAndFilter(category) {
+	$.ajax({
+		type: "GET",
+		url: `json/${category}.json`, // e.g., json/film.json or json/commercial.json
+		dataType: "json",
+		success: function (response) {
+			filteredData = response; // Assign the response to data
+			filterProjects(category); // Call the filter function
+		},
+		error: function () {
+			console.error("Error fetching JSON data.");
+		},
+	});
+}
+
+// Function to render projects based on filtered data
+function renderProjects(filteredProjects) {
+	$("#nav").empty(); // Clear the container
+
+	if (filteredProjects.length === 0) {
+		$("#nav").append("<p>No projects found for this category.</p>");
+		return;
+	}
+	parseData(filteredProjects);
+}
+
+// Function to filter projects by category
+function filterProjects(category) {
+	const filteredProjects = filteredData;
+	renderProjects(filteredProjects);
+}
+
+$("#filter-film").on("click", function () {
+	console.log("films clicked");
+
+	// 1 - when clicked, remove current thumbnails
+	// 2 - load json of category file of clicked filter button
+});
+
+$("#filter-commercials").on("click", function () {
+	console.log("commercials clicked");
+	fetchAndFilter("commercial"); // Fetch commercial.json
+});
 function parseData(d) {
 	data = d;
 
@@ -61,7 +104,6 @@ function parseData(d) {
 	TweenMax.set($(".copy").find("h1"), { x: -50, opacity: 0 });
 	TweenMax.set($(".top-nav").find("ul"), { x: -50, opacity: 0 });
 
-	// TODO: add same transition to top-nav
 	//Init thumbs
 	let count = 0;
 	let projects;
