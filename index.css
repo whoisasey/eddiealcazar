@@ -58,8 +58,13 @@ body {
   position: absolute;
   width: 639px;
   margin: 0 auto;
-  left: 639px;
+  left: 426px;
   top: -100px;
+}
+@media (min-width: 1450px) {
+  #wrapper.desktop .top-nav {
+    left: 639px;
+  }
 }
 #wrapper.desktop .top-nav ul {
   display: flex;

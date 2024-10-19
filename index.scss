@@ -76,8 +76,12 @@ body {
 			position: absolute;
 			width: 213px * 3;
 			margin: 0 auto;
-			left: 213px * 3;
+			left: 213px * 2;
 			top: -100px;
+
+			@media (min-width: 1450px) {
+				left: 213px * 3;
+			}
 			ul {
 				display: flex;
 				text-transform: uppercase;
