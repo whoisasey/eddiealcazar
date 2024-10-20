@@ -147,7 +147,8 @@ body {
 				font-size: 9px !important;
 				font-size: 0.7vw !important;
 
-				&:first-child {
+				&:first-child,
+				&:nth-child(2) {
 					text-transform: uppercase;
 				}
 			}

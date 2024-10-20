@@ -77,22 +77,20 @@ function renderProjects(projects) {
 
 	setTimeout(onTimeout, 250);
 	isLoaded = true;
+	initEvents(projects.projects);
 }
 
 $("#filter-film").on("click", function () {
-	console.log("films clicked");
 	fetchProjects("film");
 	closePageContainer();
 });
 
-// TODO: work on transition when clicking between filters
 $("#filter-commercials").on("click", function () {
-	console.log("commercials clicked");
 	fetchProjects("commercial"); // Fetch commercial.json
 	closePageContainer();
 });
 
-// TODO: call this on click
+// TODO: when thumbnail clicked after filter, old project data is still underneath
 function loadData(d) {
 	// logic for data and thumbnails go here
 	data = d;
@@ -239,15 +237,17 @@ function parseData(d) {
 	setTimeout(onTimeout, 1000); //change this to 4000 later
 	isLoaded = true;
 
-	initEvents();
+	initEvents(data.projects);
 
 	onResize();
 }
 
-function initEvents() {
+function initEvents(projects) {
 	//Init events
+
 	$(".thumb").click(function () {
 		const index = jQuery.data(this, "ident");
+
 		if (!isAnimating) {
 			getPage(index, 0);
 		}
@@ -325,33 +325,6 @@ function initEvents() {
 			closePageContainer();
 		}
 	});
-
-	// $("#awards").click(function () {
-	// 	closePageContainer();
-	// });
-
-	// $("#press").click(function () {
-	// 	closePageContainer();
-	// });
-
-	// Add an event listener for the scroll event to translate vertical scroll to horizontal scroll
-	// $(window).on("wheel", function (event) {
-	// 	const pressScroller = $("#press-scroller");
-	// 	const awardsScroller = $("#awards-scroller");
-
-	// 	// Check if the mouse is over elements with class 'press' or 'awards'
-	// 	const isPressHovered = $(".press:hover").length > 0;
-	// 	const isAwardsHovered = $(".awards:hover").length > 0;
-
-	// 	if (isPressHovered) {
-	// 		// Allow vertical scrolling within #press-scroller
-	// 		pressScroller[0].scrollTop += event.originalEvent.deltaY;
-	// 	}
-	// 	if (isAwardsHovered) {
-	// 		// Allow vertical scrolling within #awards-scroller
-	// 		awardsScroller[0].scrollTop += event.originalEvent.deltaY;
-	// 	}
-	// });
 
 	$(".center").click(function () {
 		if (currPage != null) {
@@ -664,7 +637,12 @@ function openPress() {
 function getPage(indexPage, indexSpot) {
 	let prevPage;
 	if (indexPage != currPageID || indexSpot != currSpotID) {
-		const page = $(".page" + indexPage + "" + indexSpot);
+		let page;
+		if ($(".page" + indexPage + "" + indexSpot).length > 1) {
+			page = $(".page" + indexPage + "" + indexSpot).eq(1); // Index 1
+		} else {
+			page = $(".page" + indexPage + "" + indexSpot).eq(0); // Index 0
+		}
 
 		TweenMax.set(page.find("img"), { scale: 1 });
 		TweenMax.set(page.find(".imgContainer"), { opacity: 0 });
@@ -701,10 +679,10 @@ function getPage(indexPage, indexSpot) {
 			},
 		);
 
-		if (isPressOpen) {
-			TweenMax.to($("#awards"), 0.5, { autoAlpha: 0 });
-			TweenMax.to($("#press"), 0.5, { autoAlpha: 0, delay: 0.1 });
-		}
+		// if (isPressOpen) {
+		// 	TweenMax.to($("#awards"), 0.5, { autoAlpha: 0 });
+		// 	TweenMax.to($("#press"), 0.5, { autoAlpha: 0, delay: 0.1 });
+		// }
 		if (currPage != null) {
 			console.log(indexPage + "-" + currPageID);
 		}
@@ -786,8 +764,8 @@ function getPage(indexPage, indexSpot) {
 	}
 }
 
-let pressScroll;
-let awardsScroll;
+// let pressScroll;
+// let awardsScroll;
 
 function animateIn() {
 	$(".thumb").each(function (i) {
@@ -911,6 +889,7 @@ function onResize() {
 
 function getProject(ident, spot) {
 	$("#project-modal").html("");
+
 	if (projects[ident].spots[spot].video) {
 		$("#project-modal").append(
 			"<iframe width=" +
