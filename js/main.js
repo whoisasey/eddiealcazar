@@ -90,7 +90,6 @@ $("#filter-commercials").on("click", function () {
 	closePageContainer();
 });
 
-// TODO: when thumbnail clicked after filter, old project data is still underneath
 function loadData(d) {
 	// logic for data and thumbnails go here
 	data = d;
@@ -863,28 +862,41 @@ function onResize() {
 	$("#navWrapper").css("height", w / (1600 / 66) + "px");
 	$("#navWrapper").css("margin-top", -$("#nav").height() / 2 + "px");
 
-	$("#press-scroller").css(
-		"height",
-		$("#press").height() - $("#press").find("h1").eq(0).height() - 20 + "px",
-	);
+	// centers top-nav
+	const $nav = $(".top-nav");
+	const screenWidth = $(window).width();
+	const navWidth = $nav.outerWidth();
 
-	let contentHeight = $("#press-scroller").height();
-
-	// Set CSS rules for scrolling based on content height
-	if (contentHeight > 230) {
-		// Check if content height exceeds the set height
-		$("#press-scroller").css({
-			"overflow-y": "auto", // Enable vertical scrolling if needed
-			"overflow-x": "hidden", // Hide horizontal scrollbar
-		});
+	if (screenWidth >= 1024) {
+		// Large screens and up
+		const leftOffset = (screenWidth - navWidth) / 2;
+		$nav.css("transform", `translateX(${leftOffset}px)`);
 	} else {
-		$("#press-scroller").css("overflow-y", "hidden"); // Disable scrolling if content fits within 230px
+		$nav.css("transform", ""); // Reset transform for smaller screens
 	}
 
-	$("#awards-scroller").css(
-		"height",
-		$("#awards").height() - $("#awards").find("h1").eq(0).height() - 20 + "px",
-	);
+	// $("#press-scroller").css(
+	// 	"height",
+	// 	$("#press").height() - $("#press").find("h1").eq(0).height() - 20 + "px",
+	// );
+
+	// let contentHeight = $("#press-scroller").height();
+
+	// Set CSS rules for scrolling based on content height
+	// if (contentHeight > 230) {
+	// 	// Check if content height exceeds the set height
+	// 	$("#press-scroller").css({
+	// 		"overflow-y": "auto", // Enable vertical scrolling if needed
+	// 		"overflow-x": "hidden", // Hide horizontal scrollbar
+	// 	});
+	// } else {
+	// 	$("#press-scroller").css("overflow-y", "hidden"); // Disable scrolling if content fits within 230px
+	// }
+
+	// $("#awards-scroller").css(
+	// 	"height",
+	// 	$("#awards").height() - $("#awards").find("h1").eq(0).height() - 20 + "px",
+	// );
 }
 
 function getProject(ident, spot) {
