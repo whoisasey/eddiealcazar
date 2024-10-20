@@ -58,17 +58,25 @@ body {
   position: absolute;
   width: 639px;
   margin: 0 auto;
-  left: 639px;
+  left: 426px;
   top: -100px;
+}
+@media (min-width: 1450px) {
+  #wrapper.desktop .top-nav {
+    left: 639px;
+  }
 }
 #wrapper.desktop .top-nav ul {
   display: flex;
   text-transform: uppercase;
   justify-content: space-between;
+  align-items: center;
 }
 #wrapper.desktop .top-nav ul li {
-  transition: 0.8s ease-in-out;
   color: #b5b5b5;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: 0.8s ease-in-out;
 }
 #wrapper.desktop .top-nav ul li:hover {
   cursor: pointer;

@@ -1,0 +1,58 @@
+{
+	"projects": [
+		{
+			"spots": [
+				{
+					"folder": "assets/img/projects/0000/",
+					"video": "http://player.vimeo.com/video/58274977"
+				}
+			],
+			"thumb": "assets/img/projects/0000/thumb.jpg",
+			"copytop": "<h1>EDDIE ALCAZAR</h1><ul><li>Director</li><li>Writer</li><li>Producer</li><li>Editor</li><li>Production Designer</li></ul>",
+			"copybottom": "<h1>0000</h1><h1>Feature Film</h1><ul><li><a href='http://0000themovie.com/' target='_blank'>0000themovie.com</a></li></ul>",
+			"category": "film"
+		},
+		{
+			"spots": [
+				{
+					"folder": "assets/img/projects/lotus/",
+					"video": "http://player.vimeo.com/video/140746381"
+				}
+			],
+			"thumb": "assets/img/projects/lotus/thumb.jpg",
+			"copytop": "<h1>EDDIE ALCAZAR</h1><li>Director</li><li>Writer</li><li>Producer</li><li>Editor</li>",
+			"copybottom": "<h1>FLYING LOTUS<br/>FUCKKKYOUUU</h1><h1>Experimental Short/Music Video</h1><ul><li>*World Premiere Sundance Next Fest 2015</li><li>*Official Selection Fantastic Fest 2015</li></ul>",
+			"category": "film"
+		},
+		{
+			"spots": [
+				{
+					"folder": "assets/img/projects/thevandal/",
+					"video": "http://player.vimeo.com/video/572876701"
+				}
+			],
+			"thumb": "assets/img/projects/thevandal/thumb.jpg",
+			"copytop": "<h1>EDDIE ALCAZAR</h1><ul><li>Director</li><li>Producer</li></ul>",
+			"copybottom": "<div><h1>Vandal</h1><h1>Short</h1><li>*World Premiere Cannes Directors Fortnight</li><li>*Official Selection Telluride Film Festival</li></div>",
+			"category": "film"
+		},
+		{
+			"spots": [
+				{
+					"folder": "assets/img/projects/bullet-time/"
+				}
+			],
+			"thumb": "assets/img/projects/bullet-time/thumb.jpg",
+			"copytop": "<h1>EDDIE ALCAZAR</h1><ul><li>Director</li><li>Writer</li><li>Producer</li><li>Editor</li></ul>",
+			"copybottom": "<div><h1>Bullet Time</h1><h1>Short Film | Pilot</h1><li>*COMING SOON</li></div>",
+			"category": "film"
+		},
+		{
+			"isCenter": "true"
+		}
+	],
+	"copy": {
+		"bottom": "<h1>REPRESENTATION</h1><ul><li>FEATURE FILM</li><li class='bold'><a href='http://www.anonymouscontent.com/' target='_blank'>ANONYMOUS CONTENT</a></li><li>LUKE RIVETT</li><li>BARD DOROS</li><li>310.558.9387</li></ul>",
+		"top": "<h1>EDDIE ALCAZAR</h1>"
+	}
+}

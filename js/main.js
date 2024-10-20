@@ -16,61 +16,97 @@ let isLoaded = false;
 let isTimeout = false;
 let isAnimating = false;
 let to;
-let previousThumb = null;
+let getCategory;
 
 function init() {
 	//Init resize event
 	$(window).resize(onResize);
 	checkWindowSize();
+
 	if (window.innerWidth > 820) {
 		onResize();
 
 		//Load xml
 		$.ajax({
 			type: "GET",
-			url: "json/desktop.json",
-			dataType: "jsonp",
-			crossDomain: "true",
+			url: "json/film.json",
+			dataType: "json",
 			success: parseData,
-			jsonpCallback: "callback",
 		});
 	}
 
+	// TODO: fix mobile
 	if (window.innerWidth <= 820) {
 		$.ajax({
 			type: "GET",
 			url: "json/mobile.json",
-			dataType: "jsonp",
-			crossDomain: "true",
+			dataType: "json",
 			success: parseMobileData,
-			jsonpCallback: "callback",
 		});
 	}
 }
-function parseData(d) {
+
+function fetchProjects(category) {
+	$.ajax({
+		type: "GET",
+		url: `json/${category}.json`,
+		dataType: "json",
+		success: function (response) {
+			data = response; // Store the response data
+			renderProjects(data); // Render projects
+		},
+		error: function () {
+			console.error("Error fetching JSON data.");
+		},
+	});
+}
+
+// Function to render projects based on filtered data
+function renderProjects(projects) {
+	const navContainer = $("#nav");
+	navContainer.empty(); // Clear the container
+
+	if (projects.length === 0) {
+		navContainer.append("<p>No projects found for this category.</p>");
+		return;
+	}
+
+	loadData(projects);
+
+	loader.start();
+
+	setTimeout(onTimeout, 250);
+	isLoaded = true;
+}
+
+$("#filter-film").on("click", function () {
+	console.log("films clicked");
+	fetchProjects("film");
+	closePageContainer();
+});
+
+// TODO: work on transition when clicking between filters
+$("#filter-commercials").on("click", function () {
+	console.log("commercials clicked");
+	fetchProjects("commercial"); // Fetch commercial.json
+	closePageContainer();
+});
+
+// TODO: call this on click
+function loadData(d) {
+	// logic for data and thumbnails go here
 	data = d;
 
-	//Init loader
-	loader = new PxLoader();
-
-	//Init copy
-	$("#copytop").html(data.copy.top);
-	$("#copybottom").html(data.copy.bottom);
-
-	TweenMax.set($(".copy").find("li"), { x: -50, opacity: 0 });
-	TweenMax.set($(".copy").find("h1"), { x: -50, opacity: 0 });
-	TweenMax.set($(".top-nav").find("ul"), { x: -50, opacity: 0 });
-
-	// TODO: add same transition to top-nav
 	//Init thumbs
 	let count = 0;
 	let projects;
 
 	projects = data.projects;
+
 	console.log("projects length:", projects.length);
 
-	for (let i = 0; i < data.projects.length; i++) {
-		if (data.projects[i].isCenter == "true") {
+	for (let i = 0; i < projects.length; i++) {
+		if (projects[i].isCenter == "true") {
 			//add center gif
 			const center = document.createElement("div");
 			center.setAttribute("class", "center");
@@ -79,16 +115,7 @@ function parseData(d) {
 			$("#nav")[0].appendChild(center);
 
 			const imgCenter = loader.addImage("assets/img/ui/center.gif");
-			//imgCenter.style.opacity = '0';
 			center.appendChild(imgCenter);
-
-			/*$(imgCenter).load(function(){
-								onResize();
-								TweenMax.to(imgCenter,0.5,{opacity:1});
-								loader.start();
-								to = setTimeout(onTimeout,4000);
-								isLoaded = true;
-						});*/
 
 			const imgHighlight = document.createElement("div");
 			imgHighlight.setAttribute("class", "highlight");
@@ -100,7 +127,7 @@ function parseData(d) {
 			div.style.width = 100 / 9 + "%";
 			$("#nav")[0].appendChild(div);
 
-			const img = loader.addImage(data.projects[i].thumb);
+			const img = loader.addImage(projects[i].thumb);
 			div.appendChild(img);
 
 			jQuery.data(div, "ident", i);
@@ -109,10 +136,10 @@ function parseData(d) {
 		count++;
 	}
 
-	for (i = 0; i < data.projects.length; i++) {
-		if (data.projects[i].isCenter != "true") {
-			for (let j = 0; j < data.projects[i].spots.length; j++) {
-				const spot = data.projects[i].spots[j];
+	for (i = 0; i < projects.length; i++) {
+		if (projects[i].isCenter != "true") {
+			for (let j = 0; j < projects[i].spots.length; j++) {
+				const spot = projects[i].spots[j];
 
 				const page = document.createElement("div");
 				page.setAttribute("class", "page page" + i + "" + j);
@@ -177,10 +204,47 @@ function parseData(d) {
 		width: availableWidth + "px",
 	});
 
+	// Indicator
+	getCategory = projects[0].category;
+
+	if (getCategory === "film") {
+		$("#filter-film").css("color", "rgb(101 0 0)");
+		$("#filter-commercials").css("color", "#b5b5b5");
+	}
+
+	if (getCategory === "commercial") {
+		$("#filter-film").css("color", "#b5b5b5");
+		$("#filter-commercials").css("color", "rgb(101 0 0)");
+	}
+}
+function parseData(d) {
+	data = d;
+
+	//Init loader
+	loader = new PxLoader();
+
+	//Init copy
+	$("#copytop").html(data.copy.top);
+	$("#copybottom").html(data.copy.bottom);
+
+	TweenMax.set($(".copy").find("li"), { x: -50, opacity: 0 });
+	TweenMax.set($(".copy").find("h1"), { x: -50, opacity: 0 });
+	TweenMax.set($(".top-nav").find("ul"), { x: -50, opacity: 0 });
+
+	//Init thumbs
+	loadData(data);
+
 	loader.start();
-	to = setTimeout(onTimeout, 1000);
+
+	setTimeout(onTimeout, 1000); //change this to 4000 later
 	isLoaded = true;
 
+	initEvents();
+
+	onResize();
+}
+
+function initEvents() {
 	//Init events
 	$(".thumb").click(function () {
 		const index = jQuery.data(this, "ident");
@@ -262,13 +326,13 @@ function parseData(d) {
 		}
 	});
 
-	$("#awards").click(function () {
-		closePageContainer();
-	});
+	// $("#awards").click(function () {
+	// 	closePageContainer();
+	// });
 
-	$("#press").click(function () {
-		closePageContainer();
-	});
+	// $("#press").click(function () {
+	// 	closePageContainer();
+	// });
 
 	// Add an event listener for the scroll event to translate vertical scroll to horizontal scroll
 	// $(window).on("wheel", function (event) {
@@ -363,8 +427,6 @@ function parseData(d) {
 			TweenMax.to($("#press"), 0.5, { autoAlpha: 0, delay: 0.1 });
 		}
 	});
-
-	onResize();
 }
 
 function checkWindowSize() {
@@ -422,9 +484,6 @@ function closePageContainer() {
 		let prevPage = currPage;
 		isAnimating = true;
 
-		if (previousThumb) {
-			$(previousThumb).css("border", "none");
-		}
 		TweenMax.staggerTo(
 			currPage.find(".imgContainer"),
 			1,
