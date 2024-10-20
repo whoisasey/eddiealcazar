@@ -16,7 +16,7 @@ let isLoaded = false;
 let isTimeout = false;
 let isAnimating = false;
 let to;
-let isFirstLoad = true;
+let getCategory;
 
 function init() {
 	//Init resize event
@@ -203,6 +203,19 @@ function loadData(d) {
 	$(".copy").css({
 		width: availableWidth + "px",
 	});
+
+	// Indicator
+	getCategory = projects[0].category;
+
+	if (getCategory === "film") {
+		$("#filter-film").css("color", "rgb(101 0 0)");
+		$("#filter-commercials").css("color", "#b5b5b5");
+	}
+
+	if (getCategory === "commercial") {
+		$("#filter-film").css("color", "#b5b5b5");
+		$("#filter-commercials").css("color", "rgb(101 0 0)");
+	}
 }
 function parseData(d) {
 	data = d;
@@ -210,17 +223,15 @@ function parseData(d) {
 	//Init loader
 	loader = new PxLoader();
 
-	// //Init copy
+	//Init copy
 	$("#copytop").html(data.copy.top);
 	$("#copybottom").html(data.copy.bottom);
-
-	// // TODO:only load on initial page load
 
 	TweenMax.set($(".copy").find("li"), { x: -50, opacity: 0 });
 	TweenMax.set($(".copy").find("h1"), { x: -50, opacity: 0 });
 	TweenMax.set($(".top-nav").find("ul"), { x: -50, opacity: 0 });
 
-	// //Init thumbs
+	//Init thumbs
 	loadData(data);
 
 	loader.start();
