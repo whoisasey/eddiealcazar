@@ -77,7 +77,7 @@ function renderProjects(projects) {
 
 	setTimeout(onTimeout, 250);
 	isLoaded = true;
-	initEvents(projects);
+	initEvents(projects.projects);
 }
 
 $("#filter-film").on("click", function () {
@@ -237,7 +237,7 @@ function parseData(d) {
 	setTimeout(onTimeout, 1000); //change this to 4000 later
 	isLoaded = true;
 
-	initEvents(data);
+	initEvents(data.projects);
 
 	onResize();
 }
@@ -325,33 +325,6 @@ function initEvents(projects) {
 			closePageContainer();
 		}
 	});
-
-	// $("#awards").click(function () {
-	// 	closePageContainer();
-	// });
-
-	// $("#press").click(function () {
-	// 	closePageContainer();
-	// });
-
-	// Add an event listener for the scroll event to translate vertical scroll to horizontal scroll
-	// $(window).on("wheel", function (event) {
-	// 	const pressScroller = $("#press-scroller");
-	// 	const awardsScroller = $("#awards-scroller");
-
-	// 	// Check if the mouse is over elements with class 'press' or 'awards'
-	// 	const isPressHovered = $(".press:hover").length > 0;
-	// 	const isAwardsHovered = $(".awards:hover").length > 0;
-
-	// 	if (isPressHovered) {
-	// 		// Allow vertical scrolling within #press-scroller
-	// 		pressScroller[0].scrollTop += event.originalEvent.deltaY;
-	// 	}
-	// 	if (isAwardsHovered) {
-	// 		// Allow vertical scrolling within #awards-scroller
-	// 		awardsScroller[0].scrollTop += event.originalEvent.deltaY;
-	// 	}
-	// });
 
 	$(".center").click(function () {
 		if (currPage != null) {

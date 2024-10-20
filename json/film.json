@@ -33,7 +33,7 @@
 			],
 			"thumb": "assets/img/projects/thevandal/thumb.jpg",
 			"copytop": "<h1>EDDIE ALCAZAR</h1><ul><li>Director</li><li>Producer</li></ul>",
-			"copybottom": "<div><h1>Vandal</h1><h1>Short</h1><li>*World Premiere Cannes Directors Fortnight</li><li>*Official Selection Telluride Film Festival</li></div>",
+			"copybottom": "<div><h1>Darren Aronofsky Presents</h1><h1>The Vandal</h1><h1>Short Film</h1><li>*World Premiere Cannes - Directors Fortnight 2021</li><li>*Official Selection Telluride Film Festival</li><li>*Distributed by The New Yorker</li></div>",
 			"category": "film"
 		},
 		{
@@ -49,6 +49,53 @@
 		},
 		{
 			"isCenter": "true"
+		},
+		{
+			"spots": [
+				{
+					"folder": "assets/img/projects/red-terror/"
+				}
+			],
+			"thumb": "assets/img/projects/red-terror/thumb.jpg",
+			"copytop": "<h1>EDDIE ALCAZAR</h1><ul><li>Director</li><li>Writer</li><li>Editor</li><li>VFX</li></ul>",
+			"copybottom": "<div><h1>The Weeknd</h1><h1>Red Terror</h1><h1>Short Film | Music Video</h1></div>",
+			"category": "film"
+		},
+		{
+			"spots": [
+				{
+					"folder": "assets/img/projects/divinity/",
+					"video": "http://player.vimeo.com/video/789505958"
+				}
+			],
+			"thumb": "assets/img/projects/divinity/thumb.jpg",
+			"copytop": "<h1>EDDIE ALCAZAR</h1><ul><li>Director</li><li>Writer</li><li>Producer</li></ul>",
+			"copybottom": "<div><h1>Steven Soderbergh Presents</h1><h1>Divinity</h1><h1>Feature Film</h1><li>*World Premiere Sundance 2023</li><li>*Official Selection Taormina Film Festival</li><li>*Official Selection Fantastic Fest</li><li>*Official Selection Sitges</li><li>*Distributed by Shudder | Utopia</li></div>1",
+			"category": "film"
+		},
+		{
+			"spots": [
+				{
+					"folder": "assets/img/projects/perfect/",
+					"video": "http://player.vimeo.com/video/260708231"
+				}
+			],
+			"thumb": "assets/img/projects/perfect/thumb.jpg",
+			"copytop": "<h1>EDDIE ALCAZAR</h1><ul><li>Director</li><li>Writer</li><li>Producer</li></ul>",
+			"copybottom": "<div><h1>Steven Soderbergh Presents</h1><h1>Perfect</h1><h1>Feature Film</h1><li>*World Premiere Sundance Film Festival 2023</li><li>*Official Selection Sitges Film Festival</li></div>",
+			"category": "film"
+		},
+		{
+			"spots": [
+				{
+					"folder": "assets/img/projects/tapia/",
+					"video": "http://player.vimeo.com/video/68278966"
+				}
+			],
+			"thumb": "assets/img/projects/tapia/thumb.jpg",
+			"copytop": "<h1>EDDIE ALCAZAR</h1><ul><li>Director</li><li>Writer</li><li>Producer</li><li>Editor</li></ul>",
+			"copybottom": "<div><h1>50 Cent Presents</h1><h1>TAPIA</h1><h1>Documentary</h1><ul><li><a href='http://tapiathemovie.com/' target='_blank'>tapiathemovie.com</a></li><li>*HBO</li><li>*LA Film Fest World Premiere</li><li>*Winner Best Doc SFIFF</li><li>*Winner Best Doc Julien Dubuque</li></ul></div>",
+			"category": "film"
 		}
 	],
 	"copy": {
