@@ -29,7 +29,7 @@ function init() {
 		//Load xml
 		$.ajax({
 			type: "GET",
-			url: "json/film.json",
+			url: "json/commercial.json",
 			dataType: "json",
 			success: parseData,
 		});
@@ -233,7 +233,7 @@ function parseData(d) {
 
 	loader.start();
 
-	setTimeout(onTimeout, 1000); //change this to 4000 later
+	setTimeout(onTimeout, 4000); //change this to 4000 later
 	isLoaded = true;
 
 	initEvents(data.projects);
@@ -678,10 +678,6 @@ function getPage(indexPage, indexSpot) {
 			},
 		);
 
-		// if (isPressOpen) {
-		// 	TweenMax.to($("#awards"), 0.5, { autoAlpha: 0 });
-		// 	TweenMax.to($("#press"), 0.5, { autoAlpha: 0, delay: 0.1 });
-		// }
 		if (currPage != null) {
 			console.log(indexPage + "-" + currPageID);
 		}
@@ -874,29 +870,6 @@ function onResize() {
 	} else {
 		$nav.css("transform", ""); // Reset transform for smaller screens
 	}
-
-	// $("#press-scroller").css(
-	// 	"height",
-	// 	$("#press").height() - $("#press").find("h1").eq(0).height() - 20 + "px",
-	// );
-
-	// let contentHeight = $("#press-scroller").height();
-
-	// Set CSS rules for scrolling based on content height
-	// if (contentHeight > 230) {
-	// 	// Check if content height exceeds the set height
-	// 	$("#press-scroller").css({
-	// 		"overflow-y": "auto", // Enable vertical scrolling if needed
-	// 		"overflow-x": "hidden", // Hide horizontal scrollbar
-	// 	});
-	// } else {
-	// 	$("#press-scroller").css("overflow-y", "hidden"); // Disable scrolling if content fits within 230px
-	// }
-
-	// $("#awards-scroller").css(
-	// 	"height",
-	// 	$("#awards").height() - $("#awards").find("h1").eq(0).height() - 20 + "px",
-	// );
 }
 
 function getProject(ident, spot) {
