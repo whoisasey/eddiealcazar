@@ -16,7 +16,7 @@
 			"thumb": "assets/img/projects/taylormade/thumb.jpg",
 			"copytop": "<h1>EDDIE ALCAZAR</h1><ul><li>Director</li><li>Editor</li><li>Production Designer</li></ul>",
 			"copybottom": "<h1>TAYLORMADE</h1><h1>Commercial</h1><ul><li>*National 3 Spot Campaign</li></ul>",
-			"category": "film"
+			"category": "commercial"
 		},
 		{
 			"spots": [
@@ -28,7 +28,7 @@
 			"thumb": "assets/img/projects/everlast/thumb.jpg",
 			"copytop": "<h1>EDDIE ALCAZAR</h1><ul><li>Director</li><li>Editor</li><li>VFX</li></ul>",
 			"copybottom": "<h1>EVERLAST</h1><h1>Commercial</h1><ul><li>*AICP Nominated</li><li>*Shoot Magazine Directors Showcase</li><li>*Telly Award</li></ul>",
-			"category": "film"
+			"category": "commercial"
 		},
 		{
 			"spots": [
@@ -40,7 +40,7 @@
 			"thumb": "assets/img/projects/0000/thumb.jpg",
 			"copytop": "<h1>EDDIE ALCAZAR</h1><ul><li>Director</li><li>Writer</li><li>Producer</li><li>Editor</li><li>Production Designer</li></ul>",
 			"copybottom": "<h1>0000</h1><h1>Feature Film</h1><ul><li><a href='http://0000themovie.com/' target='_blank'>0000themovie.com</a></li></ul>",
-			"category": "film"
+			"category": "commercial"
 		},
 		{
 			"spots": [
@@ -52,7 +52,7 @@
 			"thumb": "assets/img/projects/tapia/thumb.jpg",
 			"copytop": "<h1>EDDIE ALCAZAR</h1><ul><li>Director</li><li>Writer</li><li>Producer</li><li>Editor</li></ul>",
 			"copybottom": "<h1>TAPIA</h1><h1>Documentary</h1><ul><li><a href='http://tapiathemovie.com/' target='_blank'>tapiathemovie.com</a></li><li>*HBO</li><li>*LA Film Fest World Premiere</li><li>*Winner Best Doc SFIFF</li><li>*Winner Best Doc Julien Dubuque</li></ul>",
-			"category": "film"
+			"category": "commercial"
 		},
 		{
 			"isCenter": "true"
@@ -67,7 +67,7 @@
 			"thumb": "assets/img/projects/versace/thumb.jpg",
 			"copytop": "<h1>EDDIE ALCAZAR</h1><ul><li>Director</li><li>Producer</li><li>Editor</li><li>Production Designer</li></ul>",
 			"copybottom": "<h1>VERSACE</h1><h1>Commercial</h1><ul><li>*65MM</li></ul>",
-			"category": "film"
+			"category": "commercial"
 		},
 		{
 			"spots": [
@@ -79,7 +79,7 @@
 			"thumb": "assets/img/projects/lotus/thumb.jpg",
 			"copytop": "<h1>EDDIE ALCAZAR</h1><li>Director</li><li>Writer</li><li>Producer</li><li>Editor</li>",
 			"copybottom": "<h1>FLYING LOTUS<br/>FUCKKKYOUUU</h1><h1>Experimental Short/Music Video</h1><ul><li>*World Premiere Sundance Next Fest 2015</li><li>*Official Selection Fantastic Fest 2015</li></ul>",
-			"category": "film"
+			"category": "commercial"
 		},
 		{
 			"spots": [
@@ -91,7 +91,7 @@
 			"thumb": "assets/img/projects/adele/thumb.jpg",
 			"copytop": "<h1>EDDIE ALCAZAR</h1><ul><li>VFX</li></ul>",
 			"copybottom": "<h1>ADELE - SOMEONE LIKE YOU</h1><h1>Music Video</h1><ul><li>*MVPA Nominated</li></ul>",
-			"category": "film"
+			"category": "commercial"
 		},
 		{
 			"spots": [
@@ -103,7 +103,7 @@
 			"isStills": "true",
 			"copytop": "<h1>EDDIE ALCAZAR</h1><ul><li>Photographer</li></ul>",
 			"copybottom": "",
-			"category": "film"
+			"category": "commercial"
 		}
 	],
 	"copy": {
