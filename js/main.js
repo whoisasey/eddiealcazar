@@ -65,32 +65,34 @@ function fetchProjects(category) {
 function renderProjects(projects) {
 	const navContainer = $("#nav");
 	navContainer.empty(); // Clear the container
-	console.log("cleared the nav container...");
 
 	if (projects.length === 0) {
 		navContainer.append("<p>No projects found for this category.</p>");
 		return;
 	}
-	parseData(projects);
+
+	loadData(projects);
+
+	loader.start();
+
+	setTimeout(onTimeout, 250);
+	isLoaded = true;
 }
 
 $("#filter-film").on("click", function () {
 	console.log("films clicked");
 	fetchProjects("film");
-	// isFirstLoad = false;
-
 	closePageContainer();
 });
 
 // TODO: work on transition when clicking between filters
-// TODO: do not reload nav and initial copy when clicking between filters
 $("#filter-commercials").on("click", function () {
 	console.log("commercials clicked");
 	fetchProjects("commercial"); // Fetch commercial.json
-	// isFirstLoad = false;
 	closePageContainer();
 });
 
+// TODO: call this on click
 function loadData(d) {
 	// logic for data and thumbnails go here
 	data = d;
@@ -100,10 +102,11 @@ function loadData(d) {
 	let projects;
 
 	projects = data.projects;
+
 	console.log("projects length:", projects.length);
 
-	for (let i = 0; i < data.projects.length; i++) {
-		if (data.projects[i].isCenter == "true") {
+	for (let i = 0; i < projects.length; i++) {
+		if (projects[i].isCenter == "true") {
 			//add center gif
 			const center = document.createElement("div");
 			center.setAttribute("class", "center");
@@ -112,16 +115,7 @@ function loadData(d) {
 			$("#nav")[0].appendChild(center);
 
 			const imgCenter = loader.addImage("assets/img/ui/center.gif");
-			//imgCenter.style.opacity = '0';
 			center.appendChild(imgCenter);
-
-			/*$(imgCenter).load(function(){
-								onResize();
-								TweenMax.to(imgCenter,0.5,{opacity:1});
-								loader.start();
-								to = setTimeout(onTimeout,4000);
-								isLoaded = true;
-						});*/
 
 			const imgHighlight = document.createElement("div");
 			imgHighlight.setAttribute("class", "highlight");
@@ -133,7 +127,7 @@ function loadData(d) {
 			div.style.width = 100 / 9 + "%";
 			$("#nav")[0].appendChild(div);
 
-			const img = loader.addImage(data.projects[i].thumb);
+			const img = loader.addImage(projects[i].thumb);
 			div.appendChild(img);
 
 			jQuery.data(div, "ident", i);
@@ -142,10 +136,10 @@ function loadData(d) {
 		count++;
 	}
 
-	for (i = 0; i < data.projects.length; i++) {
-		if (data.projects[i].isCenter != "true") {
-			for (let j = 0; j < data.projects[i].spots.length; j++) {
-				const spot = data.projects[i].spots[j];
+	for (i = 0; i < projects.length; i++) {
+		if (projects[i].isCenter != "true") {
+			for (let j = 0; j < projects[i].spots.length; j++) {
+				const spot = projects[i].spots[j];
 
 				const page = document.createElement("div");
 				page.setAttribute("class", "page page" + i + "" + j);
@@ -227,125 +221,11 @@ function parseData(d) {
 	TweenMax.set($(".top-nav").find("ul"), { x: -50, opacity: 0 });
 
 	// //Init thumbs
-	// if (!isFirstLoad) loadData(data);
 	loadData(data);
-	// let count = 0;
-	// let projects;
-
-	// projects = data.projects;
-	// console.log("projects length:", projects.length);
-
-	// for (let i = 0; i < data.projects.length; i++) {
-	// 	if (data.projects[i].isCenter == "true") {
-	// 		//add center gif
-	// 		const center = document.createElement("div");
-	// 		center.setAttribute("class", "center");
-	// 		center.style.left = count * (100 / 9) + "%";
-	// 		center.style.width = 100 / 9 + "%";
-	// 		$("#nav")[0].appendChild(center);
-
-	// 		const imgCenter = loader.addImage("assets/img/ui/center.gif");
-	// 		//imgCenter.style.opacity = '0';
-	// 		center.appendChild(imgCenter);
-
-	// 		/*$(imgCenter).load(function(){
-	// 							onResize();
-	// 							TweenMax.to(imgCenter,0.5,{opacity:1});
-	// 							loader.start();
-	// 							to = setTimeout(onTimeout,4000);
-	// 							isLoaded = true;
-	// 					});*/
-
-	// 		const imgHighlight = document.createElement("div");
-	// 		imgHighlight.setAttribute("class", "highlight");
-	// 		center.appendChild(imgHighlight);
-	// 	} else {
-	// 		const div = document.createElement("div");
-	// 		div.setAttribute("class", "thumb");
-	// 		div.style.left = count * (100 / 9) + "%";
-	// 		div.style.width = 100 / 9 + "%";
-	// 		$("#nav")[0].appendChild(div);
-
-	// 		const img = loader.addImage(data.projects[i].thumb);
-	// 		div.appendChild(img);
-
-	// 		jQuery.data(div, "ident", i);
-	// 	}
-
-	// 	count++;
-	// }
-
-	// for (i = 0; i < data.projects.length; i++) {
-	// 	if (data.projects[i].isCenter != "true") {
-	// 		for (let j = 0; j < data.projects[i].spots.length; j++) {
-	// 			const spot = data.projects[i].spots[j];
-
-	// 			const page = document.createElement("div");
-	// 			page.setAttribute("class", "page page" + i + "" + j);
-	// 			$("#pageContainer")[0].appendChild(page);
-
-	// 			jQuery.data(page, "projectID", i);
-	// 			jQuery.data(page, "spotID", j);
-
-	// 			const container1 = document.createElement("div");
-	// 			container1.setAttribute("class", "imgContainer topleft container1");
-
-	// 			page.appendChild(container1);
-
-	// 			const image1 = loader.addImage(spot.folder + "01.jpg");
-	// 			container1.appendChild(image1);
-
-	// 			const container2 = document.createElement("div");
-	// 			container2.setAttribute("class", "imgContainer topright container2");
-	// 			jQuery.data(container2, "ident", i);
-	// 			page.appendChild(container2);
-
-	// 			const image2 = loader.addImage(spot.folder + "02.jpg");
-	// 			container2.appendChild(image2);
-
-	// 			const container3 = document.createElement("div");
-	// 			container3.setAttribute("class", "imgContainer bottomleft container3");
-	// 			jQuery.data(container3, "ident", i);
-	// 			page.appendChild(container3);
-
-	// 			const image3 = loader.addImage(spot.folder + "03.jpg");
-	// 			container3.appendChild(image3);
-
-	// 			const container4 = document.createElement("div");
-	// 			container4.setAttribute("class", "imgContainer bottomright container4");
-	// 			page.appendChild(container4);
-
-	// 			const image4 = loader.addImage(spot.folder + "04.jpg");
-	// 			container4.appendChild(image4);
-
-	// 			jQuery.data(container1, "projectID", i);
-	// 			jQuery.data(container1, "spotID", j);
-
-	// 			jQuery.data(container2, "projectID", i);
-	// 			jQuery.data(container2, "spotID", j);
-
-	// 			jQuery.data(container3, "projectID", i);
-	// 			jQuery.data(container3, "spotID", j);
-
-	// 			jQuery.data(container4, "projectID", i);
-	// 			jQuery.data(container4, "spotID", j);
-	// 		}
-	// 	}
-	// }
-
-	// const leftImageWidth = $(".container3").outerWidth(true);
-	// const rightImageWidth = $(".container4").outerWidth(true);
-
-	// const parentContainer = $("#pageContainer").width();
-	// const availableWidth = parentContainer - (leftImageWidth + rightImageWidth);
-
-	// $(".copy").css({
-	// 	width: availableWidth + "px",
-	// });
 
 	loader.start();
-	// TODO:only load on initial page load
-	var to = setTimeout(onTimeout, 1000);
+
+	setTimeout(onTimeout, 1000); //change this to 4000 later
 	isLoaded = true;
 
 	initEvents();

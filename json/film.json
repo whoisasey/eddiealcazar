@@ -43,6 +43,9 @@
 			"thumb": "assets/img/projects/bullet-time/thumb.jpg",
 			"copytop": "<h1>EDDIE ALCAZAR</h1><ul><li>Director</li><li>Writer</li><li>Producer</li><li>Editor</li></ul>",
 			"copybottom": "<div><h1>Bullet Time</h1><h1>Short Film | Pilot</h1><li>*COMING SOON</li></div>"
+		},
+		{
+			"isCenter": "true"
 		}
 	],
 	"copy": {
