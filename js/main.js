@@ -8,6 +8,9 @@
 //@codekit-prepend "libs/PxLoader.js";
 //@codekit-prepend "libs/PxLoaderImage.js";
 
+// TODO: add youtube
+// https://www.youtube.com/watch?v=xoslm8aZOOM&ab_channel=FlyingLotusVEVO
+
 let data, loader;
 let pages = [];
 let thumbs = [];
@@ -29,7 +32,7 @@ function init() {
 		//Load xml
 		$.ajax({
 			type: "GET",
-			url: "json/commercial.json",
+			url: "json/film.json",
 			dataType: "json",
 			success: parseData,
 		});
@@ -205,13 +208,13 @@ function loadData(d) {
 	getCategory = projects[0].category;
 
 	if (getCategory === "film") {
-		$("#filter-film").css("color", "rgb(101 0 0)");
-		$("#filter-commercials").css("color", "#b5b5b5");
+		$("#filter-film").css("color", "#b5b5b5");
+		$("#filter-commercials").css("color", "rgba(255, 255, 255, 0.4)");
 	}
 
 	if (getCategory === "commercial") {
-		$("#filter-film").css("color", "#b5b5b5");
-		$("#filter-commercials").css("color", "rgb(101 0 0)");
+		$("#filter-film").css("color", "rgba(255, 255, 255, 0.4)");
+		$("#filter-commercials").css("color", "#b5b5b5");
 	}
 }
 function parseData(d) {
