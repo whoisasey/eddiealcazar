@@ -396,11 +396,6 @@ function initEvents(projects) {
 				);
 			});
 		}
-
-		if (isPressOpen) {
-			TweenMax.to($("#awards"), 0.5, { autoAlpha: 0 });
-			TweenMax.to($("#press"), 0.5, { autoAlpha: 0, delay: 0.1 });
-		}
 	});
 }
 
@@ -638,6 +633,7 @@ function openPress() {
 
 function getPage(indexPage, indexSpot) {
 	let prevPage;
+
 	if (indexPage != currPageID || indexSpot != currSpotID) {
 		let page;
 		if ($(".page" + indexPage + "" + indexSpot).length > 1) {
@@ -657,7 +653,7 @@ function getPage(indexPage, indexSpot) {
 		page.css("visibility", "visible");
 
 		if (currPage != null) {
-			let prevPage = currPage;
+			prevPage = currPage;
 		}
 
 		isAnimating = true;
