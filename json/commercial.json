@@ -21,7 +21,7 @@
 			],
 			"thumb": "assets/img/projects/taylormade-sergio/thumb.jpg",
 			"copytop": "<h1>EDDIE ALCAZAR</h1><ul><li>Director</li><li>Editor</li></ul>",
-			"copybottom": "<h1>TAYLORMADE | Sergio Garcia</h1><h1>Commercial</h1><ul><li>*National 3 Spot Campaign</li></ul>",
+			"copybottom": "<li>Sergio Garcia</li><h1>TAYLORMADE</h1><h1>Commercial</h1><ul><li>*National 3 Spot Campaign</li></ul>",
 			"category": "commercial"
 		},
 		{
@@ -70,7 +70,7 @@
 			],
 			"thumb": "assets/img/projects/taylormade-camillo/thumb.jpg",
 			"copytop": "<h1>EDDIE ALCAZAR</h1><ul><li>Director</li><li>Editor</li></ul>",
-			"copybottom": "<h1>TAYLORMADE | Jason Day</h1><h1>Commercial</h1><ul><li>*National 3 Spot Campaign</li></ul>",
+			"copybottom": "<li>Jason Day</li><h1>TAYLORMADE</h1><h1>Commercial</h1><ul><li>*National 3 Spot Campaign</li></ul>",
 			"category": "commercial"
 		},
 		{
@@ -93,12 +93,12 @@
 			],
 			"thumb": "assets/img/projects/taylormade-camillo/thumb.jpg",
 			"copytop": "<h1>EDDIE ALCAZAR</h1><ul><li>Director</li><li>Editor</li></ul>",
-			"copybottom": "<h1>TAYLORMADE | Camilo Villegas</h1><h1>Commercial</h1><ul><li>*National 3 Spot Campaign</li></ul>",
+			"copybottom": "<li>Camilo Villegas</li><h1>TAYLORMADE</h1><h1>Commercial</h1><ul><li>*National 3 Spot Campaign</li></ul>",
 			"category": "commercial"
 		}
 	],
 	"copy": {
-		"bottom": "<h1>REPRESENTATION</h1><ul><li>FEATURE FILM</li><li>CAA</li><li class='bold'><a href='http://www.anonymouscontent.com/' target='_blank'>ANONYMOUS CONTENT</a></li><br/><li>COMMERCIALS</li><li><a href='https://www.chromista.tv/' target='_blank'>CHROMISTA</a></li></ul>",
+		"bottom": "<h1>REPRESENTATION</h1><ul><li>FEATURE FILM</li><li><b><a href='https://www.caa.com/' target='_blank'>CAA</a></b></li><li class='bold'><a href='http://www.anonymouscontent.com/' target='_blank'>ANONYMOUS CONTENT</a></li><li>COMMERCIALS</li><li><b><a href='https://www.chromista.tv/' target='_blank'>CHROMISTA</a></b></li></ul>",
 		"top": "<h1>EDDIE ALCAZAR</h1>"
 	}
 }

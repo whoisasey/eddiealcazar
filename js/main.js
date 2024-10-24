@@ -8,6 +8,9 @@
 //@codekit-prepend "libs/PxLoader.js";
 //@codekit-prepend "libs/PxLoaderImage.js";
 
+// TODO: add youtube
+// https://www.youtube.com/watch?v=xoslm8aZOOM&ab_channel=FlyingLotusVEVO
+
 let data, loader;
 let pages = [];
 let thumbs = [];
@@ -29,7 +32,7 @@ function init() {
 		//Load xml
 		$.ajax({
 			type: "GET",
-			url: "json/commercial.json",
+			url: "json/film.json",
 			dataType: "json",
 			success: parseData,
 		});
@@ -205,13 +208,13 @@ function loadData(d) {
 	getCategory = projects[0].category;
 
 	if (getCategory === "film") {
-		$("#filter-film").css("color", "rgb(101 0 0)");
-		$("#filter-commercials").css("color", "#b5b5b5");
+		$("#filter-film").css("color", "#b5b5b5");
+		$("#filter-commercials").css("color", "rgba(255, 255, 255, 0.4)");
 	}
 
 	if (getCategory === "commercial") {
-		$("#filter-film").css("color", "#b5b5b5");
-		$("#filter-commercials").css("color", "rgb(101 0 0)");
+		$("#filter-film").css("color", "rgba(255, 255, 255, 0.4)");
+		$("#filter-commercials").css("color", "#b5b5b5");
 	}
 }
 function parseData(d) {
@@ -393,11 +396,6 @@ function initEvents(projects) {
 				);
 			});
 		}
-
-		if (isPressOpen) {
-			TweenMax.to($("#awards"), 0.5, { autoAlpha: 0 });
-			TweenMax.to($("#press"), 0.5, { autoAlpha: 0, delay: 0.1 });
-		}
 	});
 }
 
@@ -534,11 +532,6 @@ function closePageContainer() {
 			);
 		});
 	}
-
-	if (isPressOpen) {
-		TweenMax.to($("#awards"), 0.5, { autoAlpha: 0 });
-		TweenMax.to($("#press"), 0.5, { autoAlpha: 0, delay: 0.1 });
-	}
 }
 
 let isPressOpen = false;
@@ -628,13 +621,11 @@ function openPress() {
 	}
 
 	isPressOpen = true;
-
-	TweenMax.to($("#awards"), 1, { autoAlpha: 1 });
-	TweenMax.to($("#press"), 1, { autoAlpha: 1, delay: 0.2 });
 }
 
 function getPage(indexPage, indexSpot) {
 	let prevPage;
+
 	if (indexPage != currPageID || indexSpot != currSpotID) {
 		let page;
 		if ($(".page" + indexPage + "" + indexSpot).length > 1) {
@@ -654,7 +645,7 @@ function getPage(indexPage, indexSpot) {
 		page.css("visibility", "visible");
 
 		if (currPage != null) {
-			let prevPage = currPage;
+			prevPage = currPage;
 		}
 
 		isAnimating = true;
@@ -758,9 +749,6 @@ function getPage(indexPage, indexSpot) {
 		currSpotID = indexSpot;
 	}
 }
-
-// let pressScroll;
-// let awardsScroll;
 
 function animateIn() {
 	$(".thumb").each(function (i) {
