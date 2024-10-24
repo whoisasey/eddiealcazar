@@ -417,18 +417,18 @@ function parseMobileData(d) {
 
 	//Init thumbs
 	let count = 0;
-	for (let i = 0; i < projects.length; i++) {
-		if (projects[i].thumb) {
+	for (let i = 0; i < data.projects.length; i++) {
+		if (data.projects[i].thumb) {
 			let div = document.createElement("div");
 			div.setAttribute("class", "thumb");
 			$("#projects")[0].appendChild(div);
 
-			for (let j = 0; j < projects[i].spots.length; j++) {
+			for (let j = 0; j < data.projects[i].spots.length; j++) {
 				let img = new Image();
-				if (projects[i].spots[j].thumb) {
-					img.src = projects[i].spots[j].thumb;
+				if (data.projects[i].spots[j].thumb) {
+					img.src = data.projects[i].spots[j].thumb;
 				} else {
-					img.src = "../" + projects[i].spots[j].folder + "01.jpg";
+					img.src = "../" + data.projects[i].spots[j].folder + "thumb.jpg";
 				}
 				div.appendChild(img);
 				jQuery.data(img, "ident", i);
@@ -861,42 +861,44 @@ function onResize() {
 }
 
 function getProject(ident, spot) {
+	// mobile only
+
 	$("#project-modal").html("");
 
-	if (projects[ident].spots[spot].video) {
+	if (data.projects[ident].spots[spot].video) {
 		$("#project-modal").append(
 			"<iframe width=" +
 				$(window).width() +
 				" height=" +
 				$(window).width() / 2.7 +
 				' src="' +
-				projects[ident].spots[spot].video +
+				data.projects[ident].spots[spot].video +
 				'" frameborder=0></iframe>',
 		);
 	}
-	if (projects[ident].spots[spot].video) {
+	if (data.projects[ident].spots[spot].video) {
 		$("#project-modal").append(
-			'<img src="' + projects[ident].spots[spot].folder + '01.jpg" />',
+			'<img src="' + data.projects[ident].spots[spot].folder + '01.jpg" />',
 		);
 	} else {
 		$("#project-modal").append(
 			'<img style="margin-top:50px" src="' +
-				projects[ident].spots[spot].folder +
+				data.projects[ident].spots[spot].folder +
 				'01.jpg" />',
 		);
 	}
 	$("#project-modal").append(
-		'<img src="' + projects[ident].spots[spot].folder + '02.jpg" />',
+		'<img src="' + data.projects[ident].spots[spot].folder + '02.jpg" />',
 	);
 	$("#project-modal").append(
-		'<img src="' + projects[ident].spots[spot].folder + '03.jpg" />',
+		'<img src="' + data.projects[ident].spots[spot].folder + '03.jpg" />',
 	);
 	$("#project-modal").append(
-		'<img src="' + projects[ident].spots[spot].folder + '04.jpg" />',
+		'<img src="' + data.projects[ident].spots[spot].folder + '04.jpg" />',
 	);
 	const description = document.createElement("div");
 	description.setAttribute("class", "copy");
-	description.innerHTML = projects[ident].copybottom;
+	description.innerHTML = data.projects[ident].copybottom;
 	$("#project-modal")[0].appendChild(description);
 	$("#project-modal").append(
 		'<img src="assets/img/ui/back.png" style="position:absolute;top:5px;left:5px;width:auto;" class="backBtn" />',

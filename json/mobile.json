@@ -4,140 +4,188 @@
 			"spots": [
 				{
 					"folder": "assets/img/projects/0000/",
-					"video": "http://player.vimeo.com/video/58274977",
-					"thumb": "assets/img/projects/0000/thumb.jpg"
+					"video": "http://player.vimeo.com/video/58274977"
 				}
 			],
 			"thumb": "assets/img/projects/0000/thumb.jpg",
 			"copytop": "<h1>EDDIE ALCAZAR</h1><ul><li>Director</li><li>Writer</li><li>Producer</li><li>Editor</li><li>Production Designer</li></ul>",
-			"copybottom": "<h1>0000</h1><h1>Feature Film</h1><ul><li><a href='http://0000themovie.com/' target='_blank'>0000themovie.com</a></li></ul>"
-		},
-		{
-			"spots": [
-				{
-					"folder": "assets/img/projects/tapia/",
-					"video": "http://player.vimeo.com/video/68278966",
-					"thumb": "assets/img/projects/tapia/thumb.jpg"
-				}
-			],
-			"thumb": "assets/img/projects/tapia/thumb.jpg",
-			"copytop": "<h1>EDDIE ALCAZAR</h1><ul><li>Director</li><li>Writer</li><li>Producer</li><li>Editor</li></ul>",
-			"copybottom": "<h1>TAPIA</h1><h1>Documentary</h1><ul><li><a href='http://tapiathemovie.com/' target='_blank'>tapiathemovie.com</a></li><li>*HBO</li><li>*LA Film Fest World Premiere</li><li>*Winner Best Doc SFIFF</li><li>*Winner Best Doc Julien Dubuque</li></ul>"
-		},
-		{
-			"spots": [
-				{
-					"folder": "assets/img/projects/versace/",
-					"video": "http://player.vimeo.com/video/111583802",
-					"thumb": "assets/img/projects/versace/thumb.jpg"
-				}
-			],
-			"thumb": "assets/img/projects/versace/thumb.jpg",
-			"copytop": "<h1>EDDIE ALCAZAR</h1><ul><li>Director</li><li>Producer</li><li>Editor</li><li>Production Designer</li></ul>",
-			"copybottom": "<h1>VERSACE</h1><h1>Commercial</h1><ul><li>*65MM</li></ul>"
-		},
-		{
-			"spots": [
-				{
-					"folder": "assets/img/projects/perfect/",
-					"video": "http://player.vimeo.com/video/260708231",
-					"thumb": "assets/img/projects/perfect/thumb.jpg"
-				}
-			],
-			"thumb": "assets/img/projects/perfect/thumb.jpg",
-			"copytop": "<h1>EDDIE ALCAZAR</h1><ul><li>Director</li><li>Producer</li></ul>",
-			"copybottom": "<div><h1>Perfect</h1><h1>Feature Film</h1><h1>Presented by Steven Soderbergh</h1><li>*World Premiere SXSW</li></div>"
-		},
-		{
-			"spots": [
-				{
-					"folder": "assets/img/projects/divinity/",
-					"video": "http://player.vimeo.com/video/789505958",
-					"thumb": "assets/img/projects/divinity/thumb.jpg"
-				}
-			],
-			"thumb": "assets/img/projects/divinity/thumb.jpg",
-			"copytop": "<h1>EDDIE ALCAZAR</h1><ul><li>Director</li><li>Producer</li></ul>",
-			"copybottom": "<div><h1>Divinity</h1><h1>Feature Film</h1><h1>Presented by Steven Soderbergh</h1><h1>Shudder</h1><li>*World Premiere Sundance Film Festival 2023</li><li>*Official Selection Sitges Film Festival</li></div>"
-		},
-		{
-			"spots": [
-				{
-					"folder": "assets/img/projects/thevandal/",
-					"video": "http://player.vimeo.com/video/572876701",
-					"thumb": "assets/img/projects/thevandal/thumb.jpg"
-				}
-			],
-			"thumb": "assets/img/projects/thevandal/thumb.jpg",
-			"copytop": "<h1>EDDIE ALCAZAR</h1><ul><li>Director</li><li>Producer</li></ul>",
-			"copybottom": "<div><h1>Vandal</h1><h1>Short</h1><li>*World Premiere Cannes Directors Fortnight</li><li>*Official Selection Telluride Film Festival</li></div>"
+			"copybottom": "<h1>0000</h1><h1>Feature Film</h1><ul><li><a href='http://0000themovie.com/' target='_blank'>0000themovie.com</a></li></ul>",
+			"category": "film"
 		},
 		{
 			"spots": [
 				{
 					"folder": "assets/img/projects/lotus/",
-					"video": "http://player.vimeo.com/video/140746381",
-					"thumb": "assets/img/projects/lotus/02.jpg"
+					"video": "http://player.vimeo.com/video/140746381"
 				}
 			],
 			"thumb": "assets/img/projects/lotus/thumb.jpg",
 			"copytop": "<h1>EDDIE ALCAZAR</h1><li>Director</li><li>Writer</li><li>Producer</li><li>Editor</li>",
-			"copybottom": "<h1>FLYING LOTUS<br/>FUCKKKYOUUU</h1><h1>Experimental Short/Music Video</h1><ul><li>*World Premiere Sundance Next Fest 2015</li><li>*Official Selection Fantastic Fest 2015</li></ul>"
+			"copybottom": "<h1>FLYING LOTUS<br/>FUCKKKYOUUU</h1><h1>Experimental Short/Music Video</h1><ul><li>*World Premiere Sundance Next Fest 2015</li><li>*Official Selection Fantastic Fest 2015</li></ul>",
+			"category": "film"
 		},
 		{
 			"spots": [
 				{
-					"folder": "assets/img/projects/everlast/",
-					"video": "http://player.vimeo.com/video/58268943",
-					"thumb": "assets/img/projects/everlast/thumb.jpg"
+					"folder": "assets/img/projects/thevandal/",
+					"video": "http://player.vimeo.com/video/572876701"
 				}
 			],
-			"thumb": "assets/img/projects/everlast/thumb.jpg",
-			"copytop": "<h1>EDDIE ALCAZAR</h1><ul><li>Director</li><li>Editor</li><li>VFX</li></ul>",
-			"copybottom": "<h1>EVERLAST</h1><h1>Commercial</h1><ul><li>*AICP Nominated</li><li>*Shoot Magazine Directors Showcase</li><li>*Telly Award</li></ul>"
+			"thumb": "assets/img/projects/thevandal/thumb.jpg",
+			"copytop": "<h1>EDDIE ALCAZAR</h1><ul><li>Director</li><li>Producer</li></ul>",
+			"copybottom": "<div><li>Darren Aronofsky Presents</li><h1>The Vandal</h1><h1>Short Film</h1><li>*World Premiere Cannes - Directors Fortnight 2021</li><li>*Official Selection Telluride Film Festival</li><li>*Distributed by The New Yorker</li></div>",
+			"category": "film"
 		},
 		{
 			"spots": [
 				{
-					"folder": "assets/img/projects/taylormade/",
-					"video": "http://player.vimeo.com/video/111592051",
-					"thumb": "assets/img/projects/taylormade/thumb.jpg",
-					"title": "SPOT 1"
-				},
-				{
-					"folder": "assets/img/projects/taylormade2/",
-					"video": "http://player.vimeo.com/video/111592052",
-					"thumb": "assets/img/projects/taylormade2/04.jpg",
-					"title": "SPOT 2"
+					"folder": "assets/img/projects/bullet-time/"
 				}
 			],
-			"thumb": "assets/img/projects/taylormade/thumb.jpg",
-			"copytop": "<h1>EDDIE ALCAZAR</h1><ul><li>Director</li><li>Editor</li><li>Production Designer</li></ul>",
-			"copybottom": "<h1>Commercial</h1><ul><li>*National 3 Spot Campaign</li></ul>"
+			"thumb": "assets/img/projects/bullet-time/thumb.jpg",
+			"copytop": "<h1>EDDIE ALCAZAR</h1><ul><li>Director</li><li>Writer</li><li>Producer</li><li>Editor</li></ul>",
+			"copybottom": "<div><h1>Bullet Time</h1><h1>Short Film | Pilot</h1><li>*COMING SOON</li></div>",
+			"category": "film"
 		},
 		{
 			"spots": [
 				{
 					"folder": "assets/img/projects/adele/",
-					"video": "http://player.vimeo.com/video/58286322",
-					"thumb": "assets/img/projects/adele/thumb.jpg"
+					"video": "http://player.vimeo.com/video/58286322"
 				}
 			],
 			"thumb": "assets/img/projects/adele/thumb.jpg",
 			"copytop": "<h1>EDDIE ALCAZAR</h1><ul><li>VFX</li></ul>",
-			"copybottom": "<h1>ADELE - SOMEONE LIKE YOU</h1><h1>Music Video</h1><ul><li>*MVPA Nominated</li></ul>"
+			"copybottom": "<h1>ADELE - SOMEONE LIKE YOU</h1><h1>Music Video</h1><ul><li>*MVPA Nominated</li></ul>",
+			"category": "commercial"
 		},
 		{
 			"spots": [
 				{
-					"folder": "assets/img/projects/stills/",
-					"thumb": "assets/img/projects/stills/thumb.jpg"
+					"folder": "assets/img/projects/taylormade-sergio/",
+					"video": "http://player.vimeo.com/video/111592051"
 				}
 			],
-			"thumb": "assets/img/projects/stills/thumb.jpg",
-			"isStills": "true",
-			"copytop": "<h1>EDDIE ALCAZAR</h1><ul><li>Photographer</li></ul>",
-			"copybottom": "<h1>Photographer</h1>"
+			"thumb": "assets/img/projects/taylormade-sergio/thumb.jpg",
+			"copytop": "<h1>EDDIE ALCAZAR</h1><ul><li>Director</li><li>Editor</li></ul>",
+			"copybottom": "<li>Sergio Garcia</li><h1>TAYLORMADE</h1><h1>Commercial</h1><ul><li>*National 3 Spot Campaign</li></ul>",
+			"category": "commercial"
+		},
+		{
+			"spots": [
+				{
+					"folder": "assets/img/projects/everlast/",
+					"video": "http://player.vimeo.com/video/58268943"
+				}
+			],
+			"thumb": "assets/img/projects/everlast/thumb.jpg",
+			"copytop": "<h1>EDDIE ALCAZAR</h1><ul><li>Director</li><li>Editor</li><li>VFX</li></ul>",
+			"copybottom": "<h1>EVERLAST</h1><h1>Commercial</h1><ul><li>*AICP Nominated</li><li>*Shoot Magazine Directors Showcase</li></ul>",
+			"category": "commercial"
+		},
+		{
+			"spots": [
+				{
+					"folder": "assets/img/projects/versace/",
+					"video": "http://player.vimeo.com/video/111583802"
+				}
+			],
+			"thumb": "assets/img/projects/versace/thumb.jpg",
+			"copytop": "<h1>EDDIE ALCAZAR</h1><ul><li>Director</li><li>Producer</li><li>Editor</li><li>Production Designer</li></ul>",
+			"copybottom": "<h1>VERSACE</h1><h1>Commercial</h1><ul><li>*65MM</li></ul>",
+			"category": "commercial"
+		},
+		{
+			"spots": [
+				{
+					"folder": "assets/img/projects/red-terror/"
+				}
+			],
+			"thumb": "assets/img/projects/red-terror/thumb.jpg",
+			"copytop": "<h1>EDDIE ALCAZAR</h1><ul><li>Director</li><li>Writer</li><li>Editor</li><li>VFX</li></ul>",
+			"copybottom": "<div><h1>The Weeknd</h1><h1>Red Terror</h1><h1>Short Film | Music Video</h1></div>",
+			"category": "film"
+		},
+		{
+			"spots": [
+				{
+					"folder": "assets/img/projects/divinity/",
+					"video": "http://player.vimeo.com/video/789505958"
+				}
+			],
+			"thumb": "assets/img/projects/divinity/thumb.jpg",
+			"copytop": "<h1>EDDIE ALCAZAR</h1><ul><li>Director</li><li>Writer</li><li>Producer</li></ul>",
+			"copybottom": "<div><li>Steven Soderbergh Presents</li><h1>Divinity</h1><h1>Feature Film</h1><li>*World Premiere Sundance 2023</li><li>*Official Selection Taormina Film Festival</li><li>*Official Selection Fantastic Fest</li><li>*Official Selection Sitges</li><li>*Distributed by Shudder | Utopia</li></div>1",
+			"category": "film"
+		},
+		{
+			"spots": [
+				{
+					"folder": "assets/img/projects/perfect/",
+					"video": "http://player.vimeo.com/video/260708231"
+				}
+			],
+			"thumb": "assets/img/projects/perfect/thumb.jpg",
+			"copytop": "<h1>EDDIE ALCAZAR</h1><ul><li>Director</li><li>Writer</li><li>Producer</li></ul>",
+			"copybottom": "<div><li>Steven Soderbergh Presents</li><h1>Perfect</h1><h1>Feature Film</h1><li>*World Premiere Sundance Film Festival 2023</li><li>*Official Selection Sitges Film Festival</li></div>",
+			"category": "film"
+		},
+		{
+			"spots": [
+				{
+					"folder": "assets/img/projects/tapia/",
+					"video": "http://player.vimeo.com/video/68278966"
+				}
+			],
+			"thumb": "assets/img/projects/tapia/thumb.jpg",
+			"copytop": "<h1>EDDIE ALCAZAR</h1><ul><li>Director</li><li>Writer</li><li>Producer</li><li>Editor</li></ul>",
+			"copybottom": "<div><li>50 Cent Presents</li><h1>TAPIA</h1><h1>Documentary</h1><ul><li><a href='http://tapiathemovie.com/' target='_blank'>tapiathemovie.com</a></li><li>*HBO</li><li>*LA Film Fest World Premiere</li><li>*Winner Best Doc SFIFF</li><li>*Winner Best Doc Julien Dubuque</li></ul></div>",
+			"category": "film"
+		},
+		{
+			"spots": [
+				{
+					"folder": "assets/img/projects/borderlands/"
+				}
+			],
+			"thumb": "assets/img/projects/borderlands/thumb.jpg",
+			"copytop": "<h1>EDDIE ALCAZAR</h1><ul><li>Director</li><li>Producer</li><li>Editor</li></ul>",
+			"copybottom": "<h1>Borderlands</h1><h1>Commercial</h1>",
+			"category": "commercial"
+		},
+		{
+			"spots": [
+				{
+					"folder": "assets/img/projects/taylormade-camillo/"
+				}
+			],
+			"thumb": "assets/img/projects/taylormade-camillo/thumb.jpg",
+			"copytop": "<h1>EDDIE ALCAZAR</h1><ul><li>Director</li><li>Editor</li></ul>",
+			"copybottom": "<li>Jason Day</li><h1>TAYLORMADE</h1><h1>Commercial</h1><ul><li>*National 3 Spot Campaign</li></ul>",
+			"category": "commercial"
+		},
+		{
+			"spots": [
+				{
+					"folder": "assets/img/projects/landrover/"
+				}
+			],
+			"thumb": "assets/img/projects/landrover/thumb.jpg",
+			"copytop": "<h1>EDDIE ALCAZAR</h1><ul><li>Director</li></ul>",
+			"copybottom": "<h1>Landrover</h1><h1>Commercial</h1><ul><li>*5x5 Project all shot through car cameras</li></ul>",
+			"category": "commercial"
+		},
+		{
+			"spots": [
+				{
+					"folder": "assets/img/projects/taylormade-camillo/",
+					"video": "http://player.vimeo.com/video/111592052"
+				}
+			],
+			"thumb": "assets/img/projects/taylormade-camillo/thumb.jpg",
+			"copytop": "<h1>EDDIE ALCAZAR</h1><ul><li>Director</li><li>Editor</li></ul>",
+			"copybottom": "<li>Camilo Villegas</li><h1>TAYLORMADE</h1><h1>Commercial</h1><ul><li>*National 3 Spot Campaign</li></ul>",
+			"category": "commercial"
 		}
 	],
 	"copy": {
