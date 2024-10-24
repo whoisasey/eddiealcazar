@@ -58,7 +58,8 @@ body {
   position: absolute;
   width: 639px;
   margin: 0 auto;
-  top: -100px;
+  left: 0px;
+  top: 10px;
 }
 #wrapper.desktop .top-nav ul {
   display: flex;
