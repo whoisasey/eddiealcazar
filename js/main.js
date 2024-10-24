@@ -532,11 +532,6 @@ function closePageContainer() {
 			);
 		});
 	}
-
-	if (isPressOpen) {
-		TweenMax.to($("#awards"), 0.5, { autoAlpha: 0 });
-		TweenMax.to($("#press"), 0.5, { autoAlpha: 0, delay: 0.1 });
-	}
 }
 
 let isPressOpen = false;
@@ -626,9 +621,6 @@ function openPress() {
 	}
 
 	isPressOpen = true;
-
-	TweenMax.to($("#awards"), 1, { autoAlpha: 1 });
-	TweenMax.to($("#press"), 1, { autoAlpha: 1, delay: 0.2 });
 }
 
 function getPage(indexPage, indexSpot) {
@@ -757,9 +749,6 @@ function getPage(indexPage, indexSpot) {
 		currSpotID = indexSpot;
 	}
 }
-
-// let pressScroll;
-// let awardsScroll;
 
 function animateIn() {
 	$(".thumb").each(function (i) {
