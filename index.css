@@ -257,53 +257,6 @@ body {
   height: 100%;
   visibility: hidden;
 }
-#wrapper.desktop #awards,
-#wrapper.desktop #press {
-  width: auto;
-  height: auto;
-  position: absolute;
-  top: 0px;
-  left: 10%;
-  background-color: #111111;
-  padding: 10px;
-  visibility: hidden;
-}
-#wrapper.desktop #awards li,
-#wrapper.desktop #press li {
-  opacity: 1;
-  padding-right: 10px;
-}
-#wrapper.desktop #awards a,
-#wrapper.desktop #press a {
-  transition: color 0.25s ease-in-out;
-}
-#wrapper.desktop #awards a:hover,
-#wrapper.desktop #press a:hover {
-  color: #ffffff;
-}
-#wrapper.desktop #press {
-  top: -8%;
-  right: 10%;
-  left: auto;
-  width: 22%;
-  height: 40%;
-}
-#wrapper.desktop #press li {
-  margin-bottom: 8px;
-}
-#wrapper.desktop #awards {
-  height: 27%;
-}
-#wrapper.desktop .mobile-press-scroller {
-  width: 100%;
-  height: 100%;
-  overflow-y: hidden;
-}
-#wrapper.desktop #awards-scroller {
-  width: 100%;
-  height: 100%;
-  overflow-y: hidden;
-}
 #wrapper.desktop #footer {
   position: absolute;
   left: 0px;
@@ -442,27 +395,6 @@ body {
   -o-object-fit: cover;
      object-fit: cover;
   aspect-ratio: 9/3;
-}
-#wrapper.mobile .mobile-awards,
-#wrapper.mobile .mobile-press {
-  width: 100%;
-  height: auto;
-  padding: 20px;
-}
-#wrapper.mobile .mobile-awards li,
-#wrapper.mobile .mobile-press li {
-  opacity: 1;
-  padding-right: 10px;
-  font-size: 12px;
-}
-#wrapper.mobile .mobile-awards a:hover,
-#wrapper.mobile .mobile-awards a :focus-within,
-#wrapper.mobile .mobile-press a:hover,
-#wrapper.mobile .mobile-press a :focus-within {
-  color: #ffffff;
-}
-#wrapper.mobile .mobile-press li {
-  margin-bottom: 8px;
 }
 #wrapper.mobile .mobile-footer {
   position: relative;
