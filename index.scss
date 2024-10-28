@@ -310,59 +310,6 @@ body {
 			visibility: hidden;
 		}
 
-		#awards,
-		#press {
-			width: auto;
-			height: auto;
-			position: absolute;
-			top: 0px;
-			left: 10%;
-			background-color: #111111;
-			padding: 10px;
-			visibility: hidden;
-
-			li {
-				opacity: 1;
-				padding-right: 10px;
-			}
-
-			a {
-				transition: color 0.25s ease-in-out;
-
-				&:hover {
-					color: $white;
-				}
-			}
-		}
-
-		#press {
-			top: -8%;
-			right: 10%;
-			left: auto;
-			width: 22%;
-			height: 40%;
-
-			li {
-				margin-bottom: 8px;
-			}
-		}
-
-		#awards {
-			height: 27%;
-		}
-
-		.mobile-press-scroller {
-			width: 100%;
-			height: 100%;
-			overflow-y: hidden;
-		}
-
-		#awards-scroller {
-			width: 100%;
-			height: 100%;
-			overflow-y: hidden;
-		}
-
 		#footer {
 			position: absolute;
 			left: 0px;
@@ -537,30 +484,6 @@ body {
 				object-fit: cover;
 				aspect-ratio: 9 / 3;
 			}
-		}
-
-		.mobile-awards,
-		.mobile-press {
-			width: 100%;
-			height: auto;
-			padding: 20px;
-
-			li {
-				opacity: 1;
-				padding-right: 10px;
-				font-size: 12px;
-			}
-
-			a {
-				&:hover,
-				:focus-within {
-					color: $white;
-				}
-			}
-		}
-
-		.mobile-press li {
-			margin-bottom: 8px;
 		}
 
 		.mobile-footer {
