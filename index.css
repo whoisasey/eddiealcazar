@@ -55,11 +55,8 @@ body {
   z-index: 10;
 }
 #wrapper.desktop .top-nav {
-  position: absolute;
   width: 639px;
   margin: 0 auto;
-  left: 0px;
-  top: 10px;
 }
 #wrapper.desktop .top-nav ul {
   display: flex;
@@ -124,7 +121,6 @@ body {
   margin-top: 0;
 }
 #wrapper.desktop .copybottom-desktop li {
-  font-family: Verdana, Arial, sans-serif;
   font-weight: 400;
   font-size: 8px;
   font-size: 0.7vw;

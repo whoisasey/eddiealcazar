@@ -73,11 +73,8 @@ body {
 		}
 
 		.top-nav {
-			position: absolute;
 			width: 213px * 3;
 			margin: 0 auto;
-			left: 0px;
-			top: 10px;
 
 			ul {
 				display: flex;
@@ -157,7 +154,6 @@ body {
 			}
 
 			li {
-				font-family: Verdana, Arial, sans-serif;
 				font-weight: 400;
 				font-size: 8px;
 				font-size: 0.7vw;

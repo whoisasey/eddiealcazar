@@ -512,15 +512,7 @@ function closePageContainer() {
 				delay: 0.2,
 				ease: Expo.easeOut,
 			});
-			TweenMax.staggerTo(
-				$("#copybottom").find("p"),
-				0.5,
-				{ x: 0, opacity: 1, delay: 0.3, ease: Expo.easeOut },
-				0.1,
-				function () {
-					$("#copybottom").css("z-index", "15");
-				},
-			);
+
 			TweenMax.staggerTo(
 				$("#copybottom").find("li"),
 				0.5,
@@ -600,16 +592,6 @@ function openPress() {
 
 			TweenMax.to(
 				$("#copybottom").find("li"),
-				0.5,
-				{ x: 0, opacity: 1, delay: 0.3, ease: Expo.easeOut },
-				0.1,
-				function () {
-					$("#copybottom").css("z-index", "15");
-				},
-			);
-
-			TweenMax.staggerTo(
-				$("#copybottom").find("p"),
 				0.5,
 				{ x: 0, opacity: 1, delay: 0.3, ease: Expo.easeOut },
 				0.1,
@@ -716,7 +698,6 @@ function getPage(indexPage, indexSpot) {
 
 				TweenMax.set($(".copy").find("li"), { x: -50, opacity: 0 });
 				TweenMax.set($("#copybottom").find("h1"), { x: -50, opacity: 0 });
-				TweenMax.set($("#copybottom").find("li"), { x: -50, opacity: 0 });
 
 				TweenMax.staggerTo(
 					$("#copytop").find("li"),
@@ -846,18 +827,7 @@ function onResize() {
 	$("#navWrapper").css("height", w / (1600 / 66) + "px");
 	$("#navWrapper").css("margin-top", -$("#nav").height() / 2 + "px");
 
-	// centers top-nav
-	const $nav = $(".top-nav");
-	const screenWidth = $(window).width();
-	const navWidth = $nav.outerWidth();
-
-	if (screenWidth >= 1024) {
-		// Large screens and up
-		const leftOffset = (screenWidth - navWidth) / 2;
-		$nav.css("transform", `translateX(${leftOffset}px)`);
-	} else {
-		$nav.css("transform", ""); // Reset transform for smaller screens
-	}
+	$(".copy").css("width", $(".center").width() + "px");
 }
 
 function getProject(ident, spot) {
