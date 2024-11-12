@@ -80,7 +80,7 @@ function renderProjects(projects) {
 
 	setTimeout(onTimeout, 250);
 	isLoaded = true;
-	initEvents(projects.projects);
+	initEvents(projects.projects); //after filtering
 }
 
 $("#filter-film").on("click", function () {
@@ -96,7 +96,6 @@ $("#filter-commercials").on("click", function () {
 function loadData(d) {
 	// logic for data and thumbnails go here
 	data = d;
-
 	//Init thumbs
 	let count = 0;
 	let projects;
@@ -136,6 +135,8 @@ function loadData(d) {
 		count++;
 	}
 
+	// clears the container before loading new projects
+
 	for (i = 0; i < projects.length; i++) {
 		if (projects[i].isCenter != "true") {
 			for (let j = 0; j < projects[i].spots.length; j++) {
@@ -143,6 +144,11 @@ function loadData(d) {
 
 				const page = document.createElement("div");
 				page.setAttribute("class", "page page" + i + "" + j);
+
+				// clears the container after new projects are reloaded, so the dom is cleaner
+				if ($("#pageContainer")[0].childNodes.length > 8) {
+					$("#pageContainer").empty();
+				}
 				$("#pageContainer")[0].appendChild(page);
 
 				jQuery.data(page, "projectID", i);
@@ -239,7 +245,7 @@ function parseData(d) {
 	setTimeout(onTimeout, 4000); //change this to 4000 later
 	isLoaded = true;
 
-	initEvents(data.projects);
+	initEvents(data.projects); // first load
 
 	onResize();
 }
@@ -632,11 +638,7 @@ function getPage(indexPage, indexSpot) {
 
 	if (indexPage != currPageID || indexSpot != currSpotID) {
 		let page;
-		if ($(".page" + indexPage + "" + indexSpot).length > 1) {
-			page = $(".page" + indexPage + "" + indexSpot).eq(1); // Index 1
-		} else {
-			page = $(".page" + indexPage + "" + indexSpot).eq(0); // Index 0
-		}
+		page = $(".page" + indexPage + "" + indexSpot);
 
 		TweenMax.set(page.find("img"), { scale: 1 });
 		TweenMax.set(page.find(".imgContainer"), { opacity: 0 });
