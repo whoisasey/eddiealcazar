@@ -55,14 +55,19 @@ body {
   z-index: 10;
 }
 #wrapper.desktop .top-nav {
-  width: 639px;
-  margin: 0 auto;
+  position: absolute;
+  left: 0px;
+  top: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 #wrapper.desktop .top-nav ul {
   display: flex;
   text-transform: uppercase;
   justify-content: space-between;
   align-items: center;
+  width: 639px;
 }
 #wrapper.desktop .top-nav ul li {
   font-weight: bold;
@@ -71,6 +76,7 @@ body {
 #wrapper.desktop .top-nav ul li h1 {
   color: rgba(255, 255, 255, 0.4);
   transition: 0.8s ease-in-out;
+  margin: 0;
 }
 #wrapper.desktop .top-nav ul li h1:hover {
   cursor: pointer;
