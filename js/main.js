@@ -8,9 +8,6 @@
 //@codekit-prepend "libs/PxLoader.js";
 //@codekit-prepend "libs/PxLoaderImage.js";
 
-// TODO: add youtube
-// https://www.youtube.com/watch?v=xoslm8aZOOM&ab_channel=FlyingLotusVEVO
-
 let data, loader;
 let pages = [];
 let thumbs = [];
@@ -36,6 +33,8 @@ function init() {
 			dataType: "json",
 			success: parseData,
 		});
+
+		getContentfulData();
 	}
 
 	// TODO: fix mobile
@@ -47,6 +46,25 @@ function init() {
 			success: parseMobileData,
 		});
 	}
+}
+
+function getContentfulData() {
+	$(document).ready(function () {
+		let spaceID;
+		let accessToken;
+		$.getJSON("js/config.json", function (config) {
+			spaceID = config.SPACE_ID;
+			accessToken = config.CONTENTFUL_TOKEN;
+
+			const url = `https://cdn.contentful.com/spaces/${spaceID}/entries?access_token=${accessToken}`;
+
+			$.getJSON(url, function (data) {
+				console.log(data.items);
+			}).fail(function (err) {
+				console.error("Error fetching data from Contentful:", err);
+			});
+		});
+	});
 }
 
 function fetchProjects(category) {
