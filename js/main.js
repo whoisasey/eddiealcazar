@@ -256,20 +256,42 @@ function initEvents(projects) {
 	});
 
 	$(".imgContainer").click(function () {
-		if (projects[jQuery.data(this, "projectID")].isStills == "true") {
+		const projectID = jQuery.data(this, "projectID");
+		const spotID = jQuery.data(this, "spotID");
+
+		const project = projects[projectID];
+		const spot = project.spots[spotID];
+
+		if (project.isStills === "true") {
 			window.open("https://www.flickr.com/photos/eddiealcazar/", "_blank");
-		} else if (
-			projects[jQuery.data(this, "projectID")].spots[
-				jQuery.data(this, "spotID")
-			].video != null
-		) {
-			// const index = $(".imgContainer").index(this);
-			$("iframe").attr(
-				"src",
-				projects[jQuery.data(this, "projectID")].spots[
-					jQuery.data(this, "spotID")
-				].video + "?title=0&byline=0&badge=0&loop=1&autoplay=1&color=333",
-			);
+		} else if (spot.video != null) {
+			// Check if the video is from YouTube
+			if (
+				spot.video.includes("youtube.com") ||
+				spot.video.includes("youtu.be")
+			) {
+				// Extract the video ID from the URL
+				let videoID = null;
+
+				if (spot.video.includes("youtube.com")) {
+					const urlParams = new URLSearchParams(new URL(spot.video).search);
+					videoID = urlParams.get("v");
+				} else if (spot.video.includes("youtu.be")) {
+					videoID = spot.video.split("/").pop();
+				}
+
+				if (videoID) {
+					const embedURL = `https://www.youtube.com/embed/${videoID}?autoplay=1&controls=1`;
+					$("iframe").attr("src", embedURL);
+				}
+			} else if (spot.video.includes("vimeo.com")) {
+				// Handle Vimeo case as fallback
+				$("iframe").attr(
+					"src",
+					`${spot.video}?title=0&byline=0&badge=0&loop=1&autoplay=1&color=333`,
+				);
+			}
+
 			TweenMax.to($("#player"), 1, { width: "100%", ease: Expo.easeInOut });
 		}
 	});
