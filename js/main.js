@@ -127,6 +127,7 @@ function loadData(d) {
 			$("#nav")[0].appendChild(div);
 
 			const img = loader.addImage(projects[i].thumb);
+
 			div.appendChild(img);
 
 			jQuery.data(div, "ident", i);
@@ -134,8 +135,6 @@ function loadData(d) {
 
 		count++;
 	}
-
-	// clears the container before loading new projects
 
 	for (i = 0; i < projects.length; i++) {
 		if (projects[i].isCenter != "true") {
@@ -453,18 +452,12 @@ function parseMobileData(d) {
 
 			for (let j = 0; j < data.projects[i].spots.length; j++) {
 				let img = new Image();
-				let thumbSrc;
 
 				if (data.projects[i].spots[j].thumb) {
 					img.src = data.projects[i].spots[j].thumb;
 				} else {
 					img.src = "../" + data.projects[i].spots[j].folder + "thumb.jpg";
 				}
-
-				// Ensure no caching issues with GIFs
-				img.src =
-					thumbSrc +
-					(thumbSrc.endsWith(".gif") ? "?t=" + new Date().getTime() : "");
 
 				div.appendChild(img);
 				jQuery.data(img, "ident", i);
