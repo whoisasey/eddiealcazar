@@ -7,7 +7,7 @@
 					"video": "http://player.vimeo.com/video/58274977"
 				}
 			],
-			"thumb": "assets/img/projects/0000/thumb.jpg",
+			"thumb": "/assets/img/projects/0000/thumb.jpg",
 			"copytop": "<h1>EDDIE ALCAZAR</h1><ul><li>Director</li><li>Writer</li><li>Producer</li><li>Editor</li><li>Production Designer</li></ul>",
 			"copybottom": "<h1>0000</h1><h1>Feature Film</h1><ul><li><a href='http://0000themovie.com/' target='_blank'>0000themovie.com</a></li></ul>",
 			"category": "film"
@@ -156,10 +156,10 @@
 		{
 			"spots": [
 				{
-					"folder": "assets/img/projects/taylormade-camillo/"
+					"folder": "assets/img/projects/taylormade-jason/"
 				}
 			],
-			"thumb": "assets/img/projects/taylormade-camillo/thumb.jpg",
+			"thumb": "assets/img/projects/taylormade-jason/thumb.jpg",
 			"copytop": "<h1>EDDIE ALCAZAR</h1><ul><li>Director</li><li>Editor</li></ul>",
 			"copybottom": "<li>Jason Day</li><h1>TAYLORMADE</h1><h1>Commercial</h1><ul><li>*National 3 Spot Campaign</li></ul>",
 			"category": "commercial"
