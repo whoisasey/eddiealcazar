@@ -8,9 +8,6 @@
 //@codekit-prepend "libs/PxLoader.js";
 //@codekit-prepend "libs/PxLoaderImage.js";
 
-// TODO: add youtube
-// https://www.youtube.com/watch?v=xoslm8aZOOM&ab_channel=FlyingLotusVEVO
-
 let data, loader;
 let pages = [];
 let thumbs = [];
@@ -38,7 +35,6 @@ function init() {
 		});
 	}
 
-	// TODO: fix mobile
 	if (window.innerWidth <= 820) {
 		$.ajax({
 			type: "GET",
