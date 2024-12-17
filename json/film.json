@@ -4,19 +4,19 @@
 			"spots": [
 				{
 					"folder": "assets/img/projects/0000/",
-					"video": "http://player.vimeo.com/video/58274977"
+					"video": "https://player.vimeo.com/video/58274977"
 				}
 			],
 			"thumb": "assets/img/projects/0000/thumb.gif",
 			"copytop": "<h1>EDDIE ALCAZAR</h1><ul><li>Director</li><li>Writer</li><li>Producer</li><li>Editor</li><li>Production Designer</li></ul>",
-			"copybottom": "<h1>0000</h1><h1>Feature Film</h1><ul><li><a href='http://0000themovie.com/' target='_blank'>0000themovie.com</a></li></ul>",
+			"copybottom": "<h1>0000</h1><h1>Feature Film</h1><ul><li><a href='https://0000themovie.com/' target='_blank'>0000themovie.com</a></li></ul>",
 			"category": "film"
 		},
 		{
 			"spots": [
 				{
 					"folder": "assets/img/projects/lotus/",
-					"video": "https://youtu.be/xoslm8aZOOM?si=CiOJS3hGUp-XrTqV"
+					"video": "https://vimeo.com/video/153738838"
 				}
 			],
 			"thumb": "assets/img/projects/lotus/thumb.gif",
@@ -28,7 +28,7 @@
 			"spots": [
 				{
 					"folder": "assets/img/projects/thevandal/",
-					"video": "http://player.vimeo.com/video/572876701"
+					"video": "https://player.vimeo.com/video/572876701"
 				}
 			],
 			"thumb": "assets/img/projects/thevandal/thumb.gif",
@@ -65,7 +65,7 @@
 			"spots": [
 				{
 					"folder": "assets/img/projects/divinity/",
-					"video": "http://player.vimeo.com/video/789505958"
+					"video": "https://player.vimeo.com/video/789505958"
 				}
 			],
 			"thumb": "assets/img/projects/divinity/thumb.gif",
@@ -77,7 +77,7 @@
 			"spots": [
 				{
 					"folder": "assets/img/projects/perfect/",
-					"video": "http://player.vimeo.com/video/260708231"
+					"video": "https://player.vimeo.com/video/260708231"
 				}
 			],
 			"thumb": "assets/img/projects/perfect/thumb.gif",
@@ -89,17 +89,17 @@
 			"spots": [
 				{
 					"folder": "assets/img/projects/tapia/",
-					"video": "https://youtu.be/tllXLOQ2vWU?si=pupmgIKLqHzFQh-X"
+					"video": "https://player.vimeo.com/video/68278966"
 				}
 			],
 			"thumb": "assets/img/projects/tapia/thumb.gif",
 			"copytop": "<h1>EDDIE ALCAZAR</h1><ul><li>Director</li><li>Writer</li><li>Producer</li><li>Editor</li></ul>",
-			"copybottom": "<div><li>50 Cent Presents</li><h1>TAPIA</h1><h1>Documentary</h1><ul><li><a href='http://tapiathemovie.com/' target='_blank'>tapiathemovie.com</a></li><li>*HBO</li><li>*LA Film Fest World Premiere</li><li>*Winner Best Doc SFIFF</li><li>*Winner Best Doc Julien Dubuque</li></ul></div>",
+			"copybottom": "<div><li>50 Cent Presents</li><h1>TAPIA</h1><h1>Documentary</h1><ul><li><a href='https://tapiathemovie.com/' target='_blank'>tapiathemovie.com</a></li><li>*HBO</li><li>*LA Film Fest World Premiere</li><li>*Winner Best Doc SFIFF</li><li>*Winner Best Doc Julien Dubuque</li></ul></div>",
 			"category": "film"
 		}
 	],
 	"copy": {
-		"bottom": "<h1>REPRESENTATION</h1><ul><li>FEATURE FILM</li><li><b><a href='https://www.caa.com/' target='_blank'>CAA</a></b></li><h1><a href='http://www.anonymouscontent.com/' target='_blank'>ANONYMOUS CONTENT</a></h1><li>COMMERCIALS</li><li><b><a href='https://www.chromista.tv/' target='_blank'>CHROMISTA</a></b></li></ul>",
+		"bottom": "<h1>REPRESENTATION</h1><ul><li>FEATURE FILM</li><li><b><a href='https://www.caa.com/' target='_blank'>CAA</a></b></li><h1><a href='https://www.anonymouscontent.com/' target='_blank'>ANONYMOUS CONTENT</a></h1><li>COMMERCIALS</li><li><b><a href='https://www.chromista.tv/' target='_blank'>CHROMISTA</a></b></li></ul>",
 		"top": "<h1>EDDIE ALCAZAR</h1>"
 	}
 }
