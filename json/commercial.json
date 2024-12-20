@@ -65,7 +65,14 @@
 		{
 			"spots": [
 				{
-					"folder": "assets/img/projects/taylormade-jason/"
+					"folder": "assets/img/projects/taylormade-jason/",
+					"video": "http://player.vimeo.com/video/111592051",
+					"title": "SPOT 1"
+				},
+				{
+					"folder": "assets/img/projects/taylormade-camillo/",
+					"video": "http://player.vimeo.com/video/111592052",
+					"title": "SPOT 2"
 				}
 			],
 			"thumb": "assets/img/projects/taylormade-jason/thumb.jpg",

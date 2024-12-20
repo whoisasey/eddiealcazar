@@ -709,8 +709,8 @@ function getPage(indexPage, indexSpot) {
 				$("#copybottom").html(data.projects[indexPage].copybottom);
 
 				if (data.projects[indexPage].spots.length > 1) {
-					for (let i = 0; i < projects[indexPage].spots.length; i++) {
-						let spot = projects[indexPage].spots[i];
+					for (let i = 0; i < data.projects[indexPage].spots.length; i++) {
+						let spot = data.projects[indexPage].spots[i];
 						$("#copybottom").append(
 							'<h1><a href="#" onclick="getPage(' +
 								indexPage +
