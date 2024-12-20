@@ -830,31 +830,30 @@ function onTimeout() {
 
 function onResize() {
 	const w = $(window).width();
-	/*if(w<1080){
-        w=1080;
-    }*/
+	// only resize on medium screens and up
+	if (w > 575) {
+		const container = document.querySelector("#container");
+		const width = w + "px";
+		const height = w / (1600 / 600) + "px";
+		const marginTop = `${(window.innerHeight - parseFloat(height)) / 2}px`;
 
-	const container = document.querySelector("#container");
-	const width = w + "px";
-	const height = w / (1600 / 600) + "px";
-	const marginTop = `${(window.innerHeight - parseFloat(height)) / 2}px`;
+		container.style.width = width;
+		container.style.height = height;
+		container.style.marginTop = marginTop;
 
-	container.style.width = width;
-	container.style.height = height;
-	container.style.marginTop = marginTop;
+		$("iframe").css("width", w + "px");
+		$("iframe").css("height", $(window).width() / (1600 / 600) + "px");
 
-	$("iframe").css("width", w + "px");
-	$("iframe").css("height", $(window).width() / (1600 / 600) + "px");
+		$("#playerContainer").css("width", w + "px");
+		$("#playerContainer").css("height", w / (1600 / 600) + "px");
 
-	$("#playerContainer").css("width", w + "px");
-	$("#playerContainer").css("height", w / (1600 / 600) + "px");
+		$("#nav").css("width", w + "px");
+		$("#nav").css("height", w / (1600 / 66) + "px");
+		$("#navWrapper").css("height", w / (1600 / 66) + "px");
+		$("#navWrapper").css("margin-top", -$("#nav").height() / 2 + "px");
 
-	$("#nav").css("width", w + "px");
-	$("#nav").css("height", w / (1600 / 66) + "px");
-	$("#navWrapper").css("height", w / (1600 / 66) + "px");
-	$("#navWrapper").css("margin-top", -$("#nav").height() / 2 + "px");
-
-	$(".copy").css("width", $(".center").width() + "px");
+		$(".copy").css("width", $(".center").width() + "px");
+	}
 }
 
 function getProject(ident, spot) {
