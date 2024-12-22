@@ -263,6 +263,7 @@ function initEvents(projects) {
 	});
 
 	$(".imgContainer").click(function () {
+<<<<<<< Updated upstream
 		const projectID = jQuery.data(this, "projectID");
 		const spotID = jQuery.data(this, "spotID");
 
@@ -299,6 +300,37 @@ function initEvents(projects) {
 				);
 			}
 
+=======
+		console.log("get project...");
+
+		const container = $("#pageContainer");
+		const background = document.createElement("div");
+
+		if (data.projects[jQuery.data(this, "projectID")].isStills == "true") {
+			window.open("https://www.flickr.com/photos/eddiealcazar/", "_blank");
+		} else if (
+			data.projects[jQuery.data(this, "projectID")].spots[
+				jQuery.data(this, "spotID")
+			].video != null
+		) {
+			$("iframe").attr(
+				"src",
+				data.projects[jQuery.data(this, "projectID")].spots[
+					jQuery.data(this, "spotID")
+				].video + "?title=0&byline=0&badge=0&loop=1&autoplay=1&color=333",
+			);
+			$(background).css({
+				"background-color": "blue",
+				width: "100vw",
+				height: "100px",
+				zIndex: "10",
+				position: "absolute",
+				left: "0",
+				right: "0",
+			});
+			$(background).attr("class", "cinema");
+			container.append(background);
+>>>>>>> Stashed changes
 			TweenMax.to($("#player"), 1, { width: "100%", ease: Expo.easeInOut });
 		}
 	});
