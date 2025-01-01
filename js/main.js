@@ -19,10 +19,9 @@ let to;
 let getCategory;
 
 // TODO:
-// vandal - video aspect isn't covering full screen, can black out background images?
-//1 -  make smaller aspect videos full screen
+//1 -  add black background on videos where the aspect is smaller - done
 // 2 - is it still possible to keep projects grouped ie - Taylor Made? -- available
-// 3 - replace icon
+// 3 - replace icon - awaiting eddie
 
 function init() {
 	//Init resize event
