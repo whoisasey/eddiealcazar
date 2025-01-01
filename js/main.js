@@ -160,6 +160,7 @@ function loadData(d) {
 				page.appendChild(container1);
 
 				const image1 = loader.addImage(spot.folder + "01.jpg");
+
 				container1.appendChild(image1);
 
 				const container2 = document.createElement("div");
