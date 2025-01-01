@@ -202,12 +202,6 @@ body {
 			z-index: 10;
 		}
 
-		#scroll-container {
-			overflow-x: auto;
-			white-space: nowrap;
-			height: 200px;
-		}
-
 		#nav {
 			position: relative;
 			display: inline-block;
@@ -227,8 +221,8 @@ body {
 				img {
 					width: 100%;
 					height: 100%;
-					aspect-ratio: 8/3;
-					object-fit: cover;
+					// aspect-ratio: 8/3;
+					// object-fit: cover;
 				}
 			}
 		}
@@ -264,8 +258,8 @@ body {
 				display: block;
 				height: auto;
 				width: 100%;
-				aspect-ratio: 8 / 3;
-				object-fit: cover;
+				// aspect-ratio: 8 / 3;
+				// object-fit: cover;
 			}
 		}
 
@@ -353,25 +347,14 @@ body {
 			cursor: pointer;
 		}
 
-		/* ------ SCROLL PANEL ----- */
-
-		.sp-scrollbar {
-			width: 2px;
-			cursor: pointer;
-			right: 0px !important;
-
-			.sp-thumb {
-				background-color: rgba(255, 255, 255, 0.4);
-				-webkit-transition: height 0.2s ease-in-out;
-				-moz-transition: height 0.2s ease-in-out;
-				-ms-transition: height 0.2s ease-in-out;
-				-o-transition: height 0.2s ease-in-out;
-				transition: height 0.2s ease-in-out;
-			}
-		}
-
-		.sp-scrollbar.active .sp-thumb {
-			background-color: $white;
+		.cinema {
+			background: black;
+			width: 100vw;
+			z-index: 10;
+			position: absolute;
+			left: 0;
+			right: 0;
+			display: block;
 		}
 
 		/* ------ VIDEO ----- */

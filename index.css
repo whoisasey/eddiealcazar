@@ -47,7 +47,6 @@ body {
   position: absolute;
   top: 0;
   bottom: 0;
-  /* ------ SCROLL PANEL ----- */
   /* ------ VIDEO ----- */
 }
 #wrapper.desktop #container {
@@ -162,11 +161,6 @@ body {
   left: 0px;
   z-index: 10;
 }
-#wrapper.desktop #scroll-container {
-  overflow-x: auto;
-  white-space: nowrap;
-  height: 200px;
-}
 #wrapper.desktop #nav {
   position: relative;
   display: inline-block;
@@ -186,9 +180,6 @@ body {
 #wrapper.desktop #nav .center img {
   width: 100%;
   height: 100%;
-  aspect-ratio: 8/3;
-  -o-object-fit: cover;
-     object-fit: cover;
 }
 #wrapper.desktop .highlight {
   width: 100%;
@@ -219,9 +210,6 @@ body {
   display: block;
   height: auto;
   width: 100%;
-  aspect-ratio: 8/3;
-  -o-object-fit: cover;
-     object-fit: cover;
 }
 #wrapper.desktop .topleft {
   top: 0px;
@@ -295,17 +283,14 @@ body {
   right: 10px;
   cursor: pointer;
 }
-#wrapper.desktop .sp-scrollbar {
-  width: 2px;
-  cursor: pointer;
-  right: 0px !important;
-}
-#wrapper.desktop .sp-scrollbar .sp-thumb {
-  background-color: rgba(255, 255, 255, 0.4);
-  transition: height 0.2s ease-in-out;
-}
-#wrapper.desktop .sp-scrollbar.active .sp-thumb {
-  background-color: #ffffff;
+#wrapper.desktop .cinema {
+  background: black;
+  width: 100vw;
+  z-index: 10;
+  position: absolute;
+  left: 0;
+  right: 0;
+  display: block;
 }
 #wrapper.desktop video.transition {
   position: absolute;

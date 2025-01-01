@@ -263,10 +263,9 @@ function initEvents(projects) {
 	});
 
 	$(".imgContainer").click(function () {
-		console.log("get project...");
-
 		const container = $("#pageContainer");
 		const background = document.createElement("div");
+		const w = $(window).width();
 
 		if (data.projects[jQuery.data(this, "projectID")].isStills == "true") {
 			window.open("https://www.flickr.com/photos/eddiealcazar/", "_blank");
@@ -281,17 +280,13 @@ function initEvents(projects) {
 					jQuery.data(this, "spotID")
 				].video + "?title=0&byline=0&badge=0&loop=1&autoplay=1&color=333",
 			);
+			// adds black background to fill width of screen
 			$(background).css({
-				"background-color": "blue",
-				width: "100vw",
-				height: "100px",
-				zIndex: "10",
-				position: "absolute",
-				left: "0",
-				right: "0",
+				height: w / (1600 / 600) + "px",
 			});
 			$(background).attr("class", "cinema");
 			container.append(background);
+
 			TweenMax.to($("#player"), 1, { width: "100%", ease: Expo.easeInOut });
 		}
 	});
@@ -322,6 +317,9 @@ function initEvents(projects) {
 				$("iframe").attr("src", "");
 			},
 		});
+
+		const cinema = $(".cinema");
+		cinema.remove();
 	});
 
 	// when the current project is open, close the current project if user clicks blackspace
