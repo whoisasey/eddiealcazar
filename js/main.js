@@ -410,7 +410,7 @@ function initEvents(projects) {
 					{ x: 0, opacity: 1, delay: 0.3, ease: Expo.easeOut },
 					0.1,
 					function () {
-						$("#copybottom").css("z-index", "15");
+						$("#copybottom").css("z-index", "10");
 					},
 				);
 			});
@@ -540,7 +540,7 @@ function closePageContainer() {
 				{ x: 0, opacity: 1, delay: 0.3, ease: Expo.easeOut },
 				0.1,
 				function () {
-					$("#copybottom").css("z-index", "15");
+					$("#copybottom").css("z-index", "10");
 				},
 			);
 		});
@@ -617,7 +617,7 @@ function openPress() {
 				{ x: 0, opacity: 1, delay: 0.3, ease: Expo.easeOut },
 				0.1,
 				function () {
-					$("#copybottom").css("z-index", "15");
+					$("#copybottom").css("z-index", "10");
 				},
 			);
 		});
@@ -736,7 +736,7 @@ function getPage(indexPage, indexSpot) {
 					{ x: 0, opacity: 1, delay: 0.3, ease: Expo.easeOut },
 					0.1,
 					function () {
-						$("#copybottom")[0].style.zIndex = "15";
+						$("#copybottom")[0].style.zIndex = "10";
 					},
 				);
 			});
