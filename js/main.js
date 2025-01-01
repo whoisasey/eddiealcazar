@@ -19,10 +19,9 @@ let to;
 let getCategory;
 
 // TODO:
-// vandal - video aspect isn't covering full screen, can black out background images?
-//1 -  make smaller aspect videos full screen
+//1 -  add black background on videos where the aspect is smaller - done
 // 2 - is it still possible to keep projects grouped ie - Taylor Made? -- available
-// 3 - replace icon
+// 3 - replace icon - awaiting eddie
 
 function init() {
 	//Init resize event
@@ -263,6 +262,10 @@ function initEvents(projects) {
 	});
 
 	$(".imgContainer").click(function () {
+		const container = $("#pageContainer");
+		const background = document.createElement("div");
+		const w = $(window).width();
+
 		if (data.projects[jQuery.data(this, "projectID")].isStills == "true") {
 			window.open("https://www.flickr.com/photos/eddiealcazar/", "_blank");
 		} else if (
@@ -270,13 +273,19 @@ function initEvents(projects) {
 				jQuery.data(this, "spotID")
 			].video != null
 		) {
-			var index = $(".imgContainer").index(this);
 			$("iframe").attr(
 				"src",
 				data.projects[jQuery.data(this, "projectID")].spots[
 					jQuery.data(this, "spotID")
 				].video + "?title=0&byline=0&badge=0&loop=1&autoplay=1&color=333",
 			);
+			// adds black background to fill width of screen
+			$(background).css({
+				height: w / (1600 / 600) + "px",
+			});
+			$(background).attr("class", "cinema");
+			container.append(background);
+
 			TweenMax.to($("#player"), 1, { width: "100%", ease: Expo.easeInOut });
 		}
 	});
@@ -307,6 +316,9 @@ function initEvents(projects) {
 				$("iframe").attr("src", "");
 			},
 		});
+
+		const cinema = $(".cinema");
+		cinema.remove();
 	});
 
 	// when the current project is open, close the current project if user clicks blackspace
